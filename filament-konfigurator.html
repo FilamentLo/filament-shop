@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VYXFSQR5D1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VYXFSQR5D1');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ════════════════════════════════════════════════════════════════
+     SEITEN-TITEL  ← hier deinen Shop-Namen anpassen
+     ════════════════════════════════════════════════════════════════ -->
+<title>Filament Shop – Konfigurator</title>
+
+<!-- Schriftarten von Google – bei Bedarf auf fonts.google.com andere wählen -->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════════════
+   DESIGN-VARIABLEN
+   Hier kannst du Farben, Abstände und Schriftarten zentral ändern.
+   Alle Elemente der Seite nutzen diese Werte automatisch.
+   ════════════════════════════════════════════════════════════════ */
+:root {
+  --bg:           #F2EFE9;   /* Hintergrundfarbe der gesamten Seite          */
+  --surface:      #FAFAF8;   /* Hintergrund von Karten-Innenflächenn          */
+  --card:         #ffffff;   /* Weiße Kartenflächen                           */
+  --border:       #DDD9D0;   /* Rahmenfarbe (hell)                            */
+  --border-strong:#B8B3A8;   /* Rahmenfarbe (etwas dunkler, z.B. bei Hover)  */
+  --text:         #1A1815;   /* Haupttextfarbe + Header-Hintergrund           */
+  --text-muted:   #7A7570;   /* Gedämpfte Textfarbe (z.B. Beschreibungen)    */
+  --accent:       #2B5EE8;   /* Hauptakzentfarbe: Buttons, Auswahl, Links
+                                → z.B. #E83B2B für Rot, #1A6B3C für Grün     */
+  --accent-light: #EEF2FD;   /* Heller Akzent-Hintergrund (z.B. ausgewählt) */
+  --accent-text:  #1A3DA0;   /* Akzent-Textfarbe auf hellem Hintergrund      */
+  --success:      #1A6B3C;   /* Grün für Erfolg/Lager/Bestätigung            */
+  --success-bg:   #E8F5EE;   /* Heller grüner Hintergrund                    */
+  --warn:         #92400E;   /* Orange/Braun für Warnungen (Spezial-Badge)   */
+  --warn-bg:      #FEF3C7;   /* Heller Warn-Hintergrund                      */
+  --radius:       12px;      /* Ecken-Rundung für Karten                     */
+  --radius-sm:    8px;       /* Ecken-Rundung für Buttons / kleine Elemente  */
+}
+
+/* Grundlegendes Reset + Body */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ════════════════════════════════════════════════════════════════
+   HEADER (oben fixiert)
+   - Logo links: Klick führt zurück zum Konfigurator
+   - Navigation rechts: Produkte, Kontakt, Warenkorb
+   ════════════════════════════════════════════════════════════════ */
+header{background:var(--text);color:#fff;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-0.02em}
+.logo-text span{color:#7BA4FF}  /* ← Farbe des zweiten Teils im Logo-Text */
+.logo-img{height:40px;width:auto}
+nav{display:flex;gap:1.25rem;align-items:center}
+nav a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.875rem;transition:color 0.2s}
+nav a:hover{color:#fff}
+.cart-btn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius-sm);color:#fff;padding:6px 14px;font-family:'DM Sans',sans-serif;font-size:0.875rem;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background 0.2s}
+.cart-btn:hover{background:rgba(255,255,255,0.2)}
+.cart-count{background:var(--accent);color:#fff;border-radius:100px;font-size:11px;font-weight:700;padding:1px 7px;min-width:20px;text-align:center}
+
+/* ════════════════════════════════════════════════════════════════
+   HERO-BEREICH (großer dunkler Banner oben)
+   ════════════════════════════════════════════════════════════════ */
+.hero{background:var(--text);color:#fff;padding:3rem 2rem 5rem;text-align:center}
+.hero-tag{display:inline-block;background:rgba(123,164,255,0.15);color:#7BA4FF;border:1px solid rgba(123,164,255,0.3);border-radius:100px;font-size:0.75rem;font-weight:500;padding:4px 14px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.25rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1rem}
+.hero h1 em{color:#7BA4FF;font-style:normal}  /* ← Farbe des hervorgehobenen Wortes im Titel */
+.hero p{color:rgba(255,255,255,0.55);font-size:1rem;max-width:560px;margin:0 auto}
+
+/* ════════════════════════════════════════════════════════════════
+   KONFIGURATOR-KARTE (die weiße Karte in der Mitte)
+   ════════════════════════════════════════════════════════════════ */
+.configurator{max-width:920px;margin:-2.5rem auto 4rem;padding:0 1.5rem}
+.config-card{background:var(--card);border-radius:20px;border:1px solid var(--border);overflow:hidden}
+.progress-bar{height:3px;background:var(--border)}
+.progress-fill{height:100%;background:var(--accent);transition:width 0.4s ease;width:0%}
+.steps-header{display:flex;border-bottom:1px solid var(--border);overflow-x:auto}
+.step-tab{flex:1;min-width:110px;padding:1rem 1.25rem;display:flex;align-items:center;gap:10px;border-right:1px solid var(--border);background:var(--surface);transition:background 0.2s}
+.step-tab:last-child{border-right:none}
+.step-tab.active{background:var(--card)}
+.step-tab.done{background:var(--card)}
+.step-bubble{width:26px;height:26px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--text-muted);flex-shrink:0;transition:all 0.25s}
+.step-tab.active .step-bubble{background:var(--accent);color:#fff}
+.step-tab.done .step-bubble{background:var(--success);color:#fff}
+.step-tab.done .step-bubble::after{content:'✓'}
+.step-tab.done .step-bubble-inner{display:none}
+.step-label{font-size:0.75rem;font-weight:500;color:var(--text-muted)}
+.step-tab.active .step-label,.step-tab.done .step-label{color:var(--text)}
+.step-value{font-size:0.7rem;color:var(--accent);font-weight:500;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100px}
+.config-body{padding:2rem}
+.config-panel{display:none}
+.config-panel.active{display:block}
+.panel-title{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.35rem;letter-spacing:-0.02em}
+.panel-sub{font-size:0.875rem;color:var(--text-muted);margin-bottom:1.5rem}
+
+/* Material-Auswahl (Schritt 1) */
+.material-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:1.5rem}
+.material-pill{border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.9rem 1rem;text-align:center;cursor:pointer;transition:all 0.18s;background:var(--surface);position:relative}
+.material-pill:hover{border-color:var(--accent);background:var(--accent-light)}
+.material-pill.selected{border-color:var(--accent);background:var(--accent-light);color:var(--accent-text)}
+.mat-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem}
+.mat-desc{font-size:0.7rem;color:var(--text-muted);margin-top:3px}
+.mat-price{font-size:0.75rem;font-weight:600;color:var(--accent);margin-top:5px}
+.material-pill.selected .mat-desc{color:var(--accent)}
+.mat-badge{position:absolute;top:-6px;right:-6px;background:var(--warn-bg);color:var(--warn);border:1px solid #FCD34D;border-radius:100px;font-size:9px;font-weight:700;padding:1px 6px;text-transform:uppercase}
+
+/* Hersteller-Auswahl (Schritt 2) */
+.hersteller-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem}
+.hersteller-card{border:1.5px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;cursor:pointer;transition:all 0.18s;background:var(--surface)}
+.hersteller-card:hover{border-color:var(--accent)}
+.hersteller-card.selected{border-color:var(--accent);background:var(--accent-light)}
+.hersteller-card.unavailable{opacity:0.35;cursor:not-allowed;pointer-events:none}
+.her-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem}
+.her-badge{display:inline-block;margin-top:6px;font-size:0.7rem;font-weight:500;padding:2px 8px;border-radius:100px;background:var(--success-bg);color:var(--success)}
+.hersteller-card.unavailable .her-badge{background:#F0ECE8;color:var(--text-muted)}
+.her-materials{font-size:0.75rem;color:var(--text-muted);margin-top:6px}
+
+/* ════════════════════════════════════════════════════════════════
+   FARBAUSWAHL (Schritt 3)
+   - Links: runde Farbpunkte zum Anklicken
+   - Rechts: Vorschau-Box (linke Hälfte = Farbe, rechte Hälfte = Foto)
+   - Ohne Foto: gesamte Box zeigt nur die Farbe
+   ════════════════════════════════════════════════════════════════ */
+.color-selector{display:flex;gap:1.5rem;margin-bottom:1.5rem}
+.color-dots-wrap{flex-shrink:0}
+.color-dots-wrap h4{font-size:0.8rem;font-weight:500;color:var(--text-muted);margin-bottom:10px}
+.color-dots{display:flex;flex-wrap:wrap;gap:10px;max-width:280px}
+.color-dot-item{display:flex;flex-direction:column;align-items:center;gap:3px}
+.color-dot-btn{width:36px;height:36px;border-radius:50%;border:2.5px solid transparent;cursor:pointer;transition:all 0.18s;position:relative;flex-shrink:0}
+.color-dot-btn:hover{transform:scale(1.12)}
+.color-dot-btn.selected{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}
+.color-dot-btn .dot-check{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-size:13px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.5)}
+.color-dot-btn.selected .dot-check{display:flex}
+.dot-label{font-size:0.62rem;text-align:center;color:var(--text-muted);width:40px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.color-preview-wrap{flex:1}
+/* Vorschau-Box: Foto belegt rechte 55%, Farbe linke 45%
+   → Breite des Fotos ändern: width:55% bei .color-preview-img */
+.color-preview-box{width:100%;height:300px;border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;position:relative;background:var(--surface)}
+.color-preview-swatch{position:absolute;inset:0;transition:background 0.3s;width:100%}
+.color-preview-img{position:absolute;top:0;right:0;width:55%;height:100%;object-fit:cover;display:none;border-radius:0 var(--radius) var(--radius) 0}
+.color-preview-label{position:absolute;bottom:10px;left:12px;background:rgba(0,0,0,0.55);color:#fff;font-size:0.8rem;font-weight:500;padding:4px 10px;border-radius:100px}
+.color-preview-qty{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.55);color:#fff;font-size:0.72rem;padding:3px 8px;border-radius:100px}
+.color-preview-empty{color:var(--text-muted);font-size:0.85rem;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+
+/* Leiste unter der Farbauswahl zum Warenkorb hinzufügen */
+.add-to-cart-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.atc-info{font-size:0.875rem;color:var(--text-muted)}
+.atc-info strong{color:var(--text)}
+.atc-price{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--accent)}
+.qty-row{display:flex;align-items:center;gap:8px}
+.qty-btn{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
+.qty-btn:hover{border-color:var(--accent);color:var(--accent)}
+.qty-val{font-weight:600;font-size:1rem;min-width:24px;text-align:center}
+.btn-add-cart{background:var(--accent);border:none;border-radius:var(--radius-sm);padding:0.6rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;color:#fff;cursor:pointer;transition:all 0.18s;white-space:nowrap}
+.btn-add-cart:hover{filter:brightness(0.9)}
+.btn-add-cart:disabled{background:var(--border);color:var(--text-muted);cursor:not-allowed}
+
+/* Navigations-Buttons (Zurück / Weiter) */
+.config-nav{display:flex;justify-content:space-between;align-items:center;padding-top:1.25rem;border-top:1px solid var(--border);gap:10px;flex-wrap:wrap}
+.btn-back{background:none;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all 0.18s}
+.btn-back:hover{border-color:var(--border-strong);color:var(--text)}
+.btn-next{background:var(--accent);border:none;border-radius:var(--radius-sm);padding:0.65rem 1.75rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;color:#fff;cursor:pointer;transition:all 0.18s}
+.btn-next:hover{filter:brightness(0.9)}
+.btn-next:disabled{background:var(--border);color:var(--text-muted);cursor:not-allowed}
+
+/* ════════════════════════════════════════════════════════════════
+   CSV-UPLOAD (Bestand aktualisieren – passwortgeschützt)
+   Erscheint erst nach Passwort-Eingabe.
+   Passwort ändern → im JavaScript-Bereich: CSV_PASSWORT
+   ════════════════════════════════════════════════════════════════ */
+.csv-bar{max-width:920px;margin:0 auto 1.5rem;padding:0 1.5rem}
+.csv-box{background:var(--card);border:1.5px dashed var(--border);border-radius:var(--radius);padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.csv-box label{font-size:0.85rem;color:var(--text-muted)}
+.csv-box input[type=file]{font-size:0.8rem;color:var(--text-muted)}
+.csv-status{font-size:0.8rem;color:var(--success);font-weight:500}
+.csv-status.err{color:#C62828}
+
+/* ════════════════════════════════════════════════════════════════
+   WARENKORB (seitliches Drawer-Panel)
+   ════════════════════════════════════════════════════════════════ */
+.cart-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.4);display:none;justify-content:flex-end}
+.cart-overlay.open{display:flex}
+.cart-drawer{background:var(--card);width:100%;max-width:420px;height:100%;display:flex;flex-direction:column;overflow:hidden}
+.cart-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.cart-header h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700}
+.cart-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--text-muted);line-height:1}
+.cart-items{flex:1;overflow-y:auto;padding:1rem 1.5rem}
+.cart-empty{text-align:center;color:var(--text-muted);font-size:0.9rem;padding:2rem 0}
+.cart-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+.cart-item:last-child{border-bottom:none}
+.ci-dot{width:32px;height:32px;border-radius:50%;flex-shrink:0;border:1px solid rgba(0,0,0,0.1)}
+.ci-img{width:48px;height:48px;border-radius:6px;object-fit:cover;flex-shrink:0}
+.ci-info{flex:1}
+.ci-name{font-size:0.875rem;font-weight:500}
+.ci-sub{font-size:0.75rem;color:var(--text-muted);margin-top:1px}
+.ci-qty-row{display:flex;align-items:center;gap:6px;margin-top:5px}
+.ci-qty-btn{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);background:var(--surface);font-size:0.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.ci-qty{font-size:0.85rem;font-weight:600;min-width:18px;text-align:center}
+.ci-price{font-size:0.875rem;font-weight:600;color:var(--accent);white-space:nowrap}
+.ci-remove{background:none;border:none;color:var(--text-muted);font-size:1.1rem;cursor:pointer;padding:0 4px}
+.ci-remove:hover{color:#C62828}
+.cart-footer{padding:1.25rem 1.5rem;border-top:1px solid var(--border)}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.cart-total span{font-size:0.9rem;color:var(--text-muted)}
+.cart-total strong{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700}
+.cart-actions{display:flex;flex-direction:column;gap:8px}
+.btn-wa{background:#25D366;border:none;border-radius:var(--radius-sm);padding:0.75rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-wa:hover{filter:brightness(0.92)}
+.btn-email{background:var(--accent);border:none;border-radius:var(--radius-sm);padding:0.75rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;color:#fff;cursor:pointer}
+.btn-email:hover{filter:brightness(0.9)}
+.btn-cart-clear{background:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.6rem;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text-muted);cursor:pointer}
+
+/* ════════════════════════════════════════════════════════════════
+   INFO-KARTEN (drei Karten unter dem Konfigurator)
+   Texte anpassen: direkt im HTML-Bereich weiter unten
+   ════════════════════════════════════════════════════════════════ */
+.info-section{max-width:920px;margin:0 auto 4rem;padding:0 1.5rem}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem}
+.info-icon{font-size:1.4rem;margin-bottom:0.75rem}
+.info-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.35rem}
+.info-text{font-size:0.8rem;color:var(--text-muted);line-height:1.5}
+
+/* Footer */
+footer{background:var(--text);color:rgba(255,255,255,0.45);text-align:center;padding:1.5rem;font-size:0.8rem}
+footer a{color:rgba(255,255,255,0.6);text-decoration:none}
+
+/* Mobilgeräte: Anpassungen unter 700px Breite */
+@media(max-width:700px){
+  .steps-header{flex-direction:column}
+  .step-tab{border-right:none;border-bottom:1px solid var(--border)}
+  .hersteller-grid{grid-template-columns:1fr}
+  .info-grid{grid-template-columns:1fr}
+  .color-selector{flex-direction:column}
+  .color-preview-box{height:160px}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════
+     HEADER
+     Logo: Entweder Bild (logo.png) oder Text.
+     → Logo als Bild: Zeile mit <img> einkommentieren,
+       <div class="logo-text"> auskommentieren.
+     → Logo-Text ändern: "Filament" und "Shop" ersetzen.
+     Navigation: Links bei href="..." anpassen.
+     ════════════════════════════════════════════════════════════════ -->
+<header>
+  <div>
+    <!-- OPTION A – Logo als Bild (logo.png in denselben Ordner legen): -->
+    <!-- <img src="logo.png" alt="Mein Shop" class="logo-img"> -->
+
+    <!-- OPTION B – Text-Logo (aktiv): Wörter nach Bedarf ändern -->
+    <a href="filament-konfigurator.html" style="text-decoration:none">
+      <div class="logo-text">Filament<span>Shop</span></div>
+    </a>
+  </div>
+  <nav>
+    <!-- Navigationslinks – href anpassen wenn du weitere Seiten hast -->
+    <a href="#konfigurator">Filamente</a>
+    <a href="kontakt.html">Kontakt</a>
+    <button class="cart-btn" onclick="openCart()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      Warenkorb <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </nav>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════════
+     HERO – großer Titelbereich
+     → Kleines Label (hero-tag): z.B. "3D Druck Filament"
+     → Titel (h1): <em>...</em> wird farbig hervorgehoben
+     → Untertitel (p): kurze Beschreibung
+     ════════════════════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-tag">3D Druck Filament</div>       <!-- ← Label anpassen -->
+  <h1>Finde dein <em>perfektes</em><br>Filament</h1>  <!-- ← Titel anpassen -->
+  <p>Material wählen, Hersteller auswählen und die passende Farbe finden.</p>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     KONFIGURATOR (Schritte 1–3)
+     Dieser Bereich wird vollständig per JavaScript befüllt.
+     Texte der Schrittbeschriftungen sind direkt hier änderbar.
+     ════════════════════════════════════════════════════════════════ -->
+<div class="configurator" id="konfigurator">
+  <div class="config-card">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="steps-header">
+      <div class="step-tab active" id="tab1">
+        <div class="step-bubble" id="bub1"><span class="step-bubble-inner">1</span></div>
+        <div><div class="step-label">Material</div><div class="step-value" id="val1">wählen</div></div>
+      </div>
+      <div class="step-tab" id="tab2">
+        <div class="step-bubble" id="bub2"><span class="step-bubble-inner">2</span></div>
+        <div><div class="step-label">Hersteller</div><div class="step-value" id="val2">wählen</div></div>
+      </div>
+      <div class="step-tab" id="tab3">
+        <div class="step-bubble" id="bub3"><span class="step-bubble-inner">3</span></div>
+        <div><div class="step-label">Farbe</div><div class="step-value" id="val3">wählen</div></div>
+      </div>
+    </div>
+    <div class="config-body">
+
+      <!-- SCHRITT 1: MATERIAL
+           Texte "Welches Material..." und "12 € pro Rolle" hier ändern -->
+      <div class="config-panel active" id="panel1">
+        <div class="panel-title">Welches Material brauchst du?</div>
+        <div class="panel-sub">Nur Materialien und Farben mit Lagerbestand werden angezeigt. <br>Für bestimmte Farben kontaktiere uns gerne persönlich.</div>
+        <div class="material-grid" id="materialGrid"></div>
+        <div class="config-nav"><div></div><button class="btn-next" id="nextBtn1" onclick="goStep(2)" disabled>Weiter →</button></div>
+      </div>
+
+      <!-- SCHRITT 2: HERSTELLER (wird automatisch befüllt) -->
+      <div class="config-panel" id="panel2">
+        <div class="panel-title">Hersteller auswählen</div>
+        <div class="panel-sub">Nur Hersteller die <span id="matLabel" style="font-weight:600"></span> auf Lager haben sind wählbar.</div>
+        <div class="hersteller-grid" id="herstellerGrid"></div>
+        <div class="config-nav">
+          <button class="btn-back" onclick="goStep(1)">← Zurück</button>
+          <button class="btn-next" id="nextBtn2" onclick="goStep(3)" disabled>Weiter →</button>
+        </div>
+      </div>
+
+      <!-- SCHRITT 3: FARBE
+           Farbpunkte + Vorschau werden automatisch befüllt.
+           Fotos: Ordner "fotos/" anlegen, Dateien nach SKU benennen (z.B. GEE-PLA-RO.jpg) -->
+      <div class="config-panel" id="panel3">
+        <div class="panel-title">Farbe auswählen</div>
+        <div class="panel-sub">Verfügbare Farben für <span id="herLabel" style="font-weight:600"></span> <span id="matLabel2" style="font-weight:600"></span>. Klick auf einen Punkt für die Vorschau.</div>
+        <div class="color-selector">
+          <div class="color-dots-wrap">
+            <h4>Farben (auf Lager)</h4>
+            <div class="color-dots" id="colorDots"></div>
+          </div>
+          <div class="color-preview-wrap">
+            <div class="color-preview-box" id="colorPreviewBox">
+              <!-- Farbfläche (linke Seite) -->
+              <div class="color-preview-swatch" id="colorPreviewSwatch"></div>
+              <!-- Rollenfoto (rechte Seite) – wird automatisch geladen wenn vorhanden -->
+              <img class="color-preview-img" id="colorPreviewImg" src="" alt="">
+              <!-- Kleiner Farbpunkt unten-links (nur sichtbar wenn Foto vorhanden) -->
+              <div id="colorPreviewDot" style="display:none;position:absolute;bottom:10px;left:12px;width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,0.9);box-shadow:0 1px 4px rgba(0,0,0,0.3)"></div>
+              <!-- Farbname-Label -->
+              <div class="color-preview-label" id="colorPreviewLabel" style="display:none"></div>
+              <!-- Lagerbestand-Anzeige -->
+              <div class="color-preview-qty" id="colorPreviewQty" style="display:none"></div>
+              <!-- Platzhaltertext wenn noch keine Farbe gewählt -->
+              <div class="color-preview-empty" id="colorPreviewEmpty">← Farbe auswählen</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leiste: ausgewählte Farbe + Menge + "In den Warenkorb" -->
+        <div class="add-to-cart-bar">
+          <div>
+            <div class="atc-info"><strong id="atcName">–</strong></div>
+            <div class="atc-info" id="atcSub" style="margin-top:2px">–</div>
+          </div>
+          <div class="atc-price" id="atcPrice">12,00 €</div>
+          <div class="qty-row">
+            <button class="qty-btn" onclick="changeQty(-1)">−</button>
+            <span class="qty-val" id="qtyVal">1</span>
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+          <button class="btn-add-cart" id="btnAddCart" onclick="addToCart()" disabled>+ In den Warenkorb</button>
+        </div>
+        <div class="config-nav">
+          <button class="btn-back" onclick="goStep(2)">← Zurück</button>
+          <button class="btn-next" style="background:var(--success)" onclick="openCart()">Warenkorb ansehen →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     INFO-KARTEN (drei Karten unter dem Konfigurator)
+     → Icon (Emoji), Titel und Text hier direkt ändern
+     ════════════════════════════════════════════════════════════════ -->
+<div class="info-section">
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-icon">📦</div>
+      <div class="info-title">Schneller Versand</div>                   <!-- ← Titel -->
+      <div class="info-text">Alle Bestellungen werden innerhalb von 1–2 Werktagen versendet.</div>  <!-- ← Text -->
+    </div>
+    <div class="info-card">
+      <div class="info-icon">🎨</div>
+      <div class="info-title">Gro&szlig;e Farbauswahl</div>
+      <div class="info-text">Viele Farben von Colido und Geetech – für jeden 3D-Druck das Richtige.</div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">💬</div>
+      <div class="info-title">Einfach anfragen</div>
+      <div class="info-text">Warenkorb zusammenstellen und per WhatsApp oder E-Mail anfragen.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     CSV-UPLOAD (Bestand aktualisieren)
+     Nur nach Passwort-Eingabe sichtbar.
+     CSV-Format: gleiche Spaltenreihenfolge wie deine Originaldatei,
+     Trennzeichen Semikolon, Encoding latin-1.
+     ════════════════════════════════════════════════════════════════ -->
+<div class="csv-bar">
+  <div class="csv-box" id="csvLockBox">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--text-muted);flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    <label style="font-size:0.85rem;color:var(--text-muted)">Bestand aktualisieren (nur für Shopbetreiber)</label>
+    <input type="password" id="csvPassword" placeholder="Passwort eingeben" style="font-size:0.85rem;padding:5px 10px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;width:200px" onkeydown="if(event.key==='Enter')checkCsvPassword()">
+    <button onclick="checkCsvPassword()" style="padding:5px 14px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.85rem;cursor:pointer">Entsperren</button>
+    <span class="csv-status err" id="csvWrongPw" style="display:none">Falsches Passwort.</span>
+  </div>
+  <div class="csv-box" id="csvUploadBox" style="display:none">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--success);flex-shrink:0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <label style="font-size:0.85rem;color:var(--text-muted)">CSV hochladen um Lagerstand zu aktualisieren:</label>
+    <input type="file" accept=".csv" onchange="loadCSV(this)">
+    <span class="csv-status" id="csvStatus"></span>
+    <button onclick="lockCsv()" style="padding:5px 10px;background:none;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.8rem;color:var(--text-muted);cursor:pointer;margin-left:auto">Sperren</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     FOOTER
+     → Jahr und Shop-Name anpassen
+     → Links zu Kontakt, Impressum, Datenschutz sind bereits gesetzt
+     ════════════════════════════════════════════════════════════════ -->
+<footer>
+  &copy; 2025 FilamentShop &mdash;
+  <a href="kontakt.html">Kontakt</a> &mdash;
+  <a href="impressum.html">Impressum</a> &mdash;
+  <a href="datenschutz.html">Datenschutz</a>
+</footer>
+
+<!-- ════════════════════════════════════════════════════════════════
+     WARENKORB-DRAWER (erscheint von rechts)
+     Wird automatisch befüllt – hier nichts ändern
+     ════════════════════════════════════════════════════════════════ -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCartIfBg(event)">
+  <div class="cart-drawer">
+    <div class="cart-header">
+      <h3>Warenkorb</h3>
+      <button class="cart-close" onclick="closeCart()">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"><div class="cart-empty">Noch nichts im Warenkorb.</div></div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Warenwert</span><strong id="cartTotal">0,00 €</strong></div>
+      <div class="cart-total" style="padding-top:6px;margin-bottom:0">
+        <span style="font-size:0.8rem;color:var(--text-muted)">Versand</span>
+        <span id="cartShipping" style="font-size:0.85rem;font-weight:500">–</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0 1rem;border-bottom:1px solid var(--border);margin-bottom:1rem">
+        <span style="font-size:0.95rem;font-weight:600">Gesamtsumme</span>
+        <strong id="cartGrandTotal" style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent)">0,00 €</strong>
+      </div>
+      <div class="cart-actions">
+        <button class="btn-wa" onclick="sendWhatsApp()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.089.537 4.052 1.476 5.765L0 24l6.395-1.476A11.933 11.933 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.371l-.359-.213-3.718.858.878-3.63-.234-.372A9.818 9.818 0 0 1 2.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+          Per WhatsApp anfragen
+        </button>
+        <button class="btn-email" onclick="sendEmail()">Per E-Mail anfragen</button>
+        <button class="btn-cart-clear" onclick="clearCart()">Warenkorb leeren</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   ★ EINSTELLUNGEN – DAS SIND DEINE WICHTIGSTEN ANPASSUNGEN ★
+   ════════════════════════════════════════════════════════════════ */
+
+// ① Deine E-Mail-Adresse (für Anfragen per E-Mail)
+const DEINE_EMAIL  = 'filament.gewerblich@web.de';   // ← HIER ANPASSEN
+
+// ② Deine WhatsApp-Nummer (Ländervorwahl ohne +, dann Nummer ohne 0)
+//    Beispiel Deutschland: 49 + 151... → '498212979141'
+const WHATSAPP_NR  = '498212979141';           // ← HIER ANPASSEN
+
+// ③ Preise pro Rolle je Material eventuell löschen
+/*
+  'PLA':      12,   // ← PLA Preis
+  'PETG':     12,   // ← PETG Preis
+  'ABS':      12,   // ← ABS Preis
+  'TPU':      13,   // ← TPU Preis
+  'PLA Silk': 14,   // ← PLA Silk Preis
+  'PLA Matt': 14,   // ← PLA Matt Preis
+  'PLA CF':   19,   // ← PLA CF Preis
+  'PETG CF':  19,   // ← PETG CF Preis
+};
+*/
+
+const PREISE = {
+  'PLA':   { 'Colido': 12, 'Geetech': 12, 'Sunlu': 15 },
+  'PETG':  { 'Colido': 12, 'Geetech': 12 },
+  'PETG HS Matt': { 'Jayoo': 13 },  // ← Preis anpassen
+  'TPU':   { 'Geetech': 13 },
+  'ABS':   { 'Geetech': 12 },
+  'PLA Silk':  { 'Geetech': 14 },
+  'PLA Matt':  { 'Geetech': 14 },
+  'PLA CF':    { 'Colido': 19 },
+  'PETG CF':   { 'Colido': 19 },
+  'PLA Holz':   { 'Geetech': 14 },
+  'PLA Marmor': { 'Geetech': 14 },
+};
+/*function getPreis(mat) { return PREISE[mat] || 12; }*/
+function getPreis(mat, her) {
+  if (PREISE[mat]) return PREISE[mat][her] || 12;
+  return 12;
+}
+const PREIS = 12; // Fallback
+
+// ④ CSV-Passwort für den Bestand-Upload (nur du kennst es)
+//    Passwort ändern: einfach den Text 'filament2025' ersetzen
+const CSV_PASSWORT = 'filament2025';             // ← HIER ANPASSEN
+
+/* ════════════════════════════════════════════════════════════════
+   VERSANDKOSTEN-STAFFEL
+   Regeln anpassen: Zahlen links = Mindestanzahl Rollen,
+   Zahlen rechts = Versandkosten in Euro
+   ════════════════════════════════════════════════════════════════ */
+function calcShipping(rollen) {
+  if (rollen <= 0)  return 0;
+  if (rollen >= 10) return 0;     // ← ab 10 Rollen: kostenlos
+  if (rollen >= 5)  return 7.00;  // ← 5–9 Rollen: 7,00 €
+  if (rollen >= 2)  return 6.00;  // ← 2–4 Rollen: 6,00 €
+  return 5.20;                    // ← 1 Rolle:    5,20 €
+}
+function shippingLabel(rollen) {
+  if (rollen <= 0)  return '–';
+  if (rollen >= 10) return 'Kostenlos 🎉';
+  return fmt(calcShipping(rollen));
+}
+
+/* ════════════════════════════════════════════════════════════════
+   MATERIAL-BESCHREIBUNGEN
+   Kurzbeschreibung (desc) erscheint unter dem Material-Namen.
+   detail erscheint als Tooltip beim Darüberfahren.
+   Neue Materialien nach gleichem Schema eintragen.
+   ════════════════════════════════════════════════════════════════ */
+const matInfo = {
+  'PLA':      { desc: 'Einfach & vielseitig', detail: 'Ideal für Einsteiger. Leicht zu drucken, biologisch abbaubar, viele Farben.' },
+  'PETG':     { desc: 'Robust & flexibel',    detail: 'Kombination aus Stärke und Flexibilität. Feuchtigkeitsbeständig.' },
+  'PETG HS Matt': { desc: 'High Speed Matt, ', detail: 'Schnell druckbar, mattes Finish.', special: true },
+  'TPU':      { desc: 'Flexibel & weich',     detail: 'Gummiartig und stoßfest. Perfekt für Schutzhüllen und biegsame Teile.' },
+  'ABS':      { desc: 'Hitzebeständig',       detail: 'Temperaturbeständig bis ca. 100 °C. Für technische Bauteile.' },
+  'PLA Silk': { desc: 'Seidiger Glanz',       detail: 'Wie PLA, aber mit beeindruckendem Seidenglanz-Effekt.' },
+  'PLA Matt': { desc: 'Mattes Finish',   detail: 'Edles, lichtreflexionsarmes Finish für Präsentationsmodelle.'},
+  'PLA CF':   { desc: 'Carbon Fiber',   detail: 'Extrem steif durch Carbonfaser. Nur Colido.', special: true },
+  'PETG CF':  { desc: 'Carbon Fiber',   detail: 'PETG mit Carbonfaser – hohe Festigkeit. Nur Colido.', special: true },
+  'PLA Holz':   { desc: 'Holz Optik',   detail: 'PLA mit Holzfaser-Anteil. Natürliche Optik.', special: true },
+  'PLA Marmor': { desc: 'Marmor Optik', detail: 'PLA mit Marmor-Effekt. Edles Finish.', special: true },
+};
+
+/* ════════════════════════════════════════════════════════════════
+   FARB-HEXCODES (für die Farbpunkte)
+   Wenn eine neue Farbe in deiner CSV auftaucht die hier fehlt,
+   einfach eine neue Zeile hinzufügen:
+   'farbname': '#HEXCODE',
+   ════════════════════════════════════════════════════════════════ */
+const COLOR_HEX = {
+  'weiß':'#F5F5F0','schwarz':'#1A1A1A','rot':'#C62828','gelb':'#F9A825',
+  'grün':'#3fcf42','grass grün':'#4CAF50','apfel grün':'#8BC34A','mint grün':'#80CBC4',
+  'light green':'#A5D6A7','lake green':'#26A69A','army green':'#558B2F',
+  'orange':'#E65100','blau':'#1565C0','hellblau':'#29B6F6','hell blau':'#29B6F6',
+  'fuchsia':'#AD1457','lila':'#7B1FA2','pink':'#E91E63','sakura pink':'#F48FB1',
+  'grau':'#9E9E9E','dunkel grau':'#616161','braun':'#6D4C41','transparent':'#DCF0F7',
+  'silber':'#B0BEC5','regenbogen farbe':'#9B59B6','sand gold':'#C8A96E',
+  'gold':'#D4AF37','skin':'#FFCC99','beige':'#F5DEB3','transparent blau':'#90CAF9',
+  'transparent rot':'#EF9A9A','transparent gelb':'#FFF59D','transparent grün':'#A5D6A7',
+  'bone white':'#F5F0E8','cf schwarz':'#111111','navy blue':'#1A237E',
+  'bronze':'#8C6D39','metallic braun':'#795548','metallic grün':'#388E3C',
+  'metallic pink':'#F06292','cosmi':'#311B92','wood':'#8D6E63','cyan':'#00BCD4',
+  'kupfer':'#B87333','hautfarben':'#FFCC99','oliven grün':'#827717',
+  'stein grau':'#78909C','transparent orange':'#FFCC80','gold + schwarz': '#8B6914',
+};
+
+/* Zuordnung CSV-Materialname → Anzeigename (nicht ändern!) */
+const MAT_MAP = {'PLA':'PLA','PETG':'PETG','PETG HS Matt': 'PETG HS Matt','TPU':'TPU','ABS':'ABS','SILK PLA':'PLA Silk','PLA matt':'PLA Matt','PLA CF':'PLA CF','PETG CF':'PETG CF','PLA Holz':'PLA Holz', 'PLA Marmor':'PLA Marmor'};
+
+/* ════════════════════════════════════════════════════════════════
+   INVENTAR (Lagerbestand)
+   Wird beim CSV-Upload automatisch überschrieben.
+   Hier ist dein aktueller Stand bereits eingetragen.
+   NICHT manuell bearbeiten – stattdessen CSV hochladen!
+   ════════════════════════════════════════════════════════════════ */
+let inventory = {"PLA":{"Geetech":[{"name":"schwarz","hex":"#1A1A1A","qty":10,"sku":"GEE-PLA-SW"},{"name":"rot","hex":"#C62828","qty":12,"sku":"GEE-PLA-RO"},{"name":"gelb","hex":"#F9A825","qty":2,"sku":"GEE-PLA-GE"},{"name":"grün","hex":"#2E7D32","qty":10,"sku":"GEE-PLA-GRÜ"},{"name":"apfel grün","hex":"#8BC34A","qty":5,"sku":"GEE-PLA-AGRÜ"},{"name":"orange","hex":"#E65100","qty":8,"sku":"GEE-PLA-OR"},{"name":"blau","hex":"#1565C0","qty":1,"sku":"GEE-PLA-BL"},{"name":"hellblau","hex":"#29B6F6","qty":9,"sku":"GEE-PLA-HB"},{"name":"lila","hex":"#7B1FA2","qty":3,"sku":"GEE-PLA-LI"},{"name":"grau","hex":"#9E9E9E","qty":8,"sku":"GEE-PLA-GR"},{"name":"braun","hex":"#6D4C41","qty":3,"sku":"GEE-PLA-BR"},{"name":"transparent","hex":"#DCF0F7","qty":9,"sku":"GEE-PLA-TR"},{"name":"regenbogen farbe","hex":"#9B59B6","qty":7,"sku":"GEE-PLA-RG"},{"name":"sand gold","hex":"#C8A96E","qty":3,"sku":"GEE-PLA-SG"},{"name":"beige","hex":"#F5DEB3","qty":4,"sku":"GEE-PLA-BE"},{"name":"bone white","hex":"#F5F0E8","qty":4,"sku":"GEE-PLA-BW"}],"Colido":[{"name":"weiß","hex":"#F5F5F0","qty":4,"sku":"COL-PLA-WE"},{"name":"schwarz","hex":"#1A1A1A","qty":4,"sku":"COL-PLA-SW"},{"name":"gelb","hex":"#F9A825","qty":5,"sku":"COL-PLA-GE"},{"name":"grass grün","hex":"#4CAF50","qty":4,"sku":"COL-PLA-GGRÜ"},{"name":"mint grün","hex":"#80CBC4","qty":1,"sku":"COL-PLA-MGRÜ"},{"name":"orange","hex":"#E65100","qty":3,"sku":"COL-PLA-OR"},{"name":"blau","hex":"#1565C0","qty":5,"sku":"COL-PLA-BL"},{"name":"fuchsia","hex":"#AD1457","qty":6,"sku":"COL-PLA-FU"},{"name":"lila","hex":"#7B1FA2","qty":3,"sku":"COL-PLA-LI"},{"name":"pink","hex":"#E91E63","qty":6,"sku":"COL-PLA-PI"},{"name":"silber","hex":"#B0BEC5","qty":3,"sku":"COL-PLA-SI"},{"name":"gold","hex":"#D4AF37","qty":3,"sku":"COL-PLA-GO"},{"name":"skin","hex":"#FFCC99","qty":3,"sku":"COL-PLA-SK"},{"name":"transparent blau","hex":"#90CAF9","qty":3,"sku":"COL-PLA-TBL"},{"name":"transparent rot","hex":"#EF9A9A","qty":3,"sku":"COL-PLA-TRO"},{"name":"transparent gelb","hex":"#FFF59D","qty":1,"sku":"COL-PLA-TGE"},{"name":"transparent grün","hex":"#A5D6A7","qty":2,"sku":"COL-PLA-TGR"},{"name":"cf schwarz","hex":"#111111","qty":2,"sku":"COL-PLA-SCF"},{"name":"navy blue","hex":"#1A237E","qty":2,"sku":"COL-PLA-NB"}]},"PETG":{"Geetech":[{"name":"weiß","hex":"#F5F5F0","qty":15,"sku":"GEE-PETG-WE"},{"name":"schwarz","hex":"#1A1A1A","qty":15,"sku":"GEE-PETG-SW"},{"name":"rot","hex":"#C62828","qty":2,"sku":"GEE-PETG-RO"},{"name":"gelb","hex":"#F9A825","qty":7,"sku":"GEE-PETG-GE"},{"name":"orange","hex":"#E65100","qty":5,"sku":"GEE-PETG-OR"},{"name":"blau","hex":"#1565C0","qty":13,"sku":"GEE-PETG-BL"},{"name":"hell blau","hex":"#29B6F6","qty":3,"sku":"GEE-PETG-HB"},{"name":"grau","hex":"#9E9E9E","qty":9,"sku":"GEE-PETG-GR"},{"name":"transparent","hex":"#DCF0F7","qty":11,"sku":"GEE-PETG-TR"},{"name":"silber","hex":"#B0BEC5","qty":10,"sku":"GEE-PETG-SI"},{"name":"metallic braun","hex":"#795548","qty":6,"sku":"GEE-PETG-MBR"},{"name":"metallic grün","hex":"#388E3C","qty":6,"sku":"GEE-PETG-MGRÜ"}],"Colido":[{"name":"gelb","hex":"#F9A825","qty":1,"sku":"COL-PETG-GE"},{"name":"grün","hex":"#2E7D32","qty":4,"sku":"COL-PETG-GRÜ"},{"name":"orange","hex":"#E65100","qty":4,"sku":"COL-PETG-OR"},{"name":"sakura pink","hex":"#F48FB1","qty":3,"sku":"COL-PETG-PI"},{"name":"dunkel grau","hex":"#616161","qty":1,"sku":"COL-PETG-DGR"},{"name":"bronze","hex":"#8C6D39","qty":2,"sku":"COL-PETG-BO"},{"name":"cf schwarz","hex":"#111111","qty":7,"sku":"COL-PETG-SCF"}]},"TPU":{"Geetech":[{"name":"weiß","hex":"#F5F5F0","qty":10,"sku":"GEE-TPU-WE"},{"name":"rot","hex":"#C62828","qty":6,"sku":"GEE-TPU-RO"},{"name":"orange","hex":"#E65100","qty":3,"sku":"GEE-TPU-OR"},{"name":"blau","hex":"#1565C0","qty":3,"sku":"GEE-TPU-BL"},{"name":"grau","hex":"#9E9E9E","qty":3,"sku":"GEE-TPU-GR"},{"name":"braun","hex":"#6D4C41","qty":2,"sku":"GEE-TPU-BR"},{"name":"transparent","hex":"#DCF0F7","qty":5,"sku":"GEE-TPU-TR"},{"name":"transparent blau","hex":"#90CAF9","qty":1,"sku":"GEE-TPU-TBL"},{"name":"transparent orange","hex":"#FFCC80","qty":1,"sku":"GEE-TPU-TOR"}]},"ABS":{"Geetech":[{"name":"schwarz","hex":"#1A1A1A","qty":1,"sku":"GEE-ABS-SW"},{"name":"rot","hex":"#C62828","qty":2,"sku":"GEE-ABS-RO"},{"name":"gelb","hex":"#F9A825","qty":2,"sku":"GEE-ABS-GE"},{"name":"grün","hex":"#2E7D32","qty":1,"sku":"GEE-ABS-GRÜ"},{"name":"orange","hex":"#E65100","qty":2,"sku":"GEE-ABS-OR"},{"name":"blau","hex":"#1565C0","qty":1,"sku":"GEE-ABS-BL"},{"name":"lila","hex":"#7B1FA2","qty":2,"sku":"GEE-ABS-LI"},{"name":"pink","hex":"#E91E63","qty":2,"sku":"GEE-ABS-PI"}]},"PLA Silk":{"Geetech":[{"name":"regenbogen farbe","hex":"#9B59B6","qty":1,"sku":"GEE-PLA-SI-RG"},{"name":"gelb","hex":"#F9A825","qty":2,"sku":"GEE-PLA-SI-GE"},{"name":"weiß","hex":"#F5F5F0","qty":1,"sku":"GEE-PLA-SI-WE"},{"name":"grün","hex":"#2E7D32","qty":1,"sku":"GEE-PLA-SI-GRÜ"},{"name":"gold","hex":"#D4AF37","qty":3,"sku":"GEE-PLA-SI-GO"},{"name":"hellblau","hex":"#29B6F6","qty":1,"sku":"GEE-PLA-SI-HB"},{"name":"blau","hex":"#1565C0","qty":2,"sku":"GEE-PLA-SI-BL"},{"name":"lila","hex":"#7B1FA2","qty":2,"sku":"GEE-PLA-SI-LI"}]},"PLA Matt":{"Geetech":[{"name":"schwarz","hex":"#1A1A1A","qty":17,"sku":"GEE-PLA-MT-SW"},{"name":"weiß","hex":"#F5F5F0","qty":17,"sku":"GEE-PLA-MT-WE"},{"name":"blau","hex":"#1565C0","qty":5,"sku":"GEE-PLA-MT-BL"},{"name":"grau","hex":"#9E9E9E","qty":10,"sku":"GEE-PLA-MT-GR"},{"name":"braun","hex":"#6D4C41","qty":8,"sku":"GEE-PLA-MT-BR"},{"name":"hautfarben","hex":"#FFCC99","qty":8,"sku":"GEE-PLA-MT-HAT"},{"name":"oliven grün","hex":"#827717","qty":11,"sku":"GEE-PLA-MT-OGRÜ"},{"name":"stein grau","hex":"#78909C","qty":6,"sku":"GEE-PLA-MT-SGR"}]},"PLA CF":{"Colido":[{"name":"schwarz","hex":"#111111","qty":2,"sku":"COL-PLA-CF-SW"}]},"PETG CF":{"Colido":[{"name":"schwarz","hex":"#111111","qty":7,"sku":"COL-PETG-CF-SW"}]}};
+
+/* ════════════════════════════════════════════════════════════════
+   AB HIER: LOGIK – BITTE NICHTS ÄNDERN
+   ════════════════════════════════════════════════════════════════ */
+const fmt = n => n.toFixed(2).replace('.',',') + ' €';
+
+/* CSV-Passwortschutz */
+function checkCsvPassword() {
+  if (document.getElementById('csvPassword').value === CSV_PASSWORT) {
+    document.getElementById('csvLockBox').style.display = 'none';
+    document.getElementById('csvUploadBox').style.display = 'flex';
+    document.getElementById('csvWrongPw').style.display = 'none';
+  } else {
+    document.getElementById('csvWrongPw').style.display = 'inline';
+    document.getElementById('csvPassword').value = '';
+  }
+}
+function lockCsv() {
+  document.getElementById('csvLockBox').style.display = 'flex';
+  document.getElementById('csvUploadBox').style.display = 'none';
+  document.getElementById('csvPassword').value = '';
+}
+
+/* CSV parsen – für automatisches und manuelles Laden */
+function parseCSV(text) {
+  const lines = text.split('\n');
+  const newInv = {};
+  for (let i = 1; i < lines.length; i++) {
+    const cols = lines[i].split(';');
+    if (cols.length < 10) continue;
+    const matRaw = cols[3].trim();
+    const farbe  = cols[5].trim().toLowerCase();
+    const marke  = cols[7].trim();
+    const sku    = cols[8].trim();
+    const qty    = parseInt(cols[9].trim());
+    if (!matRaw || !farbe || !marke || isNaN(qty) || qty <= 0) continue;
+    const mat = MAT_MAP[matRaw] || matRaw;
+    if (!newInv[mat]) newInv[mat] = {};
+    if (!newInv[mat][marke]) newInv[mat][marke] = [];
+    newInv[mat][marke].push({ name: farbe, hex: COLOR_HEX[farbe] || '#888', qty, sku });
+  }
+  /*if (!newInv['PLA CF'])  newInv['PLA CF']  = {"Colido":[{name:"schwarz",hex:"#111111",qty:0,sku:"COL-PLA-CF-SW"}]};*/
+  /*if (!newInv['PETG CF']) newInv['PETG CF'] = {"Colido":[{name:"schwarz",hex:"#111111",qty:0,sku:"COL-PETG-CF-SW"}]};*/
+  return newInv;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   AUTOMATISCHES LADEN: bestand.csv
+   Lege deine CSV als "bestand.csv" in denselben Ordner.
+   Bei Netlify: neue bestand.csv mit hochladen → Bestand aktuell!
+   Kein bestand.csv → Bestand aus dem Code wird genutzt.
+   ════════════════════════════════════════════════════════════════ */
+fetch('bestand.csv')
+  .then(r => r.ok ? r.text() : null)
+  .then(text => {
+    if (text) {
+      inventory = parseCSV(text);
+      buildMaterials();
+      setProgress(1);
+    }
+  })
+  .catch(() => {});
+
+/* Manueller CSV-Upload über den Passwort-geschützten Bereich */
+function loadCSV(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      inventory = parseCSV(e.target.result);
+      const st = document.getElementById('csvStatus');
+      st.textContent = '✓ Bestand aktualisiert!'; st.className = 'csv-status';
+      sel = { material:null, hersteller:null, color:null, colorHex:null };
+      goStep(1);
+      setTimeout(() => st.textContent = '', 4000);
+    } catch(err) {
+      const st = document.getElementById('csvStatus');
+      st.textContent = 'Fehler beim Laden.'; st.className = 'csv-status err';
+    }
+  };
+  reader.readAsText(file, 'utf-8');
+}
+
+/* Konfigurator-Zustand */
+let sel = { material:null, hersteller:null, color:null, colorHex:null, colorQty:0 };
+let qty = 1;
+let cart = [];
+
+function getMaterials() {
+  return Object.keys(inventory).filter(m => Object.values(inventory[m]).some(a => a.length > 0));
+}
+function getHersteller(mat) {
+  return Object.keys(inventory[mat] || {}).filter(h => (inventory[mat][h] || []).length > 0);
+}
+
+function buildMaterials() {
+  const grid = document.getElementById('materialGrid');
+  grid.innerHTML = '';
+  getMaterials().forEach(name => {
+    const info = matInfo[name] || { desc: '' };
+    const d = document.createElement('div');
+    d.className = 'material-pill' + (sel.material === name ? ' selected' : '');
+    const isSpecial = name.includes('CF') || name.includes('Silk') || (matInfo[name] && matInfo[name].special);
+    d.innerHTML = (isSpecial ? '<div class="mat-badge">Spezial</div>' : '')
+      + '<div class="mat-name">' + name + '</div>'
+      + '<div class="mat-desc">' + info.desc + '</div>'
+      /*+ '<div class="mat-price">' + fmt(getPreis(name)) + '</div>';*/
+      + '<div class="mat-price">ab ' + fmt(Math.min(...Object.values(PREISE[name] || {12:12}))) + '</div>';
+    d.title = info.detail || '';
+    d.onclick = () => {
+      sel.material = name; sel.hersteller = null; sel.color = null;
+      document.querySelectorAll('.material-pill').forEach(p => p.classList.remove('selected'));
+      d.classList.add('selected');
+      document.getElementById('nextBtn1').disabled = false;
+    };
+    grid.appendChild(d);
+  });
+}
+
+function buildHersteller() {
+  const grid = document.getElementById('herstellerGrid');
+  grid.innerHTML = '';
+  document.getElementById('matLabel').textContent = sel.material;
+  const available = getHersteller(sel.material);
+  ['Colido','Geetech','Sunlu','Jayoo'].forEach(name => {
+    const avail = available.includes(name);
+    const d = document.createElement('div');
+    d.className = 'hersteller-card' + (sel.hersteller === name ? ' selected' : '') + (!avail ? ' unavailable' : '');
+    const colors = avail ? (inventory[sel.material][name] || []) : [];
+    d.innerHTML = '<div class="her-name">' + name + '</div>'
+      + '<span class="her-badge">' + (avail ? colors.length + ' Farben auf Lager' : 'Nicht verfügbar') + '</span>'
+      + (avail ? '<div class="her-materials">Materialien: ' + Object.keys(inventory).filter(m => inventory[m][name] && inventory[m][name].length).join(', ') + '</div>' : '')
+      + (avail ? '<div style="font-size:0.8rem;font-weight:600;color:#2B5EE8;margin-top:4px">' + fmt(getPreis(sel.material, name)) + '</div>' : '')
+    if (avail) d.onclick = () => {
+      sel.hersteller = name; sel.color = null;
+      document.querySelectorAll('.hersteller-card').forEach(c => c.classList.remove('selected'));
+      d.classList.add('selected');
+      document.getElementById('nextBtn2').disabled = false;
+    };
+    grid.appendChild(d);
+  });
+}
+
+function buildColors() {
+  document.getElementById('herLabel').textContent = sel.hersteller;
+  document.getElementById('matLabel2').textContent = sel.material;
+  const dots = document.getElementById('colorDots');
+  dots.innerHTML = '';
+  resetPreview();
+  document.getElementById('btnAddCart').disabled = true;
+  const list = (inventory[sel.material] || {})[sel.hersteller] || [];
+  list.forEach(c => {
+    const wrap = document.createElement('div'); wrap.className = 'color-dot-item';
+    const btn = document.createElement('button');
+    btn.className = 'color-dot-btn' + (sel.color === c.name ? ' selected' : '');
+    btn.style.background = c.hex;
+    btn.title = c.name + ' (' + c.qty + ' Stk.)';
+    btn.innerHTML = '<div class="dot-check">✓</div>';
+    btn.onclick = () => selectColor(c, btn);
+    const lbl = document.createElement('div'); lbl.className = 'dot-label'; lbl.textContent = c.name;
+    wrap.appendChild(btn); wrap.appendChild(lbl); dots.appendChild(wrap);
+    if (sel.color === c.name) selectColor(c, btn);
+  });
+}
+
+function resetPreview() {
+  document.getElementById('colorPreviewSwatch').style.background = '';
+  document.getElementById('colorPreviewImg').style.display = 'none';
+  document.getElementById('colorPreviewLabel').style.display = 'none';
+  document.getElementById('colorPreviewQty').style.display = 'none';
+  document.getElementById('colorPreviewDot').style.display = 'none';
+  document.getElementById('colorPreviewEmpty').style.display = 'block';
+}
+
+function selectColor(c, btn) {
+  sel.color = c.name; sel.colorHex = c.hex; sel.colorQty = c.qty;
+  document.querySelectorAll('.color-dot-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  const swatch = document.getElementById('colorPreviewSwatch');
+  const img    = document.getElementById('colorPreviewImg');
+  const lbl    = document.getElementById('colorPreviewLabel');
+  const qtyEl  = document.getElementById('colorPreviewQty');
+  const dot    = document.getElementById('colorPreviewDot');
+  document.getElementById('colorPreviewEmpty').style.display = 'none';
+  lbl.style.display = 'block'; lbl.textContent = c.name;
+  qtyEl.style.display = 'block'; qtyEl.textContent = (c.qty >= 5 ? '5+' : c.qty) + ' Stk. auf Lager';
+  dot.style.background = c.hex;
+
+  /* Foto per SKU laden: fotos/[SKU].jpg
+     Vorhanden → linke Hälfte Farbe + rechte Hälfte Foto + Farbpunkt
+     Nicht vorhanden → gesamte Box mit Farbe füllen, kein Punkt */
+  const fotoPath = 'fotos/' + (c.sku || '') + '.jpeg';
+  const testImg = new Image();
+  testImg.onload = () => {
+    img.src = fotoPath; img.style.display = 'block';
+    swatch.style.background = c.hex;
+    dot.style.display = 'block';
+  };
+  testImg.onerror = () => {
+    img.style.display = 'none'; img.src = '';
+    swatch.style.background = c.hex;
+    dot.style.display = 'none';
+  };
+  if (c.sku) { testImg.src = fotoPath; }
+  else { img.style.display = 'none'; swatch.style.background = c.hex; dot.style.display = 'none'; }
+
+  document.getElementById('atcName').textContent = sel.material + ' – ' + c.name;
+  document.getElementById('atcSub').textContent = sel.hersteller;
+  qty = 1; document.getElementById('qtyVal').textContent = qty;
+  document.getElementById('atcPrice').textContent = fmt(getPreis(sel.material, sel.hersteller) * qty);
+  document.getElementById('btnAddCart').disabled = false;
+}
+
+function changeQty(d) {
+  qty = Math.max(1, Math.min(sel.colorQty, qty + d));
+  document.getElementById('qtyVal').textContent = qty;
+  if (sel.color) document.getElementById('atcPrice').textContent = fmt(getPreis(sel.material, sel.hersteller) * qty);
+}
+
+function addToCart() {
+  if (!sel.color) return;
+  const key = sel.hersteller + '|' + sel.material + '|' + sel.color;
+  const ex = cart.find(i => i.key === key);
+  if (ex) ex.qty += qty;
+  else cart.push({ key, qty, name: sel.material + ' – ' + sel.color, sub: sel.hersteller, hex: sel.colorHex, img: null, price: getPreis(sel.material, sel.hersteller) });
+  updateCartUI();
+  const btn = document.getElementById('btnAddCart');
+  const orig = btn.textContent;
+  btn.textContent = '✓ Hinzugefügt!'; btn.style.background = 'var(--success)';
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 1500);
+}
+
+function updateCartUI() {
+  const totalRollen = cart.reduce((s,i) => s + i.qty, 0);
+  const warenTotal  = cart.reduce((s,i) => s + i.price * i.qty, 0);
+  const versand     = calcShipping(totalRollen);
+  document.getElementById('cartCount').textContent     = totalRollen;
+  document.getElementById('cartTotal').textContent     = fmt(warenTotal);
+  document.getElementById('cartShipping').textContent  = shippingLabel(totalRollen);
+  document.getElementById('cartGrandTotal').textContent = fmt(warenTotal + versand);
+  const container = document.getElementById('cartItems');
+  if (!cart.length) { container.innerHTML = '<div class="cart-empty">Noch nichts im Warenkorb.</div>'; return; }
+  container.innerHTML = '';
+  cart.forEach((item,idx) => {
+    const d = document.createElement('div'); d.className = 'cart-item';
+    const media = item.img
+      ? '<img class="ci-img" src="'+item.img+'" alt="">'
+      : '<div class="ci-dot" style="background:'+item.hex+'"></div>';
+    d.innerHTML = media
+      + '<div class="ci-info"><div class="ci-name">'+item.name+'</div><div class="ci-sub">'+item.sub+'</div>'
+      + '<div class="ci-qty-row"><button class="ci-qty-btn" onclick="cartQty('+idx+',-1)">−</button>'
+      + '<span class="ci-qty">'+item.qty+'</span><button class="ci-qty-btn" onclick="cartQty('+idx+',1)">+</button>'
+      + '<span style="font-size:0.72rem;color:var(--text-muted);margin-left:4px">'+fmt(item.price)+'/Rolle</span></div></div>'
+      + '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">'
+      + '<span class="ci-price">'+fmt(item.price*item.qty)+'</span>'
+      + '<button class="ci-remove" onclick="removeItem('+idx+')" title="Entfernen">✕</button></div>';
+    container.appendChild(d);
+  });
+}
+
+function cartQty(idx,d) { cart[idx].qty = Math.max(1,cart[idx].qty+d); updateCartUI(); }
+function removeItem(idx) { cart.splice(idx,1); updateCartUI(); }
+function clearCart() { cart = []; updateCartUI(); }
+
+function buildCartText() {
+  if (!cart.length) return 'Warenkorb ist leer.';
+  const totalRollen = cart.reduce((s,i) => s + i.qty, 0);
+  const warenTotal  = cart.reduce((s,i) => s + i.price * i.qty, 0);
+  const versand     = calcShipping(totalRollen);
+  let txt = 'Hallo, ich möchte folgende Filamente bestellen:\n\n';
+  cart.forEach(i => { txt += '• '+i.qty+'x '+i.name+' ('+i.sub+') – '+fmt(i.price*i.qty)+'\n'; });
+  txt += '\nWarenwert: '   + fmt(warenTotal);
+  txt += '\nVersand: '     + (versand === 0 ? 'Kostenlos' : fmt(versand));
+  txt += '\nGesamtsumme: ' + fmt(warenTotal + versand);
+  return txt;
+}
+
+function sendWhatsApp() { window.open('https://wa.me/'+WHATSAPP_NR+'?text='+encodeURIComponent(buildCartText()),'_blank'); }
+function sendEmail()    { window.location='mailto:'+DEINE_EMAIL+'?subject='+encodeURIComponent('Filament Anfrage')+'&body='+encodeURIComponent(buildCartText()); }
+function openCart()     { document.getElementById('cartOverlay').classList.add('open'); }
+function closeCart()    { document.getElementById('cartOverlay').classList.remove('open'); }
+function closeCartIfBg(e) { if(e.target===document.getElementById('cartOverlay')) closeCart(); }
+
+function setProgress(s) { document.getElementById('progressFill').style.width = ((s-1)/3*100)+'%'; }
+function goStep(s) {
+  document.querySelectorAll('.config-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel'+s).classList.add('active');
+  for(let i=1;i<=3;i++){
+    const tab=document.getElementById('tab'+i), bub=document.getElementById('bub'+i);
+    tab.className='step-tab'+(i===s?' active':(i<s?' done':''));
+    bub.className='step-bubble'+(i<s?' done':(i===s?' active':''));
+    bub.innerHTML=i>=s?'<span class="step-bubble-inner">'+i+'</span>':'';
+  }
+  if(s===1){buildMaterials();document.getElementById('nextBtn1').disabled=!sel.material;}
+  if(s===2){buildHersteller();document.getElementById('nextBtn2').disabled=!sel.hersteller;}
+  if(s===3) buildColors();
+  document.getElementById('val1').textContent=sel.material||'wählen';
+  document.getElementById('val2').textContent=sel.hersteller||'wählen';
+  document.getElementById('val3').textContent=sel.color||'wählen';
+  setProgress(s);
+}
+
+buildMaterials(); setProgress(1); updateCartUI();
+</script>
+</body>
+</html>

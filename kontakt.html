@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VYXFSQR5D1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VYXFSQR5D1');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filament Shop – Kontakt</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#F2EFE9; --surface:#FAFAF8; --card:#fff; --border:#DDD9D0;
+    --text:#1A1815; --text-muted:#7A7570; --accent:#2B5EE8;
+    --accent-light:#EEF2FD; --success:#1A6B3C; --success-bg:#E8F5EE;
+    --radius:12px; --radius-sm:8px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+  header{background:var(--text);color:#fff;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+  .logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-0.02em}
+  .logo-text span{color:#7BA4FF}
+  nav{display:flex;gap:1.25rem;align-items:center}
+  nav a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.875rem;transition:color 0.2s}
+  nav a:hover,nav a.active{color:#fff}
+
+  .hero{background:var(--text);color:#fff;padding:3rem 2rem 5rem;text-align:center}
+  .hero-tag{display:inline-block;background:rgba(123,164,255,0.15);color:#7BA4FF;border:1px solid rgba(123,164,255,0.3);border-radius:100px;font-size:0.75rem;font-weight:500;padding:4px 14px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.25rem}
+  .hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1rem}
+  .hero h1 em{color:#7BA4FF;font-style:normal}
+  .hero p{color:rgba(255,255,255,0.55);font-size:1rem;max-width:520px;margin:0 auto;line-height:1.7}
+
+  .page{max-width:860px;margin:-2.5rem auto 4rem;padding:0 1.5rem}
+
+  /* ÜBER UNS KARTE */
+  .about-card{background:var(--card);border-radius:20px;border:1px solid var(--border);padding:2rem 2.5rem;margin-bottom:1.5rem}
+  .about-card h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1rem;letter-spacing:-0.02em}
+  .about-card p{font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:0.75rem}
+  .about-card p:last-child{margin-bottom:0}
+  .about-card strong{color:var(--text)}
+
+  /* KONTAKT GRID */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+
+  /* KONTAKT KARTE */
+  .contact-card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:1.5rem}
+  .contact-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:1rem}
+  .contact-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1rem}
+  .contact-row:last-child{margin-bottom:0}
+  .contact-icon{width:36px;height:36px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .icon-wa{background:#E8F9EF;color:#1A6B3C}
+  .icon-mail{background:var(--accent-light);color:var(--accent)}
+  .icon-pin{background:#FEF3C7;color:#92400E}
+  .icon-clock{background:#F3E8FF;color:#6B21A8}
+  .contact-text{}
+  .contact-label{font-size:0.75rem;color:var(--text-muted);margin-bottom:2px}
+  .contact-val{font-size:0.9rem;font-weight:500;color:var(--text)}
+  .contact-val a{color:inherit;text-decoration:none}
+  .contact-val a:hover{color:var(--accent)}
+
+  /* BUTTONS */
+  .btn-wa{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:0.85rem;background:#25D366;border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:500;color:#fff;cursor:pointer;text-decoration:none;margin-bottom:10px;transition:filter 0.2s}
+  .btn-wa:hover{filter:brightness(0.92)}
+  .btn-mail{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:0.85rem;background:var(--accent);border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:500;color:#fff;cursor:pointer;text-decoration:none;transition:filter 0.2s}
+  .btn-mail:hover{filter:brightness(0.9)}
+
+  /* ÖFFNUNGSZEITEN */
+  .hours-card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:1.5rem;margin-bottom:1.5rem}
+  .hours-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:1rem}
+  .hours-row{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.875rem}
+  .hours-row:last-child{border-bottom:none}
+  .hours-day{color:var(--text-muted)}
+  .hours-time{font-weight:500}
+  .hours-closed{color:#000000;font-weight:500}
+  .hours-note{font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border);line-height:1.5}
+
+  /* HINWEIS-BOX */
+  .notice-box{background:var(--accent-light);border:1px solid #B5D4F4;border-radius:var(--radius);padding:1.25rem 1.5rem;display:flex;gap:12px;align-items:flex-start;margin-bottom:1.5rem}
+  .notice-icon{font-size:1.2rem;flex-shrink:0;margin-top:1px}
+  .notice-text{font-size:0.875rem;color:#0C447C;line-height:1.6}
+  .notice-text strong{color:#042C53}
+
+  .btn-back-home{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--text-muted);text-decoration:none;transition:all 0.18s;margin-bottom:2rem}
+  .btn-back-home:hover{border-color:#B8B3A8;color:var(--text)}
+
+  footer{background:var(--text);color:rgba(255,255,255,0.45);text-align:center;padding:1.5rem;font-size:0.8rem}
+  footer a{color:rgba(255,255,255,0.6);text-decoration:none}
+
+  @media(max-width:620px){.contact-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════
+     KONTAKT.HTML – WAS DU HIER ANPASSEN MUSST:
+     
+     ① Shop-Name im Header (Logo-Text "Filament" + "Shop")
+     ② WhatsApp-Link: href="https://wa.me/DEINENUMMER" – Nummer anpassen
+     ③ E-Mail-Link: href="mailto:DEINE@EMAIL.DE" – E-Mail anpassen
+     ④ Telefonnummer (optional): im Kontakt-Bereich
+     ⑤ Adresse: Straße, PLZ, Ort
+     ⑥ Öffnungszeiten: Montag–Freitag, Samstag, Sonntag
+     ⑦ Über-mich-Text: die drei <p>...</p> im about-card Bereich
+     ⑧ Hinweisbox (notice-box): Text über Versand/Abholung
+     ⑨ Footer: Jahr + Shop-Name
+     
+     SUCHE (Strg+F): "← HIER ANPASSEN" findet alle Stellen
+     ════════════════════════════════════════════════════════════════ -->
+<header>
+  <div>
+  <a href="filament-konfigurator.html" style="text-decoration:none">
+    <div class="logo-text">Filament<span>Shop</span></div>  <!-- ← Shop-Name anpassen -->
+  </a>
+  </div>
+  <nav>
+    <a href="filament-konfigurator.html">Filamente</a>
+    <a href="kontakt.html" class="active">Kontakt</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-tag">Kontakt & Info</div>
+  <h1>So erreichst du <em>mich</em></h1>
+  <p>Ich bin kein klassisches Ladengeschäft – du bestellst bequem per WhatsApp oder E-Mail und ich kümmere mich um den Rest.</p>
+</div>
+
+<div class="page">
+
+  <a href="filament-konfigurator.html" class="btn-back-home">← Zurück zum Konfigurator</a>
+
+  <!-- ÜBER UNS -->
+  <div class="about-card">
+    <h2>Über meinen Shop</h2>
+    <!-- ↓ Beschreibung hier anpassen -->
+    <p>Ich bin <strong>kein klassisches Ladengeschäft</strong> mit Öffnungszeiten und Ladentheke.</p>
+    <p>Du kannst nach Terminvereinbarung vorbeikommen oder du konfigurierst dein Filament einfach online, schickst mir deine Anfrage per WhatsApp oder E-Mail und ich melde mich schnellstmöglich bei dir. Die Abwicklung läuft unkompliziert und persönlich.</p>
+    <p>Meine Filamente stammen von den Herstellern Colido und Geetech und sind für alle gängigen FDM-Drucker mit 1,75 mm Düse geeignet.</p>
+  </div>
+
+  <!-- KONTAKT KARTEN -->
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <h3>Direkter Kontakt</h3>
+      <div class="contact-row">
+        <div class="contact-icon icon-wa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.089.537 4.052 1.476 5.765L0 24l6.395-1.476A11.933 11.933 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.371l-.359-.213-3.718.858.878-3.63-.234-.372A9.818 9.818 0 0 1 2.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+        </div>
+        <div class="contact-text">
+          <div class="contact-label">WhatsApp</div>
+          <!-- ↓ Nummer anpassen -->
+          <div class="contact-val"><a href="https://wa.me/498212979141">  <!-- ← WhatsApp-Nummer anpassen -->+49 821 2979141</a></div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon icon-mail">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="contact-text">
+          <div class="contact-label">E-Mail</div>
+          <!-- ↓ E-Mail anpassen -->
+          <div class="contact-val"><a href="mailto:filament.gewerblich@web.de">filament.gewerblich@web.de</a></div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon icon-pin">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="contact-text">
+          <div class="contact-label">Standort</div>
+          <!-- ↓ Adresse anpassen -->
+          <div class="contact-val">Marsweg 4<br>70565 Stuttgart-Rohr</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h3>Jetzt anfragen</h3>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6">Nutze am besten den <a href="filament-konfigurator.html" style="color:var(--accent)">Konfigurator</a> um deine Bestellung zusammenzustellen – dann bekommst du mit einem Klick die fertige Anfrage.</p>
+      <!-- ↓ WhatsApp-Nummer anpassen -->
+      <a href="https://wa.me/498212979141" class="btn-wa" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.089.537 4.052 1.476 5.765L0 24l6.395-1.476A11.933 11.933 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.371l-.359-.213-3.718.858.878-3.63-.234-.372A9.818 9.818 0 0 1 2.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+        Per WhatsApp schreiben
+      </a>
+      <!-- ↓ E-Mail anpassen -->
+      <a href="mailto:filament.gewerblich@web.de" class="btn-mail">Per E-Mail anfragen</a>
+    </div>
+
+  </div>
+
+  <!-- ÖFFNUNGSZEITEN -->
+  <div class="hours-card">
+    <h3>Erreichbarkeit</h3>
+    <!-- ↓ Zeiten anpassen -->
+    <div class="hours-row"><span class="hours-day">Montag – Freitag</span>  <!-- ← Zeiten anpassen --><span class="hours-time">erreichbar</span></div>
+    <div class="hours-row"><span class="hours-day">Samstag</span><span class="hours-time">erreichbar</span></div>
+    <div class="hours-row"><span class="hours-day">Sonntag</span><span class="hours-closed">erreichbar</span></div>
+    <div class="hours-note">
+      <!-- ↓ Hinweis anpassen -->
+      Ich antworte in der Regel innerhalb weniger Stunden. WhatsApp Nachrichten werden oft schneller beantwortet als E-Mails.
+    </div>
+  </div>
+
+  <!-- HINWEIS-BOX -->
+  <div class="notice-box">
+    <div class="notice-icon">ℹ️</div>
+    <div class="notice-text">
+      <strong>Kein Ladengeschäft – Versand & Abholung nach Absprache.</strong><br>
+      <!-- ↓ Text anpassen -->
+      Ich betreibe keinen klassischen Laden mit festen Öffnungszeiten. Bestellungen können per Versand abgewickelt oder nach vorheriger Absprache vor Ort abgeholt werden.
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2025 FilamentShop &mdash;
+  <a href="kontakt.html">Kontakt</a> &mdash;
+  <a href="impressum.html">Impressum</a> &mdash;
+  <a href="datenschutz.html">Datenschutz</a>
+</footer>
+  
