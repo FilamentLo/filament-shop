@@ -1,10 +1,10 @@
 ﻿Handle;Title;Option1 Name;Option1 Value (Material);Option2 Name;Option2 Value (Farbe);Option3 Name;Option3 Value (Marke);SKU;Qty
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;weiß;Marke;Geetech;GEE-PLA-WE;13
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;weiß;Marke;Colido;COL-PLA-WE;6
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;schwarz;Marke;Geetech;GEE-PLA-SW;11
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;schwarz;Marke;Colido;COL-PLA-SW;6
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;rot;Marke;Geetech;GEE-PLA-RO;12
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;rot;Marke;Colido;COL-PLA-RO;4
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;weiß;Marke;Geetech;GEE-PLA-WE;18
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;weiß;Marke;Colido;COL-PLA-WE;10
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;schwarz;Marke;Geetech;GEE-PLA-SW;20
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;schwarz;Marke;Colido;COL-PLA-SW;10
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;rot;Marke;Geetech;GEE-PLA-RO;11
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;rot;Marke;Colido;COL-PLA-RO;9
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;gelb;Marke;Geetech;GEE-PLA-GE;10
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;gelb;Marke;Colido;COL-PLA-GE;10
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;grün;Marke;Geetech;GEE-PLA-GRÜ;15
@@ -12,15 +12,15 @@ pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;grün;Marke;Colido;COL-PLA-GRÜ;4
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;grün;Marke;Sunlu;SUN-PLA-GRÜ;4
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;grass grün;Marke;Colido;COL-PLA-GGRÜ;0
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;apfel grün;Marke;Geetech;GEE-PLA-AGRÜ;1
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;mint grün;Marke;Colido;COL-PLA-MGRÜ;3
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;mint grün;Marke;Colido;COL-PLA-MGRÜ;5
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;light green;Marke;Colido;COL-PLA-LIGRÜ;7
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;lake green;Marke;Colido;COL-PLA-LAGRÜ;6
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;army green;Marke;Colido;COL-PLA-ARGRÜ;7
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;army green;Marke;Colido;COL-PLA-ARGRÜ;6
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;dark green;Marke;Colido;COL-PLA-DGRÜ;0
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;orange;Marke;Geetech;GEE-PLA-OR;6
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;orange;Marke;Colido;COL-PLA-OR;2
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;orange;Marke;Geetech;GEE-PLA-OR;11
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;orange;Marke;Colido;COL-PLA-OR;7
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;blau;Marke;Geetech;GEE-PLA-BL;0
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;blau;Marke;Colido;COL-PLA-BL;12
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;blau;Marke;Colido;COL-PLA-BL;17
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;hellblau;Marke;Geetech;GEE-PLA-HB;10
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;cyan;Marke;Colido;COL-PLA-CY;0
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;fuchsia;Marke;Colido;COL-PLA-FU;8
@@ -28,7 +28,7 @@ pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;lila;Marke;Geetech;GEE-PLA-LI;9
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;lila;Marke;Colido;COL-PLA-LI;5
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;pink;Marke;Geetech;GEE-PLA-PI;5
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;pink;Marke;Colido;COL-PLA-PI;16
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;grau;Marke;Geetech;GEE-PLA-GR;7
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;grau;Marke;Geetech;GEE-PLA-GR;12
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;grau;Marke;Colido;COL-PLA-GR;7
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;dunkel grau;Marke;Colido;COL-PLA-DGR;1
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;braun;Marke;Geetech;GEE-PLA-BR;9
@@ -43,7 +43,7 @@ pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;skin;Marke;Colido;COL-PLA-SK;5
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;beige;Marke;Geetech;GEE-PLA-BE;16
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;transparent blau;Marke;Colido;COL-PLA-TBL;3
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;transparent rot;Marke;Colido;COL-PLA-TRO;2
-pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;transparent gelb;Marke;Colido;COL-PLA-TGE;1
+pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;transparent gelb;Marke;Colido;COL-PLA-TGE;2
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;transparent grün;Marke;Colido;COL-PLA-TGR;1
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;bone white;Marke;Geetech;GEE-PLA-BW;13
 pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;navy blue;Marke;Colido;COL-PLA-NB;0
@@ -53,7 +53,7 @@ pla-175;PLA Filament 1.75mm;Material;PLA;Farbe;sparkly silber;Marke;Geetech;GEE-
 ;;;;;;;;;
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;weiß;Marke;Geetech;GEE-PETG-WE;23
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;weiß;Marke;Colido;COL-PETG-WE;1
-petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;schwarz;Marke;Geetech;GEE-PETG-SW;14
+petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;schwarz;Marke;Geetech;GEE-PETG-SW;22
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;schwarz;Marke;Colido;COL-PETG-SW;0
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;rot;Marke;Geetech;GEE-PETG-RO;12
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;rot;Marke;Colido;COL-PETG-RO;4
@@ -64,22 +64,22 @@ petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;grün;Marke;Colido;COL-PETG-GR
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;apfel grün;Marke;Geetech;GEE-PETG-AGRÜ;6
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;orange;Marke;Geetech;GEE-PETG-OR;6
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;orange;Marke;Colido;COL-PETG-OR;2
-petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;blau;Marke;Geetech;GEE-PETG-BL;15
+petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;blau;Marke;Geetech;GEE-PETG-BL;14
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;blau;Marke;Colido;COL-PETG-BL;0
-petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;hell blau;Marke;Geetech;GEE-PETG-HB;12
+petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;hell blau;Marke;Geetech;GEE-PETG-HB;10
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;cyan;Marke;Colido;COL-PETG-CY;0
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;fuchsia;Marke;Colido;COL-PETG-FU;0
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;lila;Marke;Geetech;GEE-PETG-LI;0
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;lila;Marke;Colido;COL-PETG-LI;5
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;pink;Marke;Geetech;GEE-PETG-PI;10
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;sakura pink;Marke;Colido;COL-PETG-PI;3
-petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;grau;Marke;Geetech;GEE-PETG-GR;11
+petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;grau;Marke;Geetech;GEE-PETG-GR;8
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;grau;Marke;Colido;COL-PETG-GR;0
-petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;dunkel grau;Marke;Colido;COL-PETG-DGR;8
+petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;dunkel grau;Marke;Colido;COL-PETG-DGR;6
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;braun;Marke;Geetech;GEE-PETG-BR;7
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;braun;Marke;Colido;COL-PETG-BR;3
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;transparent;Marke;Geetech;GEE-PETG-TR;11
-petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;silber;Marke;Geetech;GEE-PETG-SI;9
+petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;silber;Marke;Geetech;GEE-PETG-SI;7
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;skin;Marke;Geetech;GEE-PETG-SK;4
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;wood;Marke;Colido;COL-PETG-WO;0
 petg-175;PETG Filament 1.75mm;Material;PETG;Farbe;regenbogen farbe;Marke;Colido;COL-PETG-RG;0
@@ -98,9 +98,9 @@ petg-hs-175;PETG HS Matt Filament 1.75mm;Material;PETG HS Matt;Farbe;rot;Marke;J
 petg-hs-175;PETG HS Matt Filament 1.75mm;Material;PETG HS Matt;Farbe;blau;Marke;Jayoo;JAY-PETG-HS-WE;1
 petg-hs-175;PETG HS Matt Filament 1.75mm;Material;PETG HS Matt;Farbe;grau;Marke;Jayoo;JAY-PETG-HS-GRÜ;0
 ;;;;;;;;;
-tpu-175;TPU Filament 1.75mm;Material;TPU;Farbe;weiß;Marke;Geetech;GEE-TPU-WE;8
-tpu-175;TPU Filament 1.75mm;Material;TPU;Farbe;schwarz;Marke;Geetech;GEE-TPU-SW;1
-tpu-175;TPU Filament 1.75mm;Material;TPU;Farbe;rot;Marke;Geetech;GEE-TPU-RO;5
+tpu-175;TPU Filament 1.75mm;Material;TPU;Farbe;weiß;Marke;Geetech;GEE-TPU-WE;7
+tpu-175;TPU Filament 1.75mm;Material;TPU;Farbe;schwarz;Marke;Geetech;GEE-TPU-SW;5
+tpu-175;TPU Filament 1.75mm;Material;TPU;Farbe;rot;Marke;Geetech;GEE-TPU-RO;4
 tpu-175;TPU Filament 1.75mm;Material;TPU;Farbe;gelb;Marke;Geetech;GEE-TPU-GE;0
 tpu-175;TPU Filament 1.75mm;Material;TPU;Farbe;grün;Marke;Geetech;GEE-TPU-GRÜ;4
 tpu-175;TPU Filament 1.75mm;Material;TPU;Farbe;orange;Marke;Geetech;GEE-TPU-OR;2
@@ -114,7 +114,7 @@ tpu-175;TPU Filament 1.75mm;Material;TPU;Farbe;transparent blau;Marke;Geetech;GE
 tpu-175;TPU Filament 1.75mm;Material;TPU;Farbe;transparent orange;Marke;Geetech;GEE-TPU-TOR;0
 ;;;;;;;;;
 abs-175;ABS+ Filament 1.75mm;Material;ABS;Farbe;weiß;Marke;Geetech;GEE-ABS-WE;6
-abs-175;ABS+ Filament 1.75mm;Material;ABS;Farbe;schwarz;Marke;Geetech;GEE-ABS-SW;7
+abs-175;ABS+ Filament 1.75mm;Material;ABS;Farbe;schwarz;Marke;Geetech;GEE-ABS-SW;6
 abs-175;ABS+ Filament 1.75mm;Material;ABS;Farbe;rot;Marke;Geetech;GEE-ABS-RO;2
 abs-175;ABS+ Filament 1.75mm;Material;ABS;Farbe;gelb;Marke;Geetech;GEE-ABS-GE;1
 abs-175;ABS+ Filament 1.75mm;Material;ABS;Farbe;grün;Marke;Geetech;GEE-ABS-GRÜ;4
@@ -125,37 +125,37 @@ abs-175;ABS+ Filament 1.75mm;Material;ABS;Farbe;lila;Marke;Geetech;GEE-ABS-LI;1
 abs-175;ABS+ Filament 1.75mm;Material;ABS;Farbe;pink;Marke;Geetech;GEE-ABS-PI;2
 ;;;;;;;;;
 pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;regenbogen farbe;Marke;Geetech;GEE-PLA-SI-RG;5
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gelb;Marke;Geetech;GEE-PLA-SI-GE;1
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;weiß;Marke;Geetech;GEE-PLA-SI-WE;0
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;schwarz;Marke;Geetech;GEE-PLA-SI-SW;0
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gelb;Marke;Geetech;GEE-PLA-SI-GE;3
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;weiß;Marke;Geetech;GEE-PLA-SI-WE;4
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;schwarz;Marke;Geetech;GEE-PLA-SI-SW;3
 pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;grün;Marke;Geetech;GEE-PLA-SI-GRÜ;4
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold;Marke;Geetech;GEE-PLA-SI-GO;1
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;hellblau;Marke;Geetech;GEE-PLA-SI-HB;1
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold;Marke;Geetech;GEE-PLA-SI-GO;8
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;hellblau;Marke;Geetech;GEE-PLA-SI-HB;3
 pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;blau;Marke;Geetech;GEE-PLA-SI-BL;3
 pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;lila;Marke;Geetech;GEE-PLA-SI-LI;3
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;silber;Marke;Geetech;GEE-PLA-SI-SI;3
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;kupfer ;Marke;Geetech;GEE-PLA-SI-KU;1
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;bronze;Marke;Geetech;GEE-PLA-SI-BO;1
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;silber;Marke;Geetech;GEE-PLA-SI-SI;6
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;kupfer ;Marke;Geetech;GEE-PLA-SI-KU;3
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;bronze;Marke;Geetech;GEE-PLA-SI-BO;3
 pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;dunkel grün;Marke;Geetech;GEE-PLA-SI-DGRÜ;3
 ;;;;;;;;;
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold + schwarz;Marke;Geetech;GEE-PLA-2GOSW;1
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold + schwarz;Marke;Geetech;GEE-PLA-2GOSW;2
 pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;grün + rot;Marke;Geetech;GEE-PLA-2GRÜRO;2
 pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;blau + grün;Marke;Geetech;GEE-PLA-2BLRO;1
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gelb + grün;Marke;Geetech;GEE-PLA-2GEGRÜ;0
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold + rot;Marke;Geetech;GEE-PLA-2GORO;0
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gelb + grün;Marke;Geetech;GEE-PLA-2GEGRÜ;2
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold + rot;Marke;Geetech;GEE-PLA-2GORO;2
 pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold + lila;Marke;Geetech;GEE-PLA-2GOLI;2
 pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;schwarz + rot;Marke;Geetech;GEE-PLA-2SWRO;1
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold + kupfer;Marke;Geetech;GEE-PLA-2GOKU;1
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold + silber;Marke;Geetech;GEE-PLA-2GOSI;0
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold + kupfer;Marke;Geetech;GEE-PLA-2GOKU;3
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold + silber;Marke;Geetech;GEE-PLA-2GOSI;2
 ;;;;;;;;;
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;rot + gelb + blau;Marke;Geetech;GEE-PLA-3ROGEBL;0
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;blau + lila +  schwarz;Marke;Geetech;GEE-PLA-3BLLISW;1
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;rot + gold + lila;Marke;Geetech;GEE-PLA-3ROGOLI;0
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;orange + blau + grün;Marke;Geetech;GEE-PLA-3ORBLGRÜ;0
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;rot + gold + schwarz;Marke;Geetech;GEE-PLA-3ROGOSW;0
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;lila + gold + schwarz;Marke;Geetech;GEE-PLA-3LIGOSW;1
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;rot + blau + grün;Marke;Geetech;GEE-PLA-3ROBLGRÜ;0
-pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold + silber + kupfer;Marke;Geetech;GEE-PLA-3GOSIKU;0
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;rot + gelb + blau;Marke;Geetech;GEE-PLA-3ROGEBL;3
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;blau + lila +  schwarz;Marke;Geetech;GEE-PLA-3BLLISW;4
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;rot + gold + lila;Marke;Geetech;GEE-PLA-3ROGOLI;3
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;orange + blau + grün;Marke;Geetech;GEE-PLA-3ORBLGRÜ;3
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;rot + gold + schwarz;Marke;Geetech;GEE-PLA-3ROGOSW;3
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;lila + gold + schwarz;Marke;Geetech;GEE-PLA-3LIGOSW;2
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;rot + blau + grün;Marke;Geetech;GEE-PLA-3ROBLGRÜ;2
+pla-silk-175;PLA Silk Filament 1.75mm;Material;SILK PLA;Farbe;gold + silber + kupfer;Marke;Geetech;GEE-PLA-3GOSIKU;2
 ;;;;;;;;;
 pla-matt-175;PLA Matt Filament 1.75mm;Material;PLA matt;Farbe;schwarz;Marke;Geetech;GEE-PLA-MT-SW;7
 pla-matt-175;PLA Matt Filament 1.75mm;Material;PLA matt;Farbe;weiß;Marke;Geetech;GEE-PLA-MT-WE;8
@@ -169,17 +169,17 @@ pla-matt-175;PLA Matt Filament 1.75mm;Material;PLA matt;Farbe;grün;Marke;Geetec
 pla-matt-175;PLA Matt Filament 1.75mm;Material;PLA matt;Farbe;orange;Marke;Geetech;GEE-PLA-MT-ORA;5
 ;;;;;;;;;
 pla-cf-175;PLA CF Filament 1.75mm;Material;PLA CF;Farbe;schwarz;Marke;Colido;COL-PLA-CF-SW;2
-petg-cf-175;PETG CF Filament 1.75mm;Material;PETG CF;Farbe;schwarz;Marke;Colido;COL-PETG-CF-SW;8
+petg-cf-175;PETG CF Filament 1.75mm;Material;PETG CF;Farbe;schwarz;Marke;Colido;COL-PETG-CF-SW;7
 ;;;;;;;;;
 pla-holz-175;Holz Filament 1.75mm;Material;PLA Holz;Farbe;braun;Marke;Geetech;GEE-HOLZ-BR;4
 pla-marmor-175;Marmor Filament 1.75mm;Material;PLA Marmor;Farbe;grau;Marke;Geetech;GEE-MAR-GR;7
 pla-marmor-175;Marmor Filament 1.75mm;Material;PLA Marmor;Farbe;blau;Marke;Geetech;GEE-MAR-BL;2
 pla-marmor-175;Marmor Filament 1.75mm;Material;PLA Marmor;Farbe;braun;Marke;Geetech;GEE-MAR-BR;1
 ;;;;;;;;;
-pla-glow-175;Glow-in-the-Dark Filament 1.75mm;Material;PLA Glow;Farbe;gelb;Marke;Geetech;GEE-GLOW-GE;0
-pla-glow-175;Glow-in-the-Dark Filament 1.75mm;Material;PLA Glow;Farbe;orange;Marke;Geetech;GEE-GLOW-OR;0
-pla-glow-175;Glow-in-the-Dark Filament 1.75mm;Material;PLA Glow;Farbe;lila;Marke;Geetech;GEE-GLOW-LI;0
-pla-glow-175;Glow-in-the-Dark Filament 1.75mm;Material;PLA Glow;Farbe;blau;Marke;Geetech;GEE-GLOW-BL;0
-pla-glow-175;Glow-in-the-Dark Filament 1.75mm;Material;PLA Glow;Farbe;pink;Marke;Geetech;GEE-GLOW-PI;0
+pla-glow-175;Glow-in-the-Dark Filament 1.75mm;Material;PLA Glow;Farbe;gelb;Marke;Geetech;GEE-GLOW-GE;2
+pla-glow-175;Glow-in-the-Dark Filament 1.75mm;Material;PLA Glow;Farbe;orange;Marke;Geetech;GEE-GLOW-OR;2
+pla-glow-175;Glow-in-the-Dark Filament 1.75mm;Material;PLA Glow;Farbe;lila;Marke;Geetech;GEE-GLOW-LI;2
+pla-glow-175;Glow-in-the-Dark Filament 1.75mm;Material;PLA Glow;Farbe;blau;Marke;Geetech;GEE-GLOW-BL;2
+pla-glow-175;Glow-in-the-Dark Filament 1.75mm;Material;PLA Glow;Farbe;pink;Marke;Geetech;GEE-GLOW-PI;2
 ;;;;;;;;;
-;;;;;;;;;708
+;;;;;;;;;808

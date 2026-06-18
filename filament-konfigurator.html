@@ -135,7 +135,7 @@ nav a:hover{color:#fff}
 .color-dots-wrap h4{font-size:0.8rem;font-weight:500;color:var(--text-muted);margin-bottom:10px}
 .color-dots{display:flex;flex-wrap:wrap;gap:10px;max-width:280px}
 .color-dot-item{display:flex;flex-direction:column;align-items:center;gap:3px}
-.color-dot-btn{width:36px;height:36px;border-radius:50%;border:2.5px solid transparent;cursor:pointer;transition:all 0.18s;position:relative;flex-shrink:0}
+.color-dot-btn{width:36px;height:36px;border-radius:50%;border:2.5px solid transparent;overflow:hidden;cursor:pointer;transition:all 0.18s;position:relative;flex-shrink:0}
 .color-dot-btn:hover{transform:scale(1.12)}
 .color-dot-btn.selected{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}
 .color-dot-btn .dot-check{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-size:13px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.5)}
@@ -486,8 +486,8 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
 const DEINE_EMAIL  = 'filament.gewerblich@web.de';   // ← HIER ANPASSEN
 
 // ② Deine WhatsApp-Nummer (Ländervorwahl ohne +, dann Nummer ohne 0)
-//    Beispiel Deutschland: 49 + 151... → '498212979141'
-const WHATSAPP_NR  = '498212979141';           // ← HIER ANPASSEN
+//    Beispiel Deutschland: 49 + 151... → '4915206985806'
+const WHATSAPP_NR  = '4915206985806';           // ← HIER ANPASSEN
 
 // ③ Preise pro Rolle je Material eventuell löschen
 /*
@@ -512,8 +512,9 @@ const PREISE = {
   'PLA Matt':  { 'Geetech': 14 },
   'PLA CF':    { 'Colido': 19 },
   'PETG CF':   { 'Colido': 19 },
-  'PLA Holz':   { 'Geetech': 14 },
-  'PLA Marmor': { 'Geetech': 14 },
+  'PLA Holz':   { 'Geetech': 15 },
+  'PLA Marmor': { 'Geetech': 15 },
+  'PLA Glow': { 'Geetech': 18 },  // ← Preis anpassen
 };
 /*function getPreis(mat) { return PREISE[mat] || 12; }*/
 function getPreis(mat, her) {
@@ -562,6 +563,7 @@ const matInfo = {
   'PETG CF':  { desc: 'Carbon Fiber',   detail: 'PETG mit Carbonfaser – hohe Festigkeit. Nur Colido.', special: true },
   'PLA Holz':   { desc: 'Holz Optik',   detail: 'PLA mit Holzfaser-Anteil. Natürliche Optik.', special: true },
   'PLA Marmor': { desc: 'Marmor Optik', detail: 'PLA mit Marmor-Effekt. Edles Finish.', special: true },
+  'PLA Glow': { desc: 'Glow in the Dark', detail: 'Leuchtet im Dunkeln.', special: true },
 };
 
 /* ════════════════════════════════════════════════════════════════
@@ -588,7 +590,7 @@ const COLOR_HEX = {
 };
 
 /* Zuordnung CSV-Materialname → Anzeigename (nicht ändern!) */
-const MAT_MAP = {'PLA':'PLA','PETG':'PETG','PETG HS Matt': 'PETG HS Matt','TPU':'TPU','ABS':'ABS','SILK PLA':'PLA Silk','PLA matt':'PLA Matt','PLA CF':'PLA CF','PETG CF':'PETG CF','PLA Holz':'PLA Holz', 'PLA Marmor':'PLA Marmor'};
+const MAT_MAP = {'PLA':'PLA','PETG':'PETG','PETG HS Matt': 'PETG HS Matt','TPU':'TPU','ABS':'ABS','SILK PLA':'PLA Silk','PLA matt':'PLA Matt','PLA CF':'PLA CF','PETG CF':'PETG CF','PLA Holz':'PLA Holz', 'PLA Marmor':'PLA Marmor', 'PLA Glow':'PLA Glow'};
 
 /* ════════════════════════════════════════════════════════════════
    INVENTAR (Lagerbestand)
@@ -705,7 +707,7 @@ function buildMaterials() {
       + '<div class="mat-name">' + name + '</div>'
       + '<div class="mat-desc">' + info.desc + '</div>'
       /*+ '<div class="mat-price">' + fmt(getPreis(name)) + '</div>';*/
-      + '<div class="mat-price">ab ' + fmt(Math.min(...Object.values(PREISE[name] || {12:12}))) + '</div>';
+      + '<div class="mat-price">' + (new Set(Object.values(PREISE[name] || {12:12})).size > 1 ? 'ab ' : '') + fmt(Math.min(...Object.values(PREISE[name] || {12:12}))) + '</div>';
     d.title = info.detail || '';
     d.onclick = () => {
       sel.material = name; sel.hersteller = null; sel.color = null;
@@ -741,6 +743,30 @@ function buildHersteller() {
   });
 }
 
+
+const MULTICOLOR_HEX = {
+  // Zweifarbig
+  'gold + schwarz':  ['#C9A227', '#1A1A1A'],
+  'grün + rot':      ['#2E7D32', '#C62828'],
+  'blau + grün':     ['#1565C0', '#2E7D32'],
+  'gelb + grün':     ['#F9A825', '#2E7D32'],
+  'gold + rot':      ['#C9A227', '#C62828'],
+  'gold + lila':     ['#C9A227', '#7B1FA2'],
+  'schwarz + rot':   ['#1A1A1A', '#C62828'],
+  'gold + kupfer':   ['#C9A227', '#B87333'],
+  'gold + silber':   ['#C9A227', '#B0BEC5'],
+  // Dreifarbig
+  'rot + gelb + blau':      ['#C62828', '#F9A825', '#1565C0'],
+  'blau + lila + schwarz':  ['#1565C0', '#7B1FA2', '#1A1A1A'],
+  'rot + gold + lila':      ['#C62828', '#C9A227', '#7B1FA2'],
+  'orange + blau + grün':   ['#E65100', '#1565C0', '#2E7D32'],
+  'rot + gold + schwarz':   ['#C62828', '#C9A227', '#1A1A1A'],
+  'lila + gold + schwarz':  ['#7B1FA2', '#C9A227', '#1A1A1A'],
+  'rot + blau + grün':      ['#C62828', '#1565C0', '#2E7D32'],
+  'gold + silber + kupfer': ['#C9A227', '#B0BEC5', '#B87333'],
+};
+
+
 function buildColors() {
   document.getElementById('herLabel').textContent = sel.hersteller;
   document.getElementById('matLabel2').textContent = sel.material;
@@ -753,7 +779,15 @@ function buildColors() {
     const wrap = document.createElement('div'); wrap.className = 'color-dot-item';
     const btn = document.createElement('button');
     btn.className = 'color-dot-btn' + (sel.color === c.name ? ' selected' : '');
-    btn.style.background = c.hex;
+    const multi = MULTICOLOR_HEX[c.name];
+if (multi && multi.length === 3) {
+  btn.style.background = `conic-gradient(${multi[0]} 0deg 120deg, ${multi[0]} 120deg 120deg, ${multi[1]} 120deg 240deg, ${multi[1]} 240deg 240deg, ${multi[2]} 240deg 360deg)`;
+} else if (multi && multi.length === 2) {
+  btn.style.background = `linear-gradient(90deg, ${multi[0]} 50%, ${multi[1]} 50%)`;
+}
+else {
+  btn.style.background = c.hex;
+}
     btn.title = c.name + ' (' + c.qty + ' Stk.)';
     btn.innerHTML = '<div class="dot-check">✓</div>';
     btn.onclick = () => selectColor(c, btn);
