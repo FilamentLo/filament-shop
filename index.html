@@ -48,6 +48,12 @@
   .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;height:320px}
   .photo-grid img{width:100%;height:100%;object-fit:cover;border-radius:16px;border:4px solid var(--card);box-shadow:0 12px 30px rgba(0,0,0,0.12)}
 
+  /* PDF DOWNLOAD BUTTON (unter den Bildern) */
+  .pdf-download-bar{max-width:1000px;margin:1.5rem auto 0;padding:0 1.5rem;display:flex;justify-content:center}
+  .btn-pdf{display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1.5rem;text-decoration:none;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;color:var(--text);transition:all 0.18s;box-shadow:0 4px 14px rgba(0,0,0,0.05)}
+  .btn-pdf:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+  .btn-pdf svg{flex-shrink:0}
+
   .page{max-width:1000px;margin:0 auto 4rem;padding:0 1.5rem}
 
   /* SORTIMENT */
@@ -130,6 +136,15 @@
     <img src="fotos/lager-uebersicht.jpeg" alt="Großes Filament-Lager mit hunderten Geeetech Filamentrollen in Stuttgart">
     <img src="fotos/farbauswahl.jpeg" alt="Bunte Geeetech Filamentrollen in vielen Farben">
   </div>
+</div>
+
+<!-- PDF-DOWNLOAD: lade deine Preisliste als "preisliste.pdf" in denselben Ordner
+     wie diese HTML-Datei hoch (genau wie bei bestand.csv) -->
+<div class="pdf-download-bar">
+  <a href="preisliste.pdf" target="_blank" class="btn-pdf">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+    Bestandsliste als PDF herunterladen
+  </a>
 </div>
 
 <div class="page">
