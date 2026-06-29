@@ -10,7 +10,7 @@ Online-Shop für 3D-Drucker Filament.
 
 ## Website
 👉 https://filamentlo.github.io/filament-shop/
-http://filament-stuttgart.de/
+👉 http://filament-stuttgart.de/
 
 ## Kontakt
 - Verkauf im Moment: Kleinanzeigen
