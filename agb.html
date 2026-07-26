@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filament Shop – AGB</title>
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     LOKALE SCHRIFTARTEN (@font-face)
+     Fonts werden von deinem Server geladen, nicht von Google!
+     ═════════════════════════════════════════════════════════ */
+  @font-face {
+    font-family: 'Syne';
+    src: url('fonts/syne-400.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Syne';
+    src: url('fonts/syne-600.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Syne';
+    src: url('fonts/syne-700.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('fonts/dm-sans-400.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('fonts/dm-sans-500.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+  }
+  :root {
+    --bg:#F2EFE9; --surface:#FAFAF8; --card:#fff; --border:#DDD9D0;
+    --text:#1A1815; --text-muted:#7A7570; --accent:#2B5EE8;
+    --radius:12px; --radius-sm:8px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+  header{background:var(--text);color:#fff;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+  .logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-0.02em}
+  .logo-text span{color:#7BA4FF}
+  nav a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.875rem;margin-left:1.5rem;transition:color 0.2s}
+  nav a:hover{color:#fff}
+  .hero{background:var(--text);color:#fff;padding:2.5rem 2rem 4.5rem;text-align:center}
+  .hero-tag{display:inline-block;background:rgba(123,164,255,0.15);color:#7BA4FF;border:1px solid rgba(123,164,255,0.3);border-radius:100px;font-size:0.75rem;font-weight:500;padding:4px 14px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem}
+  .hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;letter-spacing:-0.03em}
+  .page{max-width:720px;margin:-2rem auto 4rem;padding:0 1.5rem}
+  .imp-card{background:var(--card);border-radius:20px;border:1px solid var(--border);padding:2rem 2.5rem}
+  .imp-section{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+  .imp-section:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+  .imp-section h2{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem}
+  .imp-section h3{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:600;margin:1rem 0 0.5rem 0}
+  .imp-section p{font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:0.75rem}
+  .imp-section p:last-child{margin-bottom:0}
+  .imp-section strong{color:var(--text)}
+  .imp-section a{color:var(--accent);text-decoration:none}
+  .imp-section a:hover{text-decoration:underline}
+  .imp-section ul, .imp-section ol{font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0.5rem 0 0.75rem 1.25rem}
+  .imp-section li{margin-bottom:0.5rem}
+  .notice{background:#FEF3C7;border:1px solid #FCD34D;border-radius:var(--radius-sm);padding:10px 14px;font-size:0.8rem;color:#92400E;margin-bottom:1.5rem;line-height:1.5}
+  .btn-back{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.65rem 1.25rem;font-family:'Syne',sans-serif;font-size:0.9rem;color:var(--text-muted);text-decoration:none;transition:all 0.18s;margin-bottom:1.5rem}
+  .btn-back:hover{border-color:#B8B3A8;color:var(--text)}
+  footer{background:var(--text);color:rgba(255,255,255,0.45);text-align:center;padding:1.5rem;font-size:0.8rem}
+  footer a{color:rgba(255,255,255,0.6);text-decoration:none}
+
+  /* Cookie Banner */
+  .cookie-banner{position:fixed;bottom:0;left:0;right:0;background:#1A1815;color:#fff;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;z-index:9999;border-top:1px solid #2B5EE8;font-size:0.9rem}
+  .cookie-banner.hidden{display:none}
+  .cookie-banner-text{flex:1}
+  .cookie-banner-text a{color:#7BA4FF;text-decoration:none}
+  .cookie-banner-buttons{display:flex;gap:1rem}
+  .cookie-btn{padding:0.65rem 1.5rem;border:none;border-radius:8px;font-size:0.9rem;cursor:pointer;font-weight:500}
+  .cookie-accept{background:#2B5EE8;color:#fff}
+  .cookie-decline{background:transparent;color:#7BA4FF;border:1.5px solid #2B5EE8}
+  @media(max-width:768px){.cookie-banner{flex-direction:column}.cookie-banner-buttons{width:100%}.cookie-btn{flex:1}}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" style="text-decoration:none"><div class="logo-text">Filament<span>Shop</span></div></a>
+  <nav>
+    <a href="filament-konfigurator.html">Filamente</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-tag">Rechtliches</div>
+  <h1>Allgemeine Geschäftsbedingungen</h1>
+</div>
+
+<div class="page">
+  <a href="filament-konfigurator.html" class="btn-back">← Zurück zum Shop</a>
+
+  <div class="imp-card">
+
+    <div class="imp-section">
+      <h2>1. Geltungsbereich & Vertragspartner</h2>
+      <p>Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Bestellungen von Filament und Zubehör über diese Website, per E-Mail oder WhatsApp.</p>
+      <p><strong>Vertragspartner:</strong> Lorenz Hohn, Marsweg 4, 70565 Stuttgart-Rohr (Kleingewerbe gem. §19 UStG)</p>
+      <p>Mit der Bestellung akzeptierst du diese AGB vollständig.</p>
+    </div>
+
+    <div class="imp-section">
+      <h2>2. Vertragsabschluss</h2>
+      <h3>Bestellvorgang</h3>
+      <p>Du stellst eine Anfrage über:</p>
+      <ul>
+        <li>den Konfigurator auf dieser Website</li>
+        <li>WhatsApp: +49 1520 698580649</li>
+        <li>E-Mail: filament.gewerblich@web.de</li>
+      </ul>
+      <p>Deine Anfrage ist ein verbindliches Angebot zum Kauf.</p>
+      <h3>Annahme durch den Verkäufer</h3>
+      <p>Der Kaufvertrag kommt zustande, wenn ich deine Anfrage per WhatsApp, E-Mail oder Telefon bestätige. Die Bestätigung wird automatisch oder manuell innerhalb von 24 Stunden (werktags) versendet.</p>
+      <p>Bei technischen Fehlern in der Anfrage behalte ich mir das Recht vor, diese zu korrigieren, bevor ich den Auftrag akzeptiere.</p>
+    </div>
+
+    <div class="imp-section">
+      <h2>3. Widerrufsrecht (14 Tage)</h2>
+      <p><strong>Du hast das Recht, deine Bestellung innerhalb von 14 Tagen ab Lieferdatum zu widerrufen, ohne Angabe von Gründen.</strong></p>
+      
+      <h3>So widerrufst du:</h3>
+      <ol>
+        <li>Schreib eine E-Mail an <a href="mailto:filament.gewerblich@web.de">filament.gewerblich@web.de</a> oder eine WhatsApp-Nachricht</li>
+        <li>Gib deutlich an, dass du widerrufst und nenne deine Bestellnummer/Datum</li>
+        <li>Versende die Ware in originalem Zustand (unbenutzt) innerhalb von 14 Tagen zurück</li>
+      </ol>
+
+      <h3>Rückgabeadresse:</h3>
+      <p>Lorenz Hohn<br>Marsweg 4<br>70565 Stuttgart-Rohr<br>Deutschland</p>
+
+      <h3>Rückgabekosten & Erstattung</h3>
+      <p>Die Kosten für die Rückgabe trägt der Käufer (versichert versendet empfohlen). Nach Eingang der Rückware und Prüfung auf Vollständigkeit und fehlerfreien Zustand erstatte ich dir den Kaufpreis sowie die von dir bezahlten Versandkosten innerhalb von 14 Tagen.</p>
+
+      <h3>Wann erlischt das Widerrufsrecht?</h3>
+      <p>Das Widerrufsrecht erlischt nach Ablauf von 14 Tagen ab Lieferdatum.</p>
+    </div>
+
+    <div class="imp-section">
+      <h2>4. Zahlungsbedingungen</h2>
+      <h3>Zahlungsarten</h3>
+      <p>Zahlung erfolgt per <strong>Banküberweisung (SEPA-Überweisung)</strong>.</p>
+      <p>Nach der Auftragsbestätigung erhältst du eine Rechnung per E-Mail mit meiner IBAN und Zahlungsreferenz.</p>
+
+      <h3>Zahlungsziel</h3>
+      <p>Zahlbar innerhalb von <strong>14 Tagen</strong> ab Rechnungsdatum.</p>
+
+      <h3>Versand nach Zahlungseingang</h3>
+      <p>Die Ware wird erst nach erfolgtem Zahlungseingang versendet. Bei Zahlungsverzögerung behalte ich mir vor, die Bestellung zu stornieren.</p>
+
+      <h3>Zahlungsausfallrisiko</h3>
+      <p>Bei Zahlungsverzug von mehr als 14 Tagen können Mahngebühren anfallen (EUR 3–5 pro Mahnung).</p>
+    </div>
+
+    <div class="imp-section">
+      <h2>5. Versand & Lieferung</h2>
+      <h3>Versandanbieter & Kosten</h3>
+      <ul>
+        <li><strong>Standard:</strong> Hermes oder DHL</li>
+        <li><strong>Versandkosten:</strong> EUR 5,00</li>
+        <li><strong>Liefergebiet:</strong> Deutschland (andere Länder nach Anfrage)</li>
+        <li><strong>Versichert:</strong> Ja, bis Warenwert</li>
+      </ul>
+
+      <h3>Lieferzeit</h3>
+      <p>Normale Lieferzeit: <strong>2–5 Werktage</strong> nach Zahlungseingang (Mo–Fr, ohne Feiertage).</p>
+      <p>Diese ist eine ungefähre Angabe, keine verbindliche Zusage. Verzögerungen durch Transportmittel liegen außerhalb meiner Verantwortung.</p>
+
+      <h3>Tracking & Benachrichtigung</h3>
+      <p>Nach dem Versand erhältst du per E-Mail eine Tracking-Nummer. Damit kannst du die Lieferung live verfolgen.</p>
+
+      <h3>Lieferschäden & Verlust</h3>
+      <p>Falls das Paket beschädigt oder verloren geht, kümmere ich mich um die Reklamation beim Versender. Bitte kontaktiere mich innerhalb von 3 Tagen nach Lieferdatum.</p>
+      <p>Ich ersetze beschädigte oder verlorene Ware kostenlos oder erstatte ich den Kaufpreis.</p>
+
+      <h3>Abholung (Stuttgart)</h3>
+      <p>Abholung nach vorheriger Terminabsprache ist möglich. Bitte wende dich per WhatsApp oder E-Mail an mich, um einen Termin zu vereinbaren.</p>
+    </div>
+
+    <div class="imp-section">
+      <h2>6. Preisangaben & Steuern</h2>
+      <p>Alle Preise sind <strong>Netto-Endpreise</strong> (ohne Mehrwertsteuer).</p>
+      <p>Gemäß <strong>§19 Abs. 1 UStG</strong> (Kleinunternehmerregelung) wird keine Umsatzsteuer berechnet. Dies wird auf deiner Rechnung ausgewiesen.</p>
+      <p>Versandkosten werden separat berechnet.</p>
+    </div>
+
+    <div class="imp-section">
+      <h2>7. Produktbeschreibungen & Haftung</h2>
+      <h3>Beschaffenheit der Ware</h3>
+      <p>Filament wird zu Lagerungsbedingungen (Temperatur 18–25°C, Luftfeuchte 40–60%) geprüft vor dem Versand.</p>
+      <p>Materialfehler oder Abweichungen von der Beschreibung kannst du innerhalb von 2 Jahren nach Lieferdatum reklamieren. Je früher du einen Mangel meldest, desto besser können wir ihn beheben. Bitte teile mir Fotos mit.</p>
+
+      <h3>Farbabweichungen</h3>
+      <p>Filamentfarben können aufgrund unterschiedlicher Displayeinstellungen und Lichtverhältnisse abweichen. Muster können angefordert werden.</p>
+
+      <h3>Haftungsausschluss</h3>
+      <p>Ich hafte nicht für:</p>
+      <ul>
+        <li>Schäden durch falsche Lagerung (Feuchtigkeit, Hitze, UV-Licht) nach Lieferdatum</li>
+        <li>Druckfehler oder Qualitätsprobleme, die durch falschen Drucker-Einsatz entstehen</li>
+        <li>Transportschäden von Außenseite des Pakets (Versicherer haftet)</li>
+        <li>Ausfallzeiten oder entgangene Gewinne</li>
+      </ul>
+    </div>
+
+    <div class="imp-section">
+      <h2>8. Datenschutz & Cookies</h2>
+      <p>Deine Bestelldaten (Name, Adresse, E-Mail) werden zur Abwicklung der Bestellung und für den Versand gespeichert. Weitere Informationen findest du in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      <p><strong>Diese Website verwendet keine Cookies und kein Tracking.</strong> Alle Schriftarten werden lokal von unserem Server geladen.</p>
+    </div>
+
+    <div class="imp-section">
+      <h2>9. Verpackungsregister & Nachhaltigkeit</h2>
+      <p>Filament Stuttgart ist im Verpackungsregister (LUCID) angemeldet und nutzt einen Dualen System Betreiber (Reclay) zur Finanzierung der Rücknahme und des Recyclings von Verpackungen.</p>
+      <p>Alle Versandmaterialien sind recycelbar. Bitte trenne Papiermaterialien von Kunststofffolien.</p>
+    </div>
+
+    <div class="imp-section">
+      <h2>10. Änderungen dieser AGB</h2>
+      <p>Bestellungen werden nach den AGB abgewickelt, die zum Zeitpunkt deiner Bestellung gültig waren.</p>
+    </div>
+
+    <div class="imp-section">
+      <h2>11. Kontakt & Rechtliches</h2>
+      <p><strong>Ansprechpartner:</strong><br>
+      Lorenz Hohn<br>
+      Marsweg 4<br>
+      70565 Stuttgart-Rohr<br>
+      E-Mail: <a href="mailto:filament.gewerblich@web.de">filament.gewerblich@web.de</a><br>
+      WhatsApp: <a href="https://wa.me/4915206985806">+49 1520 698580649</a></p>
+
+      <p><strong>Gültig seit:</strong> Januar 2026</p>
+      <p>Es gilt das Recht der Bundesrepublik Deutschland.</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 FilamentShop &mdash;
+  <a href="kontakt.html">Kontakt</a> &mdash;
+  <a href="impressum.html">Impressum</a> &mdash;
+  <a href="datenschutz.html">Datenschutz</a> &mdash;
+  <a href="agb.html">AGB</a>
+</footer>
+
+</body>
+</html>

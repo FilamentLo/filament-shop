@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VYXFSQR5D1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VYXFSQR5D1');
-</script>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>3D Filament Stuttgart kaufen | PLA, PETG, TPU, Silk - FilamentShop</title>
 <meta name="description" content="Hochwertiges 3D Druck Filament in Stuttgart kaufen. PLA, PETG, TPU, ABS+, Silk, Carbon Fiber, Glow in the Dark. Große Farbauswahl, Abholung Stuttgart-Vaihingen oder Versand deutschlandweit. Kompatibel mit Bambu Lab, Prusa, Ender.">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Syne';
+    src: url('fonts/syne-400.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Syne';
+    src: url('fonts/syne-500.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Syne';
+    src: url('fonts/syne-600.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Syne';
+    src: url('fonts/syne-700.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Syne';
+    src: url('fonts/syne-800.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('fonts/dm-sans-300.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('fonts/dm-sans-400.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('fonts/dm-sans-500.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+  }
+</style>
 <style>
   :root {
     --bg:#F2EFE9; --surface:#FAFAF8; --card:#fff; --border:#DDD9D0;
@@ -43,6 +84,12 @@
   .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:0.9rem 1.75rem;border-radius:var(--radius-sm);text-decoration:none;font-weight:500;font-size:0.95rem;transition:background 0.2s}
   .btn-ghost:hover{background:rgba(255,255,255,0.15)}
 
+  /* Technische Anfrage Buttons */
+  .tech-btn-whatsapp{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:0.8rem 1.5rem;border-radius:var(--radius-sm);text-decoration:none;font-weight:600;font-size:0.9rem;transition:filter 0.2s;border:none;cursor:pointer}
+  .tech-btn-whatsapp:hover{filter:brightness(1.1)}
+  .tech-btn-email{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:2px solid var(--accent);color:var(--accent);padding:0.8rem 1.5rem;border-radius:var(--radius-sm);text-decoration:none;font-weight:600;font-size:0.9rem;transition:all 0.2s;cursor:pointer}
+  .tech-btn-email:hover{background:var(--accent);color:#fff}
+
   /* PHOTO STRIP */
   .photo-strip{max-width:1000px;margin:-4.5rem auto 0;padding:0 1.5rem;position:relative;z-index:2}
   .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;height:320px}
@@ -65,7 +112,7 @@
   .material-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;transition:border-color 0.2s, transform 0.2s}
   .material-card:hover{border-color:var(--accent);transform:translateY(-2px)}
   .material-card .price{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--accent)}
-  .material-card .name{font-weight:600;font-size:0.95rem;margin:0.3rem 0 0.3rem}
+  .material-card .name{font-weight:600;font-size:0.95rem;margin:0.3rem 0 0.3rem;color:var(--accent)}
   .material-card .desc{font-size:0.8rem;color:var(--text-muted);line-height:1.5}
 
   /* WARUM WIR */
@@ -90,6 +137,17 @@
     .why-grid{grid-template-columns:1fr}
   }
   @media(max-width:480px){.material-grid{grid-template-columns:1fr}}
+
+  /* Cookie Banner */
+  .cookie-banner{position:fixed;bottom:0;left:0;right:0;background:#1A1815;color:#fff;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;z-index:9999;border-top:1px solid #2B5EE8;font-size:0.9rem}
+  .cookie-banner.hidden{display:none}
+  .cookie-banner-text{flex:1}
+  .cookie-banner-text a{color:#7BA4FF;text-decoration:none}
+  .cookie-banner-buttons{display:flex;gap:1rem}
+  .cookie-btn{padding:0.65rem 1.5rem;border:none;border-radius:8px;font-size:0.9rem;cursor:pointer;font-weight:500}
+  .cookie-accept{background:#2B5EE8;color:#fff}
+  .cookie-decline{background:transparent;color:#7BA4FF;border:1.5px solid #2B5EE8}
+  @media(max-width:768px){.cookie-banner{flex-direction:column}.cookie-banner-buttons{width:100%}.cookie-btn{flex:1}}
 </style>
 </head>
 <body>
@@ -133,57 +191,89 @@
      mit genau diesen Dateinamen (oder passe die Namen unten an) -->
 <div class="photo-strip">
   <div class="photo-grid">
-    <img src="fotos/lager-uebersicht.jpeg" alt="Großes Filament-Lager mit hunderten Geeetech Filamentrollen in Stuttgart">
-    <img src="fotos/farbauswahl.jpeg" alt="Bunte Geeetech Filamentrollen in vielen Farben">
+    <img src="produkte/lager-uebersicht.jpeg" alt="Großes Filament-Lager mit hunderten Geeetech Filamentrollen in Stuttgart">
+    <img src="produkte/farbauswahl.jpeg" alt="Bunte Geeetech Filamentrollen in vielen Farben">
   </div>
 </div>
 
 <!-- PDF-DOWNLOAD: lade deine Preisliste als "preisliste.pdf" in denselben Ordner
      wie diese HTML-Datei hoch (genau wie bei bestand.csv) -->
-<div class="pdf-download-bar">
+<!-- PDF & KONFIGURATOR BUTTONS -->
+<div class="pdf-download-bar" style="display:flex;justify-content:center;gap:1.5rem;margin-top:3rem;margin-bottom:4rem;padding:0;flex-wrap:wrap">
   <a href="bestandsliste.pdf" target="_blank" class="btn-pdf">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
     Bestandsliste als PDF herunterladen
   </a>
+  <a href="filament-konfigurator.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:0.8rem 1.8rem;border-radius:var(--radius-sm);text-decoration:none;font-weight:600;font-size:0.95rem;transition:filter 0.2s;border:none;cursor:pointer">
+    ⚙️ Konfigurator
+  </a>
+</div>
+
+<!-- TECHNISCHE FILAMENTE INFO-CARD -->
+<div style="max-width:1000px;margin:2.5rem auto 0;padding:0 1.5rem">
+  <div style="background:var(--card);border:2px solid #000;border-radius:var(--radius);padding:2rem;text-align:left;display:flex;gap:2rem;align-items:flex-start">
+    <div style="flex:1">
+      <h3 style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--accent);margin-bottom:0.5rem">Technisches Filament verfügbar</h3>
+      <p style="font-size:0.9rem;color:var(--text);line-height:1.6;margin-bottom:0.5rem">
+        Spezialmaterialien für Funktionsteile und anspruchsvolle<br>Anwendungen, regional bezogen:
+      </p>
+      <ul style="font-size:0.9rem;color:var(--text);line-height:1.8;margin:0 0 1.5rem 0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0.3rem 1.5rem">
+        <li>✓ ABS CF</li>
+        <li>✓ PPS CF</li>
+        <li>✓ ASA CF</li>
+        <li>✓ PPA CF</li>
+        <li>✓ PET CF</li>
+      </ul>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="https://wa.me/4915206985806?text=Hallo,%20ich%20bin%20interessiert%20an%20technischem%20Filament.%20Welche%20Optionen%20und%20Preise%20habt%20ihr?" style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:2px solid var(--accent);color:var(--accent);padding:0.7rem 1.3rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.85rem;transition:all 0.2s;cursor:pointer">
+          💬 WhatsApp
+        </a>
+        <a href="mailto:filament.gewerblich@web.de?subject=Anfrage:%20Technische%20Filamente&body=Hallo,%0A%0Aich%20bin%20interessiert%20an%20technischem%20Filament.%20Welche%20Optionen%20und%20Preise%20habt%20ihr?" class="tech-btn-email">
+          📧 E-Mail
+        </a>
+      </div>
+    </div>
+    <div style="flex-shrink:0">
+      <img src="produkte/technisches-filament.jpeg" alt="Technisches Filament - Carbon Fiber und High-Temp Materialien" style="width:320px;height:250px;border-radius:var(--radius-sm);object-fit:contain;display:block">
+    </div>
+  </div>
 </div>
 
 <div class="page">
 
   <div class="section-head">
-    <span class="eyebrow">Sortiment</span>
-    <h2>Filament für jedes Projekt</h2>
+    <span class="eyebrow">Filament</span>
+    <h2>Für jedes Projekt die richtige Wahl</h2>
   </div>
 
   <div class="material-grid">
     <div class="material-card">
-      <div class="price">12 €</div>
-      <div class="name">PLA & PETG</div>
-      <div class="desc">Standardmaterial, ideal für Einsteiger und alltägliche Drucke.</div>
+      <div class="name" style="color:#2B5EE8">PLA, PLA Matt & PETG</div>
+      <div class="desc">Klassische Standardmaterialien für Einsteiger und alltägliche Drucke. Große Farbauswahl, einfach zu drucken.</div>
     </div>
     <div class="material-card">
-      <div class="price">13 €</div>
-      <div class="name">ABS+ & TPU</div>
-      <div class="desc">Robust und flexibel – für Funktionsteile und belastbare Drucke.</div>
+      <div class="name" style="color:#2E7D32">PLA Wood, Marmor & Glow</div>
+      <div class="desc">Dekorative Effekt-Materialien. PLA Wood (Holz-Look), Marmor (Stein-Optik), Glow in the Dark (leuchtet).</div>
     </div>
     <div class="material-card">
-      <div class="price">14 €</div>
-      <div class="name">PLA Matt & Silk</div>
-      <div class="desc">Seidiger Glanz, einfarbig, zweifarbig oder dreifarbig erhältlich.</div>
+      <div class="name" style="color:#C2185B">PLA Silk</div>
+      <div class="desc">Seidiger Glanz mit edlem Look. Einfarbig, zweifarbig oder dreifarbig erhältlich.</div>
     </div>
     <div class="material-card">
-      <div class="price">15 €</div>
-      <div class="name">PLA Marmor</div>
-      <div class="desc">Marmor-Optik für besondere Druckergebnisse mit Stein-Look.</div>
+      <div class="name" style="color:#F57C00">TPU (Flexibel)</div>
+      <div class="desc">Elastisch und robust – für flexible Teile, Dichtungen, Griffe und bewegliche Komponenten.</div>
     </div>
     <div class="material-card">
-      <div class="price">18 €</div>
-      <div class="name">Glow in the Dark</div>
-      <div class="desc">Leuchtet im Dunkeln – ideal für Deko und besondere Effekte.</div>
+      <div class="name" style="color:#7B1FA2">ABS+ & ASA</div>
+      <div class="desc">Wärmestabil und robust. ASA zusätzlich UV- und wetterbeständig für Außenanwendungen.</div>
     </div>
     <div class="material-card">
-      <div class="price">19 €</div>
-      <div class="name">PLA CF & PETG CF</div>
-      <div class="desc">Carbon-Fiber-Anteil für maximale Steifigkeit und Stabilität.</div>
+      <div class="name" style="color:#1A237E">PLA CF & PETG CF</div>
+      <div class="desc">Carbon-Fiber-verstärkt für maximale Steifigkeit, minimales Gewicht und hohe Stabilität.</div>
+    </div>
+    <div class="material-card" style="background:var(--card)">
+      <div class="name" style="color:var(--accent)">Technische Filamente</div>
+      <div class="desc" style="color:var(--text)">ABS CF, ASA CF, PET CF, PPS CF, PPA CF – Speziallegierungen für extreme Anforderungen. Auf Anfrage verfügbar – schreib mir! 💬</div>
     </div>
   </div>
 
@@ -222,7 +312,8 @@
   &copy; 2026 FilamentShop &mdash;
   <a href="kontakt.html">Kontakt</a> &mdash;
   <a href="impressum.html">Impressum</a> &mdash;
-  <a href="datenschutz.html">Datenschutz</a>
+  <a href="datenschutz.html">Datenschutz</a> &mdash;
+  <a href="agb.html">AGB</a>
 </footer>
 
 </body>

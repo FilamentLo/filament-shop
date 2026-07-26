@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VYXFSQR5D1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VYXFSQR5D1');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Filament Shop – Impressum</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+  /* ═══════════════════════════════════════════════════════════
+     LOKALE SCHRIFTARTEN (@font-face)
+     Fonts werden von deinem Server geladen, nicht von Google!
+     ═════════════════════════════════════════════════════════ */
+  @font-face {
+    font-family: 'Syne';
+    src: url('fonts/syne-400.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Syne';
+    src: url('fonts/syne-600.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Syne';
+    src: url('fonts/syne-700.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('fonts/dm-sans-400.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('fonts/dm-sans-500.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+  }
   :root {
     --bg:#F2EFE9; --surface:#FAFAF8; --card:#fff; --border:#DDD9D0;
     --text:#1A1815; --text-muted:#7A7570; --accent:#2B5EE8;
     --radius:12px; --radius-sm:8px;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+  body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
   header{background:var(--text);color:#fff;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
   .logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-0.02em}
@@ -50,11 +74,22 @@
 
   .notice{background:#FEF3C7;border:1px solid #FCD34D;border-radius:var(--radius-sm);padding:10px 14px;font-size:0.8rem;color:#92400E;margin-bottom:1.5rem;line-height:1.5}
 
-  .btn-back{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.65rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--text-muted);text-decoration:none;transition:all 0.18s;margin-bottom:1.5rem}
+  .btn-back{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.65rem 1.25rem;font-family:'Syne',sans-serif;font-size:0.9rem;color:var(--text-muted);text-decoration:none;transition:all 0.18s;margin-bottom:1.5rem}
   .btn-back:hover{border-color:#B8B3A8;color:var(--text)}
 
   footer{background:var(--text);color:rgba(255,255,255,0.45);text-align:center;padding:1.5rem;font-size:0.8rem}
   footer a{color:rgba(255,255,255,0.6);text-decoration:none}
+
+  /* Cookie Banner */
+  .cookie-banner{position:fixed;bottom:0;left:0;right:0;background:#1A1815;color:#fff;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;z-index:9999;border-top:1px solid #2B5EE8;font-size:0.9rem}
+  .cookie-banner.hidden{display:none}
+  .cookie-banner-text{flex:1}
+  .cookie-banner-text a{color:#7BA4FF;text-decoration:none}
+  .cookie-banner-buttons{display:flex;gap:1rem}
+  .cookie-btn{padding:0.65rem 1.5rem;border:none;border-radius:8px;font-size:0.9rem;cursor:pointer;font-weight:500}
+  .cookie-accept{background:#2B5EE8;color:#fff}
+  .cookie-decline{background:transparent;color:#7BA4FF;border:1.5px solid #2B5EE8}
+  @media(max-width:768px){.cookie-banner{flex-direction:column}.cookie-banner-buttons{width:100%}.cookie-btn{flex:1}}
 </style>
 </head>
 <body>
@@ -96,7 +131,7 @@
   <div class="imp-card">
 
     <div class="imp-section">
-      <h2>Angaben gemäß § 5 TMG</h2>  <!-- Pflichtangaben – alle ausfüllen! -->
+      <h2>Angaben gemäß § 5 DDG</h2>  <!-- Pflichtangaben – alle ausfüllen! -->
       <!-- ↓ Deinen vollständigen Namen eintragen -->
       <p><strong>Lorenz Hohn</strong></p>
       <!-- ↓ Deine vollständige Adresse eintragen -->
@@ -123,7 +158,7 @@
     </div>
 
     <div class="imp-section">
-      <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
       <!-- ↓ Gleiche Angaben wie oben -->
       <p>
         <span><strong>Lorenz Hohn</strong></span><br>
@@ -133,11 +168,7 @@
     </div>
 
     <div class="imp-section">
-      <h2>Streitschlichtung</h2>
-      <p>
-        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-        <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a>
-      </p>
+      <h2>Verbraucherstreitbeilegung</h2>
       <p>
         Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
         Verbraucherschlichtungsstelle teilzunehmen.
@@ -147,11 +178,11 @@
     <div class="imp-section">
       <h2>Haftung für Inhalte</h2>
       <p>
-        Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten
-        nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
-        Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
-        Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
-        Tätigkeit hinweisen.
+        Als Diensteanbieter sind wir nicht verpflichtet, übermittelte oder gespeicherte fremde 
+        Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige 
+        Tätigkeit hinweisen. Unsere Verantwortung für Inhalte auf dieser Website richtet sich 
+        nach den geltenden Gesetzen, insbesondere dem Digitale-Dienste-Gesetz (DDG) und der 
+        EU-Verordnung über digitale Dienste (Digital Services Act / DSA).
       </p>
     </div>
 
@@ -179,8 +210,11 @@
 </div>
 
 <footer>
-  &copy; 2025 FilamentShop &mdash;
+  &copy; 2026 FilamentShop &mdash;
   <a href="kontakt.html">Kontakt</a> &mdash;
   <a href="impressum.html">Impressum</a> &mdash;
-  <a href="datenschutz.html">Datenschutz</a>
+  <a href="datenschutz.html">Datenschutz</a> &mdash;
+  <a href="agb.html">AGB</a>
 </footer>
+</body>
+</html>

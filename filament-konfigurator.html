@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VYXFSQR5D1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VYXFSQR5D1');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -18,8 +9,8 @@
      ════════════════════════════════════════════════════════════════ -->
 <title>Filament Shop – Konfigurator</title>
 
-<!-- Schriftarten von Google – bei Bedarf auf fonts.google.com andere wählen -->
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+
 
 <style>
 /* ════════════════════════════════════════════════════════════════
@@ -243,6 +234,17 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
   .color-selector{flex-direction:column}
   .color-preview-box{height:160px}
 }
+
+  /* Cookie Banner */
+  .cookie-banner{position:fixed;bottom:0;left:0;right:0;background:#1A1815;color:#fff;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;z-index:9999;border-top:1px solid #2B5EE8;font-size:0.9rem}
+  .cookie-banner.hidden{display:none}
+  .cookie-banner-text{flex:1}
+  .cookie-banner-text a{color:#7BA4FF;text-decoration:none}
+  .cookie-banner-buttons{display:flex;gap:1rem}
+  .cookie-btn{padding:0.65rem 1.5rem;border:none;border-radius:8px;font-size:0.9rem;cursor:pointer;font-weight:500}
+  .cookie-accept{background:#2B5EE8;color:#fff}
+  .cookie-decline{background:transparent;color:#7BA4FF;border:1.5px solid #2B5EE8}
+  @media(max-width:768px){.cookie-banner{flex-direction:column}.cookie-banner-buttons{width:100%}.cookie-btn{flex:1}}
 </style>
 </head>
 <body>
@@ -386,19 +388,56 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
 </div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     INFO-KARTEN (drei Karten unter dem Konfigurator)
-     → Icon (Emoji), Titel und Text hier direkt ändern
+     PDF-DOWNLOAD
      ════════════════════════════════════════════════════════════════ -->
-<div class="info-section">
-  <div class="info-grid">
+<div style="display:flex;justify-content:center;margin-top:3rem">
+  <a href="bestandsliste.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1.5rem;text-decoration:none;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;color:var(--text);transition:all 0.18s">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+    Bestandsliste als PDF herunterladen
+  </a>
+</div>
+
+<!-- TECHNISCHE FILAMENTE INFO-CARD -->
+<div style="max-width:920px;margin:4.5rem auto 0;padding:0 1.5rem">
+  <div style="background:var(--card);border:2px solid #000;border-radius:12px;padding:1.5rem;text-align:left;display:flex;gap:2rem;align-items:flex-start">
+    <div style="flex:1">
+      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#2B5EE8;margin-bottom:0.4rem">Technisches Filament verfügbar</h3>
+      <p style="font-size:0.85rem;color:#1A1815;line-height:1.6;margin-bottom:0.8rem">
+        Spezialmaterialien für Funktionsteile und anspruchsvolle Anwendungen, regional bezogen:
+      </p>
+      <ul style="font-size:0.85rem;color:#1A1815;line-height:1.7;margin:0 0 1rem 1.5rem;list-style:none">
+        <li>✓ ABS CF</li>
+        <li>✓ ASA CF</li>
+        <li>✓ PET CF</li>
+        <li>✓ PPS CF</li>
+        <li>✓ PPA CF</li>
+      </ul>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="https://wa.me/4915206985806?text=Hallo,%20ich%20bin%20interessiert%20an%20technischem%20Filament.%20Welche%20Optionen%20und%20Preise%20habt%20ihr?" style="display:inline-flex;align-items:center;gap:8px;background:#2B5EE8;color:#fff;padding:0.7rem 1.3rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.85rem;transition:filter 0.2s;border:none;cursor:pointer">
+          💬 WhatsApp
+        </a>
+        <a href="mailto:filament.gewerblich@web.de?subject=Anfrage:%20Technische%20Filamente&body=Hallo,%0A%0Aich%20bin%20interessiert%20an%20technischem%20Filament.%20Welche%20Optionen%20und%20Preise%20habt%20ihr?" style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:2px solid #2B5EE8;color:#2B5EE8;padding:0.7rem 1.3rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.85rem;transition:all 0.2s;cursor:pointer">
+          📧 E-Mail
+        </a>
+      </div>
+    </div>
+    <div style="flex-shrink:0">
+      <img src="produkte/technisches-filament.jpeg" alt="Technisches Filament - Carbon Fiber und High-Temp Materialien" style="width:380px;height:280px;border-radius:8px;object-fit:contain;display:block">
+    </div>
+  </div>
+</div>
+
+<!-- 3 INFO-KACHELN (am Ende, vor Footer) -->
+<div style="max-width:920px;margin:4.5rem auto 6rem;padding:0 1.5rem">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem">
     <div class="info-card">
       <div class="info-icon">📦</div>
-      <div class="info-title">Schneller Versand</div>                   <!-- ← Titel -->
-      <div class="info-text">Alle Bestellungen werden innerhalb von 1–2 Werktagen versendet.</div>  <!-- ← Text -->
+      <div class="info-title">Schneller Versand</div>
+      <div class="info-text">Alle Bestellungen werden innerhalb von 1–2 Werktagen versandt</div>
     </div>
     <div class="info-card">
       <div class="info-icon">🎨</div>
-      <div class="info-title">Gro&szlig;e Farbauswahl</div>
+      <div class="info-title">Große Farbauswahl</div>
       <div class="info-text">Viele Farben von Colido und Geetech – für jeden 3D-Druck das Richtige.</div>
     </div>
     <div class="info-card">
@@ -407,42 +446,10 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
       <div class="info-text">Warenkorb zusammenstellen und per WhatsApp oder E-Mail anfragen.</div>
     </div>
   </div>
-  <!-- PDF-DOWNLOAD: lade deine Preisliste als "preisliste.pdf" in denselben
-       Ordner wie diese HTML-Datei hoch (genau wie bei bestand.csv) -->
-  <div style="display:flex;justify-content:center;margin-top:1.25rem">
-    <a href="bestandsliste.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1.5rem;text-decoration:none;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;color:var(--text);transition:all 0.18s">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
-      Bestandsliste als PDF herunterladen
-    </a>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     CSV-UPLOAD (Bestand aktualisieren)
-     Nur nach Passwort-Eingabe sichtbar.
-     CSV-Format: gleiche Spaltenreihenfolge wie deine Originaldatei,
-     Trennzeichen Semikolon, Encoding latin-1.
-     ════════════════════════════════════════════════════════════════ -->
-<div class="csv-bar">
-  <div class="csv-box" id="csvLockBox">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--text-muted);flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    <label style="font-size:0.85rem;color:var(--text-muted)">Bestand aktualisieren (nur für Shopbetreiber)</label>
-    <input type="password" id="csvPassword" placeholder="Passwort eingeben" style="font-size:0.85rem;padding:5px 10px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;width:200px" onkeydown="if(event.key==='Enter')checkCsvPassword()">
-    <button onclick="checkCsvPassword()" style="padding:5px 14px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.85rem;cursor:pointer">Entsperren</button>
-    <span class="csv-status err" id="csvWrongPw" style="display:none">Falsches Passwort.</span>
-  </div>
-  <div class="csv-box" id="csvUploadBox" style="display:none">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--success);flex-shrink:0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-    <label style="font-size:0.85rem;color:var(--text-muted)">CSV hochladen um Lagerstand zu aktualisieren:</label>
-    <input type="file" accept=".csv" onchange="loadCSV(this)">
-    <span class="csv-status" id="csvStatus"></span>
-    <button onclick="lockCsv()" style="padding:5px 10px;background:none;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.8rem;color:var(--text-muted);cursor:pointer;margin-left:auto">Sperren</button>
-  </div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════════════
      FOOTER
-     → Jahr und Shop-Name anpassen
      → Links zu Kontakt, Impressum, Datenschutz sind bereits gesetzt
      ════════════════════════════════════════════════════════════════ -->
 <footer>
