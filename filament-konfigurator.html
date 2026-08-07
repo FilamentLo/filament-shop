@@ -508,12 +508,14 @@ const WHATSAPP_NR  = '4915206985806';           // ← HIER ANPASSEN
 /*
   'PLA':      12,   // ← PLA Preis
   'PETG':     12,   // ← PETG Preis
-  'ABS':      12,   // ← ABS Preis
+  'ABS':      13,   // ← ABS Preis
+  'ASA':      15,   // ← ASA Preis
   'TPU':      13,   // ← TPU Preis
   'PLA Silk': 14,   // ← PLA Silk Preis
   'PLA Matt': 14,   // ← PLA Matt Preis
   'PLA CF':   19,   // ← PLA CF Preis
   'PETG CF':  19,   // ← PETG CF Preis
+  'ASA' : 15,       // ← ASA Preis
 };
 */
 
@@ -530,6 +532,7 @@ const PREISE = {
   'PLA Holz':   { 'Geetech': 15 },
   'PLA Marmor': { 'Geetech': 15 },
   'PLA Glow': { 'Geetech': 18 },  // ← Preis anpassen
+  'ASA':  { 'Geetech': 15 },
 };
 /*function getPreis(mat) { return PREISE[mat] || 12; }*/
 function getPreis(mat, her) {
@@ -572,6 +575,7 @@ const matInfo = {
   'PETG HS Matt': { desc: 'High Speed Matt, ', detail: 'Schnell druckbar, mattes Finish.', special: true },
   'TPU':      { desc: 'Flexibel & weich',     detail: 'Gummiartig und stoßfest. Perfekt für Schutzhüllen und biegsame Teile.' },
   'ABS':      { desc: 'Hitzebeständig',       detail: 'Temperaturbeständig bis ca. 100 °C. Für technische Bauteile.' },
+  'ASA':      { desc: 'Hitzebeständiger als ABS',       detail: 'Temperaturbeständig bis ca. 120 °C. UV-resistent. Für technische Bauteile.' },
   'PLA Silk': { desc: 'Seidiger Glanz',       detail: 'Wie PLA, aber mit beeindruckendem Seidenglanz-Effekt.' },
   'PLA Matt': { desc: 'Mattes Finish',   detail: 'Edles, lichtreflexionsarmes Finish für Präsentationsmodelle.'},
   'PLA CF':   { desc: 'Carbon Fiber',   detail: 'Extrem steif durch Carbonfaser. Nur Colido.', special: true },
@@ -605,7 +609,7 @@ const COLOR_HEX = {
 };
 
 /* Zuordnung CSV-Materialname → Anzeigename (nicht ändern!) */
-const MAT_MAP = {'PLA':'PLA','PETG':'PETG','PETG HS Matt': 'PETG HS Matt','TPU':'TPU','ABS':'ABS','SILK PLA':'PLA Silk','PLA matt':'PLA Matt','PLA CF':'PLA CF','PETG CF':'PETG CF','PLA Holz':'PLA Holz', 'PLA Marmor':'PLA Marmor', 'PLA Glow':'PLA Glow'};
+const MAT_MAP = {'PLA':'PLA','PETG':'PETG','PETG HS Matt': 'PETG HS Matt','TPU':'TPU','ABS':'ABS','ASA':'ASA','SILK PLA':'PLA Silk','PLA matt':'PLA Matt','PLA CF':'PLA CF','PETG CF':'PETG CF','PLA Holz':'PLA Holz', 'PLA Marmor':'PLA Marmor', 'PLA Glow':'PLA Glow'};
 
 /* ════════════════════════════════════════════════════════════════
    INVENTAR (Lagerbestand)
