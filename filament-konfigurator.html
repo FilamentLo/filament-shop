@@ -135,9 +135,9 @@ nav a:hover{color:#fff}
 .color-preview-wrap{flex:1}
 /* Vorschau-Box: Foto belegt rechte 55%, Farbe linke 45%
    → Breite des Fotos ändern: width:55% bei .color-preview-img */
-.color-preview-box{width:100%;height:300px;border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;position:relative;background:var(--surface)}
+.color-preview-box{width:100%;aspect-ratio:1/1;border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;position:relative;background:var(--surface)}
 .color-preview-swatch{position:absolute;inset:0;transition:background 0.3s;width:100%}
-.color-preview-img{position:absolute;top:0;right:0;width:55%;height:100%;object-fit:cover;display:none;border-radius:0 var(--radius) var(--radius) 0}
+.color-preview-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:none;border-radius:var(--radius)}
 .color-preview-label{position:absolute;bottom:10px;left:12px;background:rgba(0,0,0,0.55);color:#fff;font-size:0.8rem;font-weight:500;padding:4px 10px;border-radius:100px}
 .color-preview-qty{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.55);color:#fff;font-size:0.72rem;padding:3px 8px;border-radius:100px}
 .color-preview-empty{color:var(--text-muted);font-size:0.85rem;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
@@ -576,6 +576,7 @@ const matInfo = {
   'TPU':      { desc: 'Flexibel & weich',     detail: 'Gummiartig und stoßfest. Perfekt für Schutzhüllen und biegsame Teile.' },
   'ABS':      { desc: 'Hitzebeständig',       detail: 'Temperaturbeständig bis ca. 100 °C. Für technische Bauteile.' },
   'ASA':      { desc: 'Hitzebeständiger als ABS',       detail: 'Temperaturbeständig bis ca. 120 °C. UV-resistent. Für technische Bauteile.' },
+  'ASA':      { desc: 'Hitzebeständiger als ABS',       detail: 'Temperaturbeständig bis ca. 120 °C. Für technische Bauteile.' },
   'PLA Silk': { desc: 'Seidiger Glanz',       detail: 'Wie PLA, aber mit beeindruckendem Seidenglanz-Effekt.' },
   'PLA Matt': { desc: 'Mattes Finish',   detail: 'Edles, lichtreflexionsarmes Finish für Präsentationsmodelle.'},
   'PLA CF':   { desc: 'Carbon Fiber',   detail: 'Extrem steif durch Carbonfaser. Nur Colido.', special: true },
@@ -592,20 +593,55 @@ const matInfo = {
    'farbname': '#HEXCODE',
    ════════════════════════════════════════════════════════════════ */
 const COLOR_HEX = {
-  'weiß':'#F5F5F0','schwarz':'#1A1A1A','rot':'#C62828','gelb':'#F9A825',
-  'grün':'#3fcf42','grass grün':'#4CAF50','apfel grün':'#8BC34A','mint grün':'#80CBC4',
-  'light green':'#A5D6A7','lake green':'#26A69A','army green':'#558B2F',
-  'orange':'#E65100','blau':'#1565C0','hellblau':'#29B6F6','hell blau':'#29B6F6',
-  'fuchsia':'#AD1457','lila':'#7B1FA2','pink':'#E91E63','sakura pink':'#F48FB1',
-  'grau':'#9E9E9E','dunkel grau':'#616161','braun':'#6D4C41','transparent':'#DCF0F7',
-  'silber':'#B0BEC5','regenbogen farbe':'#9B59B6','sand gold':'#C8A96E',
-  'gold':'#D4AF37','skin':'#FFCC99','beige':'#F5DEB3','transparent blau':'#90CAF9',
-  'transparent rot':'#EF9A9A','transparent gelb':'#FFF59D','transparent grün':'#A5D6A7',
-  'bone white':'#F5F0E8','cf schwarz':'#111111','navy blue':'#1A237E',
-  'bronze':'#8C6D39','metallic braun':'#795548','metallic grün':'#388E3C',
-  'metallic pink':'#F06292','cosmi':'#311B92','wood':'#8D6E63','cyan':'#00BCD4',
-  'kupfer':'#B87333','hautfarben':'#FFCC99','oliven grün':'#827717',
-  'stein grau':'#78909C','transparent orange':'#FFCC80','gold + schwarz': '#8B6914',
+  'weiß':{'Geetech':'#F5F5F0','Colido':'#FAFAFA','Sunlu':'#F5F5F0','Jayoo':'#F5F5F0','default':'#F5F5F0'},
+  'schwarz':{'Geetech':'#1A1A1A','Colido':'#0D0D0D','Sunlu':'#1A1A1A','Jayoo':'#1A1A1A','default':'#1A1A1A'},
+  'rot':{'Geetech':'#C62828','Colido':'#D32F2F','Sunlu':'#C62828','Jayoo':'#C62828','default':'#C62828'},
+  'gelb':{'Geetech':'#F9A825','Colido':'#FBC02D','Sunlu':'#F9A825','Jayoo':'#F9A825','default':'#F9A825'},
+  'grün':{'Geetech':'#2E7D32','Colido':'#388E3C','Sunlu':'#2E7D32','Jayoo':'#2E7D32','default':'#2E7D32'},
+  'grass grün':{'Geetech':'#4CAF50','Colido':'#66BB6A','default':'#4CAF50'},
+  'apfel grün':{'Geetech':'#8BC34A','Colido':'#9CCC65','default':'#8BC34A'},
+  'mint grün':{'Geetech':'#80CBC4','Colido':'#4DB6AC','default':'#80CBC4'},
+  'light green':{'Geetech':'#A5D6A7','Colido':'#81C784','default':'#A5D6A7'},
+  'lake green':{'Geetech':'#26A69A','Colido':'#009688','default':'#26A69A'},
+  'army green':{'Geetech':'#558B2F','Colido':'#558B2F','default':'#558B2F'},
+  'orange':{'Geetech':'#E65100','Colido':'#F57C00','default':'#E65100'},
+  'blau':{'Geetech':'#1565C0','Colido':'#29B6F6','Jayoo':'#1976D2','default':'#1565C0'},
+  'hellblau':{'Geetech':'#29B6F6','Colido':'#42A5F5','default':'#29B6F6'},
+  'hell blau':{'Geetech':'#29B6F6','Colido':'#42A5F5','default':'#29B6F6'},
+  'fuchsia':{'Geetech':'#AD1457','Colido':'#C2185B','default':'#AD1457'},
+  'lila':{'Geetech':'#7B1FA2','Colido':'#8E24AA','default':'#7B1FA2'},
+  'pink':{'Geetech':'#E91E63','Colido':'#E91E63','default':'#E91E63'},
+  'sakura pink':{'Geetech':'#F48FB1','Colido':'#F06292','default':'#F48FB1'},
+  'grau':{'Geetech':'#9E9E9E','Colido':'#A1A1A1','default':'#9E9E9E'},
+  'dunkel grau':{'Geetech':'#616161','Colido':'#757575','default':'#616161'},
+  'braun':{'Geetech':'#6D4C41','Colido':'#795548','default':'#6D4C41'},
+  'transparent':{'Geetech':'#DCF0F7','Colido':'#E1F5FE','default':'#DCF0F7'},
+  'silber':{'Geetech':'#B0BEC5','Colido':'#CFD8DC','default':'#B0BEC5'},
+  'regenbogen farbe':{'Geetech':'#9B59B6','Colido':'#9C27B0','default':'#9B59B6'},
+  'sand gold':{'Geetech':'#C8A96E','Colido':'#D7CCC8','default':'#C8A96E'},
+  'gold':{'Geetech':'#D4AF37','Colido':'#F9A825','default':'#D4AF37'},
+  'skin':{'Geetech':'#FFCC99','Colido':'#FFAB91','default':'#FFCC99'},
+  'beige':{'Geetech':'#F5DEB3','Colido':'#EFEBE9','default':'#F5DEB3'},
+  'transparent blau':{'Geetech':'#90CAF9','Colido':'#64B5F6','default':'#90CAF9'},
+  'transparent rot':{'Geetech':'#EF9A9A','Colido':'#EF5350','default':'#EF9A9A'},
+  'transparent gelb':{'Geetech':'#FFF59D','Colido':'#FFEE58','default':'#FFF59D'},
+  'transparent grün':{'Geetech':'#A5D6A7','Colido':'#81C784','default':'#A5D6A7'},
+  'bone white':{'Geetech':'#F5F0E8','Colido':'#FAF5ER','default':'#F5F0E8'},
+  'cf schwarz':{'Geetech':'#111111','Colido':'#000000','default':'#111111'},
+  'navy blue':{'Geetech':'#1A237E','Colido':'#0D47A1','default':'#1A237E'},
+  'bronze':{'Geetech':'#8C6D39','Colido':'#A1887F','default':'#8C6D39'},
+  'metallic braun':{'Geetech':'#795548','Colido':'#8D6E63','default':'#795548'},
+  'metallic grün':{'Geetech':'#388E3C','Colido':'#4CAF50','default':'#388E3C'},
+  'metallic pink':{'Geetech':'#F06292','Colido':'#EC407A','default':'#F06292'},
+  'cosmi':{'Geetech':'#311B92','Colido':'#4527A0','default':'#311B92'},
+  'wood':{'Geetech':'#8D6E63','Colido':'#A1887F','default':'#8D6E63'},
+  'cyan':{'Geetech':'#00BCD4','Colido':'#0097A7','default':'#00BCD4'},
+  'kupfer':{'Geetech':'#B87333','Colido':'#C8A96E','default':'#B87333'},
+  'hautfarben':{'Geetech':'#FFCC99','Colido':'#FFAB91','default':'#FFCC99'},
+  'oliven grün':{'Geetech':'#827717','Colido':'#9E9D24','default':'#827717'},
+  'stein grau':{'Geetech':'#78909C','Colido':'#90A4AE','default':'#78909C'},
+  'transparent orange':{'Geetech':'#FFCC80','Colido':'#FFB74D','default':'#FFCC80'},
+  'gold + schwarz':{'Geetech':'#8B6914','Colido':'#A1887F','default':'#8B6914'},
 };
 
 /* Zuordnung CSV-Materialname → Anzeigename (nicht ändern!) */
@@ -617,7 +653,7 @@ const MAT_MAP = {'PLA':'PLA','PETG':'PETG','PETG HS Matt': 'PETG HS Matt','TPU':
    Hier ist dein aktueller Stand bereits eingetragen.
    NICHT manuell bearbeiten – stattdessen CSV hochladen!
    ════════════════════════════════════════════════════════════════ */
-let inventory = {"PLA":{"Geetech":[{"name":"schwarz","hex":"#1A1A1A","qty":10,"sku":"GEE-PLA-SW"},{"name":"rot","hex":"#C62828","qty":12,"sku":"GEE-PLA-RO"},{"name":"gelb","hex":"#F9A825","qty":2,"sku":"GEE-PLA-GE"},{"name":"grün","hex":"#2E7D32","qty":10,"sku":"GEE-PLA-GRÜ"},{"name":"apfel grün","hex":"#8BC34A","qty":5,"sku":"GEE-PLA-AGRÜ"},{"name":"orange","hex":"#E65100","qty":8,"sku":"GEE-PLA-OR"},{"name":"blau","hex":"#1565C0","qty":1,"sku":"GEE-PLA-BL"},{"name":"hellblau","hex":"#29B6F6","qty":9,"sku":"GEE-PLA-HB"},{"name":"lila","hex":"#7B1FA2","qty":3,"sku":"GEE-PLA-LI"},{"name":"grau","hex":"#9E9E9E","qty":8,"sku":"GEE-PLA-GR"},{"name":"braun","hex":"#6D4C41","qty":3,"sku":"GEE-PLA-BR"},{"name":"transparent","hex":"#DCF0F7","qty":9,"sku":"GEE-PLA-TR"},{"name":"regenbogen farbe","hex":"#9B59B6","qty":7,"sku":"GEE-PLA-RG"},{"name":"sand gold","hex":"#C8A96E","qty":3,"sku":"GEE-PLA-SG"},{"name":"beige","hex":"#F5DEB3","qty":4,"sku":"GEE-PLA-BE"},{"name":"bone white","hex":"#F5F0E8","qty":4,"sku":"GEE-PLA-BW"}],"Colido":[{"name":"weiß","hex":"#F5F5F0","qty":4,"sku":"COL-PLA-WE"},{"name":"schwarz","hex":"#1A1A1A","qty":4,"sku":"COL-PLA-SW"},{"name":"gelb","hex":"#F9A825","qty":5,"sku":"COL-PLA-GE"},{"name":"grass grün","hex":"#4CAF50","qty":4,"sku":"COL-PLA-GGRÜ"},{"name":"mint grün","hex":"#80CBC4","qty":1,"sku":"COL-PLA-MGRÜ"},{"name":"orange","hex":"#E65100","qty":3,"sku":"COL-PLA-OR"},{"name":"blau","hex":"#1565C0","qty":5,"sku":"COL-PLA-BL"},{"name":"fuchsia","hex":"#AD1457","qty":6,"sku":"COL-PLA-FU"},{"name":"lila","hex":"#7B1FA2","qty":3,"sku":"COL-PLA-LI"},{"name":"pink","hex":"#E91E63","qty":6,"sku":"COL-PLA-PI"},{"name":"silber","hex":"#B0BEC5","qty":3,"sku":"COL-PLA-SI"},{"name":"gold","hex":"#D4AF37","qty":3,"sku":"COL-PLA-GO"},{"name":"skin","hex":"#FFCC99","qty":3,"sku":"COL-PLA-SK"},{"name":"transparent blau","hex":"#90CAF9","qty":3,"sku":"COL-PLA-TBL"},{"name":"transparent rot","hex":"#EF9A9A","qty":3,"sku":"COL-PLA-TRO"},{"name":"transparent gelb","hex":"#FFF59D","qty":1,"sku":"COL-PLA-TGE"},{"name":"transparent grün","hex":"#A5D6A7","qty":2,"sku":"COL-PLA-TGR"},{"name":"cf schwarz","hex":"#111111","qty":2,"sku":"COL-PLA-SCF"},{"name":"navy blue","hex":"#1A237E","qty":2,"sku":"COL-PLA-NB"}]},"PETG":{"Geetech":[{"name":"weiß","hex":"#F5F5F0","qty":15,"sku":"GEE-PETG-WE"},{"name":"schwarz","hex":"#1A1A1A","qty":15,"sku":"GEE-PETG-SW"},{"name":"rot","hex":"#C62828","qty":2,"sku":"GEE-PETG-RO"},{"name":"gelb","hex":"#F9A825","qty":7,"sku":"GEE-PETG-GE"},{"name":"orange","hex":"#E65100","qty":5,"sku":"GEE-PETG-OR"},{"name":"blau","hex":"#1565C0","qty":13,"sku":"GEE-PETG-BL"},{"name":"hell blau","hex":"#29B6F6","qty":3,"sku":"GEE-PETG-HB"},{"name":"grau","hex":"#9E9E9E","qty":9,"sku":"GEE-PETG-GR"},{"name":"transparent","hex":"#DCF0F7","qty":11,"sku":"GEE-PETG-TR"},{"name":"silber","hex":"#B0BEC5","qty":10,"sku":"GEE-PETG-SI"},{"name":"metallic braun","hex":"#795548","qty":6,"sku":"GEE-PETG-MBR"},{"name":"metallic grün","hex":"#388E3C","qty":6,"sku":"GEE-PETG-MGRÜ"}],"Colido":[{"name":"gelb","hex":"#F9A825","qty":1,"sku":"COL-PETG-GE"},{"name":"grün","hex":"#2E7D32","qty":4,"sku":"COL-PETG-GRÜ"},{"name":"orange","hex":"#E65100","qty":4,"sku":"COL-PETG-OR"},{"name":"sakura pink","hex":"#F48FB1","qty":3,"sku":"COL-PETG-PI"},{"name":"dunkel grau","hex":"#616161","qty":1,"sku":"COL-PETG-DGR"},{"name":"bronze","hex":"#8C6D39","qty":2,"sku":"COL-PETG-BO"},{"name":"cf schwarz","hex":"#111111","qty":7,"sku":"COL-PETG-SCF"}]},"TPU":{"Geetech":[{"name":"weiß","hex":"#F5F5F0","qty":10,"sku":"GEE-TPU-WE"},{"name":"rot","hex":"#C62828","qty":6,"sku":"GEE-TPU-RO"},{"name":"orange","hex":"#E65100","qty":3,"sku":"GEE-TPU-OR"},{"name":"blau","hex":"#1565C0","qty":3,"sku":"GEE-TPU-BL"},{"name":"grau","hex":"#9E9E9E","qty":3,"sku":"GEE-TPU-GR"},{"name":"braun","hex":"#6D4C41","qty":2,"sku":"GEE-TPU-BR"},{"name":"transparent","hex":"#DCF0F7","qty":5,"sku":"GEE-TPU-TR"},{"name":"transparent blau","hex":"#90CAF9","qty":1,"sku":"GEE-TPU-TBL"},{"name":"transparent orange","hex":"#FFCC80","qty":1,"sku":"GEE-TPU-TOR"}]},"ABS":{"Geetech":[{"name":"schwarz","hex":"#1A1A1A","qty":1,"sku":"GEE-ABS-SW"},{"name":"rot","hex":"#C62828","qty":2,"sku":"GEE-ABS-RO"},{"name":"gelb","hex":"#F9A825","qty":2,"sku":"GEE-ABS-GE"},{"name":"grün","hex":"#2E7D32","qty":1,"sku":"GEE-ABS-GRÜ"},{"name":"orange","hex":"#E65100","qty":2,"sku":"GEE-ABS-OR"},{"name":"blau","hex":"#1565C0","qty":1,"sku":"GEE-ABS-BL"},{"name":"lila","hex":"#7B1FA2","qty":2,"sku":"GEE-ABS-LI"},{"name":"pink","hex":"#E91E63","qty":2,"sku":"GEE-ABS-PI"}]},"PLA Silk":{"Geetech":[{"name":"regenbogen farbe","hex":"#9B59B6","qty":1,"sku":"GEE-PLA-SI-RG"},{"name":"gelb","hex":"#F9A825","qty":2,"sku":"GEE-PLA-SI-GE"},{"name":"weiß","hex":"#F5F5F0","qty":1,"sku":"GEE-PLA-SI-WE"},{"name":"grün","hex":"#2E7D32","qty":1,"sku":"GEE-PLA-SI-GRÜ"},{"name":"gold","hex":"#D4AF37","qty":3,"sku":"GEE-PLA-SI-GO"},{"name":"hellblau","hex":"#29B6F6","qty":1,"sku":"GEE-PLA-SI-HB"},{"name":"blau","hex":"#1565C0","qty":2,"sku":"GEE-PLA-SI-BL"},{"name":"lila","hex":"#7B1FA2","qty":2,"sku":"GEE-PLA-SI-LI"}]},"PLA Matt":{"Geetech":[{"name":"schwarz","hex":"#1A1A1A","qty":17,"sku":"GEE-PLA-MT-SW"},{"name":"weiß","hex":"#F5F5F0","qty":17,"sku":"GEE-PLA-MT-WE"},{"name":"blau","hex":"#1565C0","qty":5,"sku":"GEE-PLA-MT-BL"},{"name":"grau","hex":"#9E9E9E","qty":10,"sku":"GEE-PLA-MT-GR"},{"name":"braun","hex":"#6D4C41","qty":8,"sku":"GEE-PLA-MT-BR"},{"name":"hautfarben","hex":"#FFCC99","qty":8,"sku":"GEE-PLA-MT-HAT"},{"name":"oliven grün","hex":"#827717","qty":11,"sku":"GEE-PLA-MT-OGRÜ"},{"name":"stein grau","hex":"#78909C","qty":6,"sku":"GEE-PLA-MT-SGR"}]},"PLA CF":{"Colido":[{"name":"schwarz","hex":"#111111","qty":2,"sku":"COL-PLA-CF-SW"}]},"PETG CF":{"Colido":[{"name":"schwarz","hex":"#111111","qty":7,"sku":"COL-PETG-CF-SW"}]}};
+let inventory = {"PLA":{"Geetech":[{"name":"schwarz","hex":"#1A1A1A","qty":10,"sku":"GEE-PLA-SW"},{"name":"rot","hex":"#C62828","qty":12,"sku":"GEE-PLA-RO"},{"name":"gelb","hex":"#F9A825","qty":2,"sku":"GEE-PLA-GE"},{"name":"grün","hex":"#2E7D32","qty":10,"sku":"GEE-PLA-GRÜ"},{"name":"apfel grün","hex":"#8BC34A","qty":5,"sku":"GEE-PLA-AGRÜ"},{"name":"orange","hex":"#E65100","qty":8,"sku":"GEE-PLA-OR"},{"name":"blau","hex":"#1565C0","qty":1,"sku":"GEE-PLA-BL"},{"name":"hellblau","hex":"#29B6F6","qty":9,"sku":"GEE-PLA-HB"},{"name":"lila","hex":"#7B1FA2","qty":3,"sku":"GEE-PLA-LI"},{"name":"grau","hex":"#9E9E9E","qty":8,"sku":"GEE-PLA-GR"},{"name":"braun","hex":"#6D4C41","qty":3,"sku":"GEE-PLA-BR"},{"name":"transparent","hex":"#DCF0F7","qty":9,"sku":"GEE-PLA-TR"},{"name":"regenbogen farbe","hex":"#9B59B6","qty":7,"sku":"GEE-PLA-RG"},{"name":"sand gold","hex":"#C8A96E","qty":3,"sku":"GEE-PLA-SG"},{"name":"beige","hex":"#F5DEB3","qty":4,"sku":"GEE-PLA-BE"},{"name":"bone white","hex":"#F5F0E8","qty":4,"sku":"GEE-PLA-BW"}],"Colido":[{"name":"weiß","hex":"#F5F5F0","qty":4,"sku":"COL-PLA-WE"},{"name":"schwarz","hex":"#1A1A1A","qty":4,"sku":"COL-PLA-SW"},{"name":"gelb","hex":"#F9A825","qty":5,"sku":"COL-PLA-GE"},{"name":"grass grün","hex":"#4CAF50","qty":4,"sku":"COL-PLA-GGRÜ"},{"name":"mint grün","hex":"#80CBC4","qty":1,"sku":"COL-PLA-MGRÜ"},{"name":"orange","hex":"#E65100","qty":3,"sku":"COL-PLA-OR"},{"name":"blau","hex":"#1565C0","qty":5,"sku":"COL-PLA-BL"},{"name":"fuchsia","hex":"#AD1457","qty":6,"sku":"COL-PLA-FU"},{"name":"lila","hex":"#7B1FA2","qty":3,"sku":"COL-PLA-LI"},{"name":"pink","hex":"#E91E63","qty":6,"sku":"COL-PLA-PI"},{"name":"silber","hex":"#B0BEC5","qty":3,"sku":"COL-PLA-SI"},{"name":"gold","hex":"#D4AF37","qty":3,"sku":"COL-PLA-GO"},{"name":"skin","hex":"#FFCC99","qty":3,"sku":"COL-PLA-SK"},{"name":"transparent blau","hex":"#90CAF9","qty":3,"sku":"COL-PLA-TBL"},{"name":"transparent rot","hex":"#EF9A9A","qty":3,"sku":"COL-PLA-TRO"},{"name":"transparent gelb","hex":"#FFF59D","qty":1,"sku":"COL-PLA-TGE"},{"name":"transparent grün","hex":"#A5D6A7","qty":2,"sku":"COL-PLA-TGR"},{"name":"cf schwarz","hex":"#111111","qty":2,"sku":"COL-PLA-SCF"},{"name":"navy blue","hex":"#1A237E","qty":2,"sku":"COL-PLA-NB"}]},"PETG":{"Geetech":[{"name":"weiß","hex":"#F5F5F0","qty":15,"sku":"GEE-PETG-WE"},{"name":"schwarz","hex":"#1A1A1A","qty":15,"sku":"GEE-PETG-SW"},{"name":"rot","hex":"#C62828","qty":2,"sku":"GEE-PETG-RO"},{"name":"gelb","hex":"#F9A825","qty":7,"sku":"GEE-PETG-GE"},{"name":"orange","hex":"#E65100","qty":5,"sku":"GEE-PETG-OR"},{"name":"blau","hex":"#1565C0","qty":13,"sku":"GEE-PETG-BL"},{"name":"hell blau","hex":"#29B6F6","qty":3,"sku":"GEE-PETG-HB"},{"name":"grau","hex":"#9E9E9E","qty":9,"sku":"GEE-PETG-GR"},{"name":"transparent","hex":"#DCF0F7","qty":11,"sku":"GEE-PETG-TR"},{"name":"silber","hex":"#B0BEC5","qty":10,"sku":"GEE-PETG-SI"},{"name":"metallic braun","hex":"#795548","qty":6,"sku":"GEE-PETG-MBR"},{"name":"metallic grün","hex":"#388E3C","qty":6,"sku":"GEE-PETG-MGRÜ"}],"Colido":[{"name":"gelb","hex":"#F9A825","qty":1,"sku":"COL-PETG-GE"},{"name":"grün","hex":"#2E7D32","qty":4,"sku":"COL-PETG-GRÜ"},{"name":"orange","hex":"#E65100","qty":4,"sku":"COL-PETG-OR"},{"name":"sakura pink","hex":"#F48FB1","qty":3,"sku":"COL-PETG-PI"},{"name":"dunkel grau","hex":"#616161","qty":1,"sku":"COL-PETG-DGR"},{"name":"bronze","hex":"#8C6D39","qty":2,"sku":"COL-PETG-BO"},{"name":"cf schwarz","hex":"#111111","qty":7,"sku":"COL-PETG-SCF"}]},"TPU":{"Geetech":[{"name":"weiß","hex":"#F5F5F0","qty":10,"sku":"GEE-TPU-WE"},{"name":"rot","hex":"#C62828","qty":6,"sku":"GEE-TPU-RO"},{"name":"orange","hex":"#E65100","qty":3,"sku":"GEE-TPU-OR"},{"name":"blau","hex":"#1565C0","qty":3,"sku":"GEE-TPU-BL"},{"name":"grau","hex":"#9E9E9E","qty":3,"sku":"GEE-TPU-GR"},{"name":"braun","hex":"#6D4C41","qty":2,"sku":"GEE-TPU-BR"},{"name":"transparent","hex":"#DCF0F7","qty":5,"sku":"GEE-TPU-TR"},{"name":"transparent blau","hex":"#90CAF9","qty":1,"sku":"GEE-TPU-TBL"},{"name":"transparent orange","hex":"#FFCC80","qty":1,"sku":"GEE-TPU-TOR"}]},"ABS":{"Geetech":[{"name":"schwarz","hex":"#1A1A1A","qty":1,"sku":"GEE-ABS-SW"},{"name":"rot","hex":"#C62828","qty":2,"sku":"GEE-ABS-RO"},{"name":"gelb","hex":"#F9A825","qty":2,"sku":"GEE-ABS-GE"},{"name":"grün","hex":"#2E7D32","qty":1,"sku":"GEE-ABS-GRÜ"},{"name":"orange","hex":"#E65100","qty":2,"sku":"GEE-ABS-OR"},{"name":"blau","hex":"#1565C0","qty":1,"sku":"GEE-ABS-BL"},{"name":"lila","hex":"#7B1FA2","qty":2,"sku":"GEE-ABS-LI"},{"name":"pink","hex":"#E91E63","qty":2,"sku":"GEE-ABS-PI"}]},"ASA":{"Geetech":[{"name":"schwarz","hex":"#1A1A1A","qty":10,"sku":"GEE-ASA-SW"},{"name":"weiß","hex":"#F5F5F0","qty":2,"sku":"GEE-ASA-WE"},{"name":"grau","hex":"#9E9E9E","qty":4,"sku":"GEE-ASA-GR"},{"name":"blau","hex":"#1565C0","qty":2,"sku":"GEE-ASA-BL"},{"name":"grün","hex":"#2E7D32","qty":2,"sku":"GEE-ASA-GRÜ"},{"name":"orange","hex":"#E65100","qty":2,"sku":"GEE-ASA-OR"},{"name":"lila","hex":"#7B1FA2","qty":2,"sku":"GEE-ASA-LI"}]},"PLA Silk":{"Geetech":[{"name":"regenbogen farbe","hex":"#9B59B6","qty":1,"sku":"GEE-PLA-SI-RG"},{"name":"gelb","hex":"#F9A825","qty":2,"sku":"GEE-PLA-SI-GE"},{"name":"weiß","hex":"#F5F5F0","qty":1,"sku":"GEE-PLA-SI-WE"},{"name":"grün","hex":"#2E7D32","qty":1,"sku":"GEE-PLA-SI-GRÜ"},{"name":"gold","hex":"#D4AF37","qty":3,"sku":"GEE-PLA-SI-GO"},{"name":"hellblau","hex":"#29B6F6","qty":1,"sku":"GEE-PLA-SI-HB"},{"name":"blau","hex":"#1565C0","qty":2,"sku":"GEE-PLA-SI-BL"},{"name":"lila","hex":"#7B1FA2","qty":2,"sku":"GEE-PLA-SI-LI"}]},"PLA Matt":{"Geetech":[{"name":"schwarz","hex":"#1A1A1A","qty":17,"sku":"GEE-PLA-MT-SW"},{"name":"weiß","hex":"#F5F5F0","qty":17,"sku":"GEE-PLA-MT-WE"},{"name":"blau","hex":"#1565C0","qty":5,"sku":"GEE-PLA-MT-BL"},{"name":"grau","hex":"#9E9E9E","qty":10,"sku":"GEE-PLA-MT-GR"},{"name":"braun","hex":"#6D4C41","qty":8,"sku":"GEE-PLA-MT-BR"},{"name":"hautfarben","hex":"#FFCC99","qty":8,"sku":"GEE-PLA-MT-HAT"},{"name":"oliven grün","hex":"#827717","qty":11,"sku":"GEE-PLA-MT-OGRÜ"},{"name":"stein grau","hex":"#78909C","qty":6,"sku":"GEE-PLA-MT-SGR"}]},"PLA CF":{"Colido":[{"name":"schwarz","hex":"#111111","qty":2,"sku":"COL-PLA-CF-SW"}]},"PETG CF":{"Colido":[{"name":"schwarz","hex":"#111111","qty":7,"sku":"COL-PETG-CF-SW"}]}};
 
 /* ════════════════════════════════════════════════════════════════
    AB HIER: LOGIK – BITTE NICHTS ÄNDERN
@@ -657,7 +693,7 @@ function parseCSV(text) {
     const mat = MAT_MAP[matRaw] || matRaw;
     if (!newInv[mat]) newInv[mat] = {};
     if (!newInv[mat][marke]) newInv[mat][marke] = [];
-    newInv[mat][marke].push({ name: farbe, hex: COLOR_HEX[farbe] || '#888', qty, sku });
+    newInv[mat][marke].push({ name: farbe, hex: (COLOR_HEX[farbe] && (COLOR_HEX[farbe][marke] || COLOR_HEX[farbe]['default'])) || '#888', qty, sku });
   }
   /*if (!newInv['PLA CF'])  newInv['PLA CF']  = {"Colido":[{name:"schwarz",hex:"#111111",qty:0,sku:"COL-PLA-CF-SW"}]};*/
   /*if (!newInv['PETG CF']) newInv['PETG CF'] = {"Colido":[{name:"schwarz",hex:"#111111",qty:0,sku:"COL-PETG-CF-SW"}]};*/
@@ -848,15 +884,9 @@ function selectColor(c, btn) {
   const testImg = new Image();
   testImg.onload = () => {
     img.src = fotoPath; img.style.display = 'block';
-    if (isMulti) {
-      img.style.width = '100%';
-      swatch.style.background = '#fff';
-      dot.style.display = 'none';
-    } else {
-      img.style.width = '';
-      swatch.style.background = c.hex;
-      dot.style.display = 'block';
-    }
+    img.style.width = '100%';
+    swatch.style.background = '#fff';
+    dot.style.display = 'none';
   };
   testImg.onerror = () => {
     img.style.display = 'none'; img.src = ''; img.style.width = '';
