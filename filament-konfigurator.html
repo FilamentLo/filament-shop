@@ -523,7 +523,7 @@ const PREISE = {
   'PLA':   { 'Colido': 12, 'Geetech': 12, 'Sunlu': 15 },
   'PETG':  { 'Colido': 12, 'Geetech': 12 },
   'PETG HS Matt': { 'Jayoo': 13 },  // ← Preis anpassen
-  'TPU':   { 'Geetech': 13 },
+  'TPU':   { 'Geetech': 15 },
   'ABS':   { 'Geetech': 13 },
   'PLA Silk':  { 'Geetech': 14 },
   'PLA Matt':  { 'Geetech': 14 },
@@ -532,6 +532,7 @@ const PREISE = {
   'PLA Holz':   { 'Geetech': 15 },
   'PLA Marmor': { 'Geetech': 15 },
   'PLA Glow': { 'Geetech': 18 },  // ← Preis anpassen
+  'PLA LW Aero': { 'Jayoo': 30 },  // ← Leichtgewicht-PLA, 0,8 kg Rolle
   'ASA':  { 'Geetech': 15 },
 };
 /*function getPreis(mat) { return PREISE[mat] || 12; }*/
@@ -584,6 +585,7 @@ const matInfo = {
   'PLA Holz':   { desc: 'Holz Optik',   detail: 'PLA mit Holzfaser-Anteil. Natürliche Optik.', special: true },
   'PLA Marmor': { desc: 'Marmor Optik', detail: 'PLA mit Marmor-Effekt. Edles Finish.', special: true },
   'PLA Glow': { desc: 'Glow in the Dark', detail: 'Leuchtet im Dunkeln.', special: true },
+  'PLA LW Aero': { desc: 'Leichtgewicht (aufschäumend)', detail: 'Aktiv aufschäumendes Leichtgewicht-PLA für RC-Flugzeuge & leichte Modelle. Gute Schichthaftung, lackierbar. 0,8 kg Rolle.', special: true },
 };
 
 /* ════════════════════════════════════════════════════════════════
@@ -645,7 +647,7 @@ const COLOR_HEX = {
 };
 
 /* Zuordnung CSV-Materialname → Anzeigename (nicht ändern!) */
-const MAT_MAP = {'PLA':'PLA','PETG':'PETG','PETG HS Matt': 'PETG HS Matt','TPU':'TPU','ABS':'ABS','ASA':'ASA','SILK PLA':'PLA Silk','PLA matt':'PLA Matt','PLA CF':'PLA CF','PETG CF':'PETG CF','PLA Holz':'PLA Holz', 'PLA Marmor':'PLA Marmor', 'PLA Glow':'PLA Glow'};
+const MAT_MAP = {'PLA':'PLA','PETG':'PETG','PETG HS Matt': 'PETG HS Matt','TPU':'TPU','ABS':'ABS','ASA':'ASA','SILK PLA':'PLA Silk','PLA matt':'PLA Matt','PLA CF':'PLA CF','PETG CF':'PETG CF','PLA Holz':'PLA Holz', 'PLA Marmor':'PLA Marmor', 'PLA Glow':'PLA Glow', 'PLA LW Aero':'PLA LW Aero'};
 
 /* ════════════════════════════════════════════════════════════════
    INVENTAR (Lagerbestand)
