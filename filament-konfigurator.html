@@ -520,9 +520,9 @@ const WHATSAPP_NR  = '4915206985806';           // ← HIER ANPASSEN
 */
 
 const PREISE = {
-  'PLA':   { 'Colido': 12, 'Geetech': 12, 'Sunlu': 15 },
+  'PLA':   { 'Colido': 12, 'Geetech': 12 },
+  'PLA Sparkly': { 'Geetech': 15 },  // ← Sparkly-Preis
   'PETG':  { 'Colido': 12, 'Geetech': 12 },
-  'PETG HS Matt': { 'Jayoo': 13 },  // ← Preis anpassen
   'TPU':   { 'Geetech': 15 },
   'ABS':   { 'Geetech': 13 },
   'PLA Silk':  { 'Geetech': 14 },
@@ -535,6 +535,14 @@ const PREISE = {
   'PLA LW Aero': { 'Jayoo': 25 },  // ← Leichtgewicht-PLA, 0,8 kg Rolle
   'ASA':  { 'Geetech': 15 },
 };
+
+// Hersteller, die im Shop angezeigt werden (andere Marken aus der CSV werden ignoriert)
+const HERSTELLER = ['Colido', 'Geetech', 'Jayoo'];
+// Hersteller, die nur bei bestimmten Materialien angezeigt werden
+const HERSTELLER_NUR = { 'Jayoo': ['PLA LW Aero'] };
+function herstellerErlaubt(her, mat) {
+  return HERSTELLER.includes(her) && (!HERSTELLER_NUR[her] || HERSTELLER_NUR[her].includes(mat));
+}
 /*function getPreis(mat) { return PREISE[mat] || 12; }*/
 function getPreis(mat, her) {
   if (PREISE[mat]) return PREISE[mat][her] || 12;
@@ -572,8 +580,8 @@ function shippingLabel(rollen) {
    ════════════════════════════════════════════════════════════════ */
 const matInfo = {
   'PLA':      { desc: 'Einfach & vielseitig', detail: 'Ideal für Einsteiger. Leicht zu drucken, biologisch abbaubar, viele Farben.' },
+  'PLA Sparkly': { desc: 'Glitzer-Effekt', detail: 'PLA mit funkelnden Glitzerpartikeln für einen besonderen Look.', special: true },
   'PETG':     { desc: 'Robust & flexibel',    detail: 'Kombination aus Stärke und Flexibilität. Feuchtigkeitsbeständig.' },
-  'PETG HS Matt': { desc: 'High Speed Matt, ', detail: 'Schnell druckbar, mattes Finish.', special: true },
   'TPU':      { desc: 'Flexibel & weich',     detail: 'Gummiartig und stoßfest. Perfekt für Schutzhüllen und biegsame Teile.' },
   'ABS':      { desc: 'Hitzebeständig',       detail: 'Temperaturbeständig bis ca. 100 °C. Für technische Bauteile.' },
   'ASA':      { desc: 'Hitzebeständiger als ABS',       detail: 'Temperaturbeständig bis ca. 120 °C. UV-resistent. Für technische Bauteile.' },
@@ -647,7 +655,7 @@ const COLOR_HEX = {
 };
 
 /* Zuordnung CSV-Materialname → Anzeigename (nicht ändern!) */
-const MAT_MAP = {'PLA':'PLA','PETG':'PETG','PETG HS Matt': 'PETG HS Matt','TPU':'TPU','ABS':'ABS','ASA':'ASA','SILK PLA':'PLA Silk','PLA matt':'PLA Matt','PLA CF':'PLA CF','PETG CF':'PETG CF','PLA Holz':'PLA Holz', 'PLA Marmor':'PLA Marmor', 'PLA Glow':'PLA Glow', 'PLA LW Aero':'PLA LW Aero'};
+const MAT_MAP = {'PLA':'PLA','PLA Sparkly':'PLA Sparkly','PETG':'PETG','TPU':'TPU','ABS':'ABS','ASA':'ASA','SILK PLA':'PLA Silk','PLA matt':'PLA Matt','PLA CF':'PLA CF','PETG CF':'PETG CF','PLA Holz':'PLA Holz', 'PLA Marmor':'PLA Marmor', 'PLA Glow':'PLA Glow', 'PLA LW Aero':'PLA LW Aero'};
 
 /* ════════════════════════════════════════════════════════════════
    INVENTAR (Lagerbestand)
@@ -687,12 +695,18 @@ function parseCSV(text) {
     const cols = lines[i].split(';');
     if (cols.length < 10) continue;
     const matRaw = cols[3].trim();
-    const farbe  = cols[5].trim().toLowerCase();
+    let   farbe  = cols[5].trim().toLowerCase();
     const marke  = cols[7].trim();
     const sku    = cols[8].trim();
     const qty    = parseInt(cols[9].trim());
     if (!matRaw || !farbe || !marke || isNaN(qty) || qty <= 0) continue;
-    const mat = MAT_MAP[matRaw] || matRaw;
+    let mat = MAT_MAP[matRaw] || matRaw;
+    /* PLA-Farben "sparkly ..." → eigene Kategorie "PLA Sparkly" */
+    if (mat === 'PLA' && farbe.startsWith('sparkly ')) {
+      mat = 'PLA Sparkly';
+      farbe = farbe.slice('sparkly '.length).trim();
+    }
+    if (!herstellerErlaubt(marke, mat)) continue;
     if (!newInv[mat]) newInv[mat] = {};
     if (!newInv[mat][marke]) newInv[mat][marke] = [];
     newInv[mat][marke].push({ name: farbe, hex: (COLOR_HEX[farbe] && (COLOR_HEX[farbe][marke] || COLOR_HEX[farbe]['default'])) || '#888', qty, sku });
@@ -745,8 +759,17 @@ let sel = { material:null, hersteller:null, color:null, colorHex:null, colorQty:
 let qty = 1;
 let cart = [];
 
+// Reihenfolge der Materialien im Konfigurator (nicht aufgeführte kommen ans Ende)
+const MAT_REIHENFOLGE = [
+  'PLA', 'PLA Matt', 'PETG', 'TPU', 'ABS', 'ASA',
+  'PLA Silk', 'PLA Sparkly', 'PLA Marmor', 'PLA Holz', 'PLA Glow', 'PLA CF', 'PETG CF',
+  'PLA LW Aero',
+];
 function getMaterials() {
-  return Object.keys(inventory).filter(m => Object.values(inventory[m]).some(a => a.length > 0));
+  const pos = m => { const i = MAT_REIHENFOLGE.indexOf(m); return i < 0 ? 999 : i; };
+  return Object.keys(inventory)
+    .filter(m => Object.values(inventory[m]).some(a => a.length > 0))
+    .sort((a, b) => pos(a) - pos(b));
 }
 function getHersteller(mat) {
   return Object.keys(inventory[mat] || {}).filter(h => (inventory[mat][h] || []).length > 0);
@@ -781,7 +804,7 @@ function buildHersteller() {
   grid.innerHTML = '';
   document.getElementById('matLabel').textContent = sel.material;
   const available = getHersteller(sel.material);
-  ['Colido','Geetech','Sunlu','Jayoo'].forEach(name => {
+  HERSTELLER.filter(name => herstellerErlaubt(name, sel.material)).forEach(name => {
     const avail = available.includes(name);
     const d = document.createElement('div');
     d.className = 'hersteller-card' + (sel.hersteller === name ? ' selected' : '') + (!avail ? ' unavailable' : '');
