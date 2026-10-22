@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D Filament Stuttgart kaufen | PLA, PETG, TPU, Silk - FilamentShop</title>
+<title>3D Filament Stuttgart kaufen | PLA, PETG, Silk – passend für Bambu Lab, Prusa &amp; Co. – FilamentShop</title>
 <meta name="description" content="Hochwertiges 3D Druck Filament in Stuttgart kaufen. PLA, PETG, TPU, ABS+, Silk, Carbon Fiber, Glow in the Dark. Große Farbauswahl, Abholung Stuttgart-Vaihingen oder Versand deutschlandweit. Kompatibel mit Bambu Lab, Prusa, Ender.">
 <style>
   @font-face {
@@ -138,6 +138,12 @@
   }
   @media(max-width:480px){.material-grid{grid-template-columns:1fr}}
 
+  /* Drucker-Kompatibilität */
+  .printer-chip{display:inline-block;background:var(--accent-light);color:var(--accent);border-radius:100px;padding:5px 12px;font-size:0.8rem;font-weight:500}
+  details.faq{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 1.25rem;margin-bottom:10px}
+  details.faq summary{cursor:pointer;font-weight:600;padding:1rem 0;font-size:0.95rem}
+  details.faq p{font-size:0.88rem;color:var(--text-muted);line-height:1.6;padding-bottom:1rem}
+
   /* Cookie Banner */
   .cookie-banner{position:fixed;bottom:0;left:0;right:0;background:#1A1815;color:#fff;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;z-index:9999;border-top:1px solid #2B5EE8;font-size:0.9rem}
   .cookie-banner.hidden{display:none}
@@ -181,6 +187,7 @@
   <div class="hero-tag">3D Druck Filament · Stuttgart</div>
   <h1>Filament in <em>jeder Farbe</em>,<br>direkt aus Stuttgart</h1>
   <p>Große Auswahl an PLA, PETG, TPU, Silk und Carbon Fiber Filament – sofort verfügbar, persönlich beraten, ohne Warteschlange im Onlineshop.</p>
+  <p style="margin-top:-1rem;color:#fff;font-weight:500">✓ Passend für <strong>Bambu Lab</strong>, Prusa, Creality, Elegoo, Anycubic &amp; alle gängigen 1,75-mm-Drucker</p>
   <div class="hero-ctas">
     <a href="filament-konfigurator.html" class="btn-primary">Bestand & Preise ansehen →</a>
     <a href="kontakt.html" class="btn-ghost">Kontakt aufnehmen</a>
@@ -191,8 +198,8 @@
      mit genau diesen Dateinamen (oder passe die Namen unten an) -->
 <div class="photo-strip">
   <div class="photo-grid">
-    <img src="produkte/lager-uebersicht.jpeg" alt="Großes Filament-Lager mit hunderten Geeetech Filamentrollen in Stuttgart">
-    <img src="produkte/farbauswahl.jpeg" alt="Bunte Geeetech Filamentrollen in vielen Farben">
+    <img src="produkte/lager-raum.jpeg" alt="Filament-Lager in Stuttgart mit Regalen voller Filamentrollen">
+    <img src="produkte/lager-regalwand.jpeg" alt="Regalwand mit Filament in vielen Farben von Geeetech und weiteren Marken">
   </div>
 </div>
 
@@ -207,6 +214,31 @@
   <a href="filament-konfigurator.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:0.8rem 1.8rem;border-radius:var(--radius-sm);text-decoration:none;font-weight:600;font-size:0.95rem;transition:filter 0.2s;border:none;cursor:pointer">
     ⚙️ Konfigurator
   </a>
+</div>
+
+<!-- DRUCKER-KOMPATIBILITÄT (Bambu Lab & Co.) -->
+<div style="max-width:1000px;margin:0 auto 1rem;padding:0 1.5rem">
+  <div style="background:var(--card);border:2px solid #000;border-radius:var(--radius);padding:2rem;display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
+    <div style="flex:1;min-width:260px">
+      <span style="display:inline-block;color:var(--accent);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Passt das in meinen Drucker?</span>
+      <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:0.75rem">Passt in alle gängigen 3D Drucker</h2>
+      <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.65;margin-bottom:1rem">
+        Alle Filamente haben <strong style="color:var(--text)">1,75 mm Durchmesser</strong> und passen in alle gängigen FDM Drucker, egal ob Bambu Lab, Prusa, Creality oder Elegoo.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span class="printer-chip">Bambu Lab A1 / A1 mini</span>
+        <span class="printer-chip">Bambu Lab P1S / P1P</span>
+        <span class="printer-chip">Bambu Lab X1 / H2D</span>
+        <span class="printer-chip">Prusa</span>
+        <span class="printer-chip">Creality / Ender / K1</span>
+        <span class="printer-chip">Elegoo</span>
+        <span class="printer-chip">Anycubic</span>
+        <span class="printer-chip">Qidi</span>
+        <span class="printer-chip">Sovol</span>
+      </div>
+    </div>
+    <img src="produkte/regal.jpeg" alt="Regal mit Filamentrollen in Stuttgart" style="width:200px;height:auto;border-radius:var(--radius-sm);flex-shrink:0;margin:0 auto" loading="lazy">
+  </div>
 </div>
 
 <!-- TECHNISCHE FILAMENTE INFO-CARD -->
@@ -303,6 +335,15 @@
       <p>Kompatibel mit Bambu Lab, Prusa, Ender und allen gängigen FDM-Druckern mit 1,75 mm.</p>
     </div>
   </div>
+
+  <div class="section-head">
+    <span class="eyebrow">Häufige Fragen</span>
+    <h2>Gut zu wissen</h2>
+  </div>
+  <details class="faq"><summary>Passt das Filament in meinen Drucker?</summary>
+    <p>Ja. Alle Rollen haben 1,75 mm Durchmesser und passen in alle gängigen FDM-Drucker, z. B. Bambu Lab, Prusa, Creality, Elegoo, Anycubic, Qidi und Sovol. Die passenden Temperaturen stehen auf der Rolle.</p></details>
+  <details class="faq"><summary>Brauche ich eine spezielle Düse?</summary>
+    <p>Für PLA, PETG, Silk, TPU, ABS und ASA reicht die Standarddüse. Carbon (CF), Glasfaser (GF), Glow in the Dark und Holz sind abrasiv – dafür eine gehärtete Düse verwenden.</p></details>
 
   <div class="cta-band">
     <h2>Bereit für deinen nächsten Druck?</h2>
