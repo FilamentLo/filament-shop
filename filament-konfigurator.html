@@ -320,6 +320,11 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
       <div class="config-panel active" id="panel1">
         <div class="panel-title">Welches Material brauchst du?</div>
         <div class="panel-sub">Nur Materialien und Farben mit Lagerbestand werden angezeigt. <br>Für bestimmte Farben kontaktiere uns gerne persönlich.</div>
+        <!-- Bambu Lab Hinweis: entfernen, sobald 'Bambu Lab' in HERSTELLER wieder freigeschaltet ist -->
+        <div style="margin:0 0 1rem;padding:0.7rem 1rem;border:2px solid #000;border-radius:8px;font-size:0.88rem;line-height:1.5">
+          <strong>Neu:</strong> Original Bambu Lab Filament.
+          <a href="https://wa.me/4915206985806?text=Hallo,%20ich%20interessiere%20mich%20f%C3%BCr%20Bambu%20Lab%20Filament.%20Material%20/%20Farbe%20/%20Anzahl:%20" style="font-weight:600">Schreib mir einfach per WhatsApp.</a>
+        </div>
         <div class="material-grid" id="materialGrid"></div>
         <div class="config-nav"><div></div><button class="btn-next" id="nextBtn1" onclick="goStep(2)" disabled>Weiter →</button></div>
       </div>
@@ -439,7 +444,7 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
     <div class="info-card">
       <div class="info-icon">🎨</div>
       <div class="info-title">Große Farbauswahl</div>
-      <div class="info-text">Viele Farben von Colido, Geetech und Professional Lab – für jeden 3D-Druck das Richtige.</div>
+      <div class="info-text">Viele Farben von Colido, Geetech und Professional Lab, Bambu Lab auf Anfrage – für jeden 3D-Druck das Richtige.</div>
     </div>
     <div class="info-card">
       <div class="info-icon">💬</div>
@@ -521,11 +526,13 @@ const WHATSAPP_NR  = '4915206985806';           // ← HIER ANPASSEN
 */
 
 const PREISE = {
-  'PLA':   { 'Colido': 12, 'Geetech': 12, 'Professional Lab': 12 },
+  'PLA':   { 'Colido': 12, 'Geetech': 12, 'Professional Lab': 12, 'Bambu Lab': 17 },  // ← Bambu Lab Preis anpassen
   'PLA Sparkly': { 'Geetech': 15, 'Professional Lab': 15 },  // ← Sparkly-Preis
-  'PETG':  { 'Colido': 12, 'Geetech': 12, 'Professional Lab': 12 },
+  'PETG':  { 'Colido': 12, 'Geetech': 12, 'Professional Lab': 12, 'Bambu Lab': 17 },
+  'PETG Matt': { 'Bambu Lab': 17 },
   'TPU':   { 'Geetech': 15, 'Professional Lab': 15 },
-  'ABS':   { 'Geetech': 13, 'Professional Lab': 13 },
+  'ABS':   { 'Geetech': 13, 'Professional Lab': 13, 'Bambu Lab': 17 },
+  'ABS GF': { 'Bambu Lab': 30 },  // ← ABS Glasfaser
   'PLA Silk':  { 'Geetech': 14 },
   'PLA Matt':  { 'Geetech': 14 },
   'PLA CF':    { 'Colido': 19 },
@@ -535,16 +542,18 @@ const PREISE = {
   'PLA Glow': { 'Geetech': 18 },  // ← Preis anpassen
   'PLA LW Aero': { 'Jayoo': 25 },  // ← Leichtgewicht-PLA, 0,8 kg Rolle
   'ASA':  { 'Geetech': 15, 'Professional Lab': 15 },
-  'ASA GF': { 'Smart Print': 22 },  // ← ASA Glasfaser, Preis anpassen
+  'ASA GF': { 'Smart Print': 25 },  // ← ASA Glasfaser, Preis anpassen
 };
 
 // Hersteller, die im Shop angezeigt werden (andere Marken aus der CSV werden ignoriert)
+// 'Bambu Lab' vorübergehend ausgeblendet (nur auf Anfrage) – zum Freischalten wieder hinten anfügen: , 'Bambu Lab'
 const HERSTELLER = ['Colido', 'Geetech', 'Professional Lab', 'Jayoo', 'Smart Print'];
 // Hersteller, die nur bei bestimmten Materialien angezeigt werden
 const HERSTELLER_NUR = {
   'Jayoo': ['PLA LW Aero'],
   'Professional Lab': ['PLA', 'PLA Sparkly', 'PETG', 'TPU', 'ABS', 'ASA'],
   'Smart Print': ['ASA GF'],
+  'Bambu Lab': ['PLA', 'PETG', 'PETG Matt', 'ABS', 'ABS GF'],
 };
 function herstellerErlaubt(her, mat) {
   return HERSTELLER.includes(her) && (!HERSTELLER_NUR[her] || HERSTELLER_NUR[her].includes(mat));
@@ -601,6 +610,8 @@ const matInfo = {
   'PLA Glow': { desc: 'Glow in the Dark', detail: 'Leuchtet im Dunkeln.', special: true },
   'PLA LW Aero': { desc: 'Leichtgewicht (aufschäumend)', detail: 'Aktiv aufschäumendes Leichtgewicht-PLA für RC-Flugzeuge & leichte Modelle. Gute Schichthaftung, lackierbar. 0,8 kg Rolle.', special: true },
   'ASA GF':   { desc: 'Glasfaser verstärkt', detail: 'ASA mit Glasfaser – sehr steif, maßhaltig, UV- und hitzebeständig. Druck bei 230–260 °C, gehärtete Düse empfohlen. Smart Print.', special: true },
+  'PETG Matt': { desc: 'Mattes PETG', detail: 'Robust wie PETG, aber mit mattem, edlem Finish. Bambu Lab.' },
+  'ABS GF':   { desc: 'Glasfaser verstärkt', detail: 'ABS mit Glasfaser – steif, maßhaltig und hitzebeständig. Gehärtete Düse empfohlen. Bambu Lab.', special: true },
 };
 
 /* ════════════════════════════════════════════════════════════════
@@ -660,10 +671,12 @@ const COLOR_HEX = {
   'stein grau':{'Geetech':'#78909C','Colido':'#90A4AE','default':'#78909C'},
   'transparent orange':{'Geetech':'#FFCC80','Colido':'#FFB74D','default':'#FFCC80'},
   'gold + schwarz':{'Geetech':'#8B6914','Colido':'#A1887F','default':'#8B6914'},
+  'dunkel rot':{'Bambu Lab':'#8E1F2B','default':'#8E1F2B'},
+  'dunkel grün':{'Bambu Lab':'#1F4A3A','default':'#1F4A3A'},
 };
 
 /* Zuordnung CSV-Materialname → Anzeigename (nicht ändern!) */
-const MAT_MAP = {'PLA':'PLA','PLA Sparkly':'PLA Sparkly','PETG':'PETG','TPU':'TPU','ABS':'ABS','ASA':'ASA','SILK PLA':'PLA Silk','PLA matt':'PLA Matt','PLA CF':'PLA CF','PETG CF':'PETG CF','PLA Holz':'PLA Holz', 'PLA Marmor':'PLA Marmor', 'PLA Glow':'PLA Glow', 'PLA LW Aero':'PLA LW Aero', 'ASA GF':'ASA GF'};
+const MAT_MAP = {'PLA':'PLA','PLA Sparkly':'PLA Sparkly','PETG':'PETG','TPU':'TPU','ABS':'ABS','ASA':'ASA','SILK PLA':'PLA Silk','PLA matt':'PLA Matt','PLA CF':'PLA CF','PETG CF':'PETG CF','PLA Holz':'PLA Holz', 'PLA Marmor':'PLA Marmor', 'PLA Glow':'PLA Glow', 'PLA LW Aero':'PLA LW Aero', 'ASA GF':'ASA GF', 'PETG matt':'PETG Matt', 'ABS GF':'ABS GF'};
 
 /* ════════════════════════════════════════════════════════════════
    INVENTAR (Lagerbestand)
@@ -769,8 +782,8 @@ let cart = [];
 
 // Reihenfolge der Materialien im Konfigurator (nicht aufgeführte kommen ans Ende)
 const MAT_REIHENFOLGE = [
-  'PLA', 'PLA Matt', 'PETG', 'TPU', 'ABS', 'ASA',
-  'PLA Silk', 'PLA Sparkly', 'PLA Marmor', 'PLA Holz', 'PLA Glow', 'PLA CF', 'PETG CF', 'ASA GF',
+  'PLA', 'PLA Matt', 'PETG', 'PETG Matt', 'TPU', 'ABS', 'ASA',
+  'PLA Silk', 'PLA Sparkly', 'PLA Marmor', 'PLA Holz', 'PLA Glow', 'PLA CF', 'PETG CF', 'ASA GF', 'ABS GF',
   'PLA LW Aero',
 ];
 function getMaterials() {
