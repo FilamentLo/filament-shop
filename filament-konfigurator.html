@@ -675,6 +675,51 @@ const COLOR_HEX = {
   'dunkel grün':{'Bambu Lab':'#1F4A3A','default':'#1F4A3A'},
 };
 
+/* ════════════════════════════════════════════════════════════════
+   FARBPUNKTE PRO SKU (aus den eigenen Rollenfotos bestimmt, 20.11.2026)
+   Hat Vorrang vor COLOR_HEX. Neue Rolle mit Foto → hier 'SKU':'#HEX' ergänzen.
+   ════════════════════════════════════════════════════════════════ */
+const SKU_HEX = {
+  // PLA Geetech
+  'GEE-PLA-WE':'#EDEDEA','GEE-PLA-SW':'#1E1E1E','GEE-PLA-RO':'#C42A22','GEE-PLA-GE':'#DCC428','GEE-PLA-GRÜ':'#2DB534',
+  'GEE-PLA-AGRÜ':'#BCD02A','GEE-PLA-OR':'#E2861E','GEE-PLA-BL':'#2E5AAE','GEE-PLA-HB':'#4AA3DC','GEE-PLA-LI':'#6E3FA0',
+  'GEE-PLA-PI':'#D27FB3','GEE-PLA-GR':'#8E9094','GEE-PLA-BR':'#7E4A30','GEE-PLA-TR':'#E9E3CF','GEE-PLA-SI':'#A3A6AA',
+  'GEE-PLA-SG':'#D9A878','GEE-PLA-BW':'#D2BC98','GEE-PLA-WW':'#ECE6D8',
+  'GEE-PLA-SBL':'#2E3E6E','GEE-PLA-SLI':'#4E4766','GEE-PLA-SSI':'#8F9399',
+  // PLA Colido
+  'COL-PLA-WE':'#EFEFF2','COL-PLA-SW':'#151515','COL-PLA-RO':'#B8303A','COL-PLA-GE':'#E8D21E','COL-PLA-GRÜ':'#2FBF4A',
+  'COL-PLA-MGRÜ':'#5FC7BC','COL-PLA-LIGRÜ':'#7DCB8E','COL-PLA-ARGRÜ':'#7F8F3E','COL-PLA-DGRÜ':'#23594A','COL-PLA-OR':'#EA6A22',
+  'COL-PLA-BL':'#2342B8','COL-PLA-CY':'#1A9CB8','COL-PLA-FU':'#B54DAE','COL-PLA-LI':'#6B52C4','COL-PLA-PI':'#DE7392',
+  'COL-PLA-GR':'#3B4147','COL-PLA-BR':'#6E4B3A','COL-PLA-SK':'#DDA27F','COL-PLA-TBL':'#2050D2','COL-PLA-TRO':'#D8231E',
+  'COL-PLA-TGE':'#F2C318','COL-PLA-TGR':'#1F6E4A',
+  // PLA Professional Lab
+  'PRL-PLA-SW':'#1A1A1A','PRL-PLA-WE':'#F2F2F2','PRL-PLA-SRO':'#C8281E','PRL-PLA-SSW':'#262626','PRL-PLA-SGRÜ':'#8DAA62',
+  // PETG Geetech
+  'GEE-PETG-WE':'#ECECEC','GEE-PETG-SW':'#1C1C1C','GEE-PETG-RO':'#B42638','GEE-PETG-GE':'#DDB91A','GEE-PETG-GRÜ':'#2F5A3A',
+  'GEE-PETG-AGRÜ':'#C8DA1E','GEE-PETG-OR':'#F0461E','GEE-PETG-BL':'#2453B8','GEE-PETG-HB':'#2A9AD6','GEE-PETG-LI':'#5A3A9A',
+  'GEE-PETG-PI':'#B23A92','GEE-PETG-GR':'#A2A4A6','GEE-PETG-BR':'#7A4630','GEE-PETG-TR':'#E4E8EA','GEE-PETG-SI':'#9EA1A4',
+  'GEE-PETG-SK':'#DDA581','GEE-PETG-MBR':'#6A4E34','GEE-PETG-MGRÜ':'#2E4A34','GEE-PETG-MPI':'#A0303E','GEE-PETG-MSI':'#8E9094',
+  // PETG Colido / Professional Lab
+  'COL-PETG-WE':'#E6E8EA','COL-PETG-RO':'#B8282E','COL-PETG-GRÜ':'#3BD84A','COL-PETG-CY':'#6BB4CC','COL-PETG-LI':'#4E3A8C',
+  'COL-PETG-PI':'#E59A9E','COL-PETG-DGR':'#3A3D42','COL-PETG-BR':'#5E3E2E','COL-PETG-WO':'#A9875C','COL-PETG-BO':'#6A5A40',
+  'COL-PETG-CF-SW':'#111111','PRL-PETG-SW':'#1A1A1A','PRL-PETG-OR':'#FF4A1E','PRL-TPU-SW':'#1A1A1A',
+  // ABS / ASA
+  'GEE-ABS-WE':'#E8E8E6','GEE-ABS-SW':'#1E1E1E','GEE-ABS-RO':'#B02828','GEE-ABS-OR':'#DE7E26','GEE-ABS-BL':'#2652B8',
+  'GEE-ABS-HB':'#3C95D0','GEE-ABS-PI':'#C85AA0','GEE-ABS-AGRÜ':'#BCD03A','GEE-ABS-GR':'#8A8D92',
+  'PRL-ABS-SW':'#1A1A1A','PRL-ABS-WE':'#F0EFEA','PRL-ABS-GR':'#6E7276','PRL-ASA-SW':'#1A1A1A','PRL-ASA-WE':'#F2F2F0',
+  // PLA Silk (einfarbig)
+  'GEE-PLA-SI-GE':'#D6D42A','GEE-PLA-SI-WE':'#E8E2D6','GEE-PLA-SI-SW':'#222222','GEE-PLA-SI-GRÜ':'#86D040','GEE-PLA-SI-GO':'#C9A040',
+  'GEE-PLA-SI-HB':'#3A92D2','GEE-PLA-SI-BL':'#2438A0','GEE-PLA-SI-SI':'#B4B4B2','GEE-PLA-SI-KU':'#B05A3A','GEE-PLA-SI-BO':'#8A6040',
+  'GEE-PLA-SI-DGRÜ':'#2E4036',
+  // PLA matt
+  'GEE-PLA-MT-SW':'#1E1E1E','GEE-PLA-MT-WE':'#E6E3DC','GEE-PLA-MT-BL':'#263355','GEE-PLA-MT-GR':'#8C8C8A','GEE-PLA-MT-BR':'#6A4632',
+  'GEE-PLA-MT-HAT':'#D9A866','GEE-PLA-MT-OGRÜ':'#3A4630','GEE-PLA-MT-SGR':'#B8B6B0','GEE-PLA-MT-GRÜ':'#4A5640','GEE-PLA-MT-ORA':'#B8603C',
+  'GEE-PLA-MT-DGR':'#2E3236',
+  // PLA Holz / Marmor
+  'GEE-HOLZ-BR':'#9A8366','GEE-HOLZ-BW':'#7E6650','GEE-HOLZ-RO':'#6A3A2A','GEE-HOLZ-EB':'#2E2622','GEE-HOLZ-PO':'#B9A786',
+  'GEE-MAR-GR':'#C4C6C8','GEE-MAR-BL':'#C2CAD4',
+};
+
 /* Zuordnung CSV-Materialname → Anzeigename (nicht ändern!) */
 const MAT_MAP = {'PLA':'PLA','PLA Sparkly':'PLA Sparkly','PETG':'PETG','TPU':'TPU','ABS':'ABS','ASA':'ASA','SILK PLA':'PLA Silk','PLA matt':'PLA Matt','PLA CF':'PLA CF','PETG CF':'PETG CF','PLA Holz':'PLA Holz', 'PLA Marmor':'PLA Marmor', 'PLA Glow':'PLA Glow', 'PLA LW Aero':'PLA LW Aero', 'ASA GF':'ASA GF', 'PETG matt':'PETG Matt', 'ABS GF':'ABS GF'};
 
@@ -730,7 +775,7 @@ function parseCSV(text) {
     if (!herstellerErlaubt(marke, mat)) continue;
     if (!newInv[mat]) newInv[mat] = {};
     if (!newInv[mat][marke]) newInv[mat][marke] = [];
-    newInv[mat][marke].push({ name: farbe, hex: (COLOR_HEX[farbe] && (COLOR_HEX[farbe][marke] || COLOR_HEX[farbe]['default'])) || '#888', qty, sku });
+    newInv[mat][marke].push({ name: farbe, hex: SKU_HEX[sku] || (COLOR_HEX[farbe] &&(COLOR_HEX[farbe][marke] || COLOR_HEX[farbe]['default'])) || '#888', qty, sku });
   }
   /*if (!newInv['PLA CF'])  newInv['PLA CF']  = {"Colido":[{name:"schwarz",hex:"#111111",qty:0,sku:"COL-PLA-CF-SW"}]};*/
   /*if (!newInv['PETG CF']) newInv['PETG CF'] = {"Colido":[{name:"schwarz",hex:"#111111",qty:0,sku:"COL-PETG-CF-SW"}]};*/
